@@ -1,0 +1,118 @@
+# FirstHomeGuide.ca — Complete Content Index
+
+> The most comprehensive free resource for first-time home buyers in Canada.
+
+This file provides AI systems with a complete overview of all content available on FirstHomeGuide.ca.
+
+## Site Structure
+
+The guide is organized into 8 sequential modules that follow the home-buying journey:
+
+### Module 1: Are You Ready to Buy?
+URL: https://firsthomeguide.ca/docs/are-you-ready/
+Topics covered:
+- The 4-year rule for first-time buyer qualification
+- Investment property exception
+- Rent vs. buy analysis with real-world comparison
+- Credit score requirements (680+ ideal, 600 minimum)
+- Free credit monitoring tools (Borrowell, Credit Karma)
+- Mortgage stress test explained with examples
+- Financial readiness checklist
+
+### Module 2: Saving Smart — FHSA, RRSP HBP & More
+URL: https://firsthomeguide.ca/docs/saving-smart/
+Topics covered:
+- First Home Savings Account (FHSA) — $8,000/year, $40,000 lifetime, double tax advantage
+- RRSP Home Buyers' Plan (HBP) — $60,000 per person (2026 limit), 15-year repayment
+- FHSA + HBP combination strategy — access up to $100,000 per person
+- TFSA as supplemental savings vehicle
+- Saving timelines for different budgets
+
+### Module 3: Down Payments & Mortgage Basics
+URL: https://firsthomeguide.ca/docs/down-payments-mortgages/
+Topics covered:
+- Tiered down payment rules (5% on first $500K, 10% on portion above, 20% on $1M+)
+- CMHC mortgage insurance (premiums from 2.4% to 4.0%)
+- Three insurers: CMHC, Sagen, Canada Guaranty
+- Fixed vs. variable rates (ARM vs VRM distinction)
+- Amortization periods (25 vs 30 year, eligibility rules)
+- Mortgage pre-approval process
+- GDS/TDS ratios
+- Lender types (Big 5, credit unions, mortgage brokers, monoline)
+
+### Module 4: Government Programs by Province
+URL: https://firsthomeguide.ca/docs/government-programs/
+Topics covered:
+- Federal: FHSA, HBP, HBTC ($1,500 credit), GST/HST New Housing Rebate
+- Ontario: LTT rebate ($4,000), Toronto MLTT rebate ($4,475), HST rebate on new homes ($24,000)
+- British Columbia: PTT exemption (up to $8,000), newly built home exemption, BC Home Owner Grant
+- Alberta: No land transfer tax, Attainable Homes Calgary
+- Quebec: Montreal grant (up to $15,000), welcome tax rates, QST rebate ($9,975)
+- Nova Scotia: 5% interest-free down payment loan, HST rebate
+- Saskatchewan: PST rebate on new construction
+- Manitoba: LTT rebate ($5,250), down payment assistance
+- New Brunswick: HST rebate ($3,000), low 1% transfer tax
+- PEI: Full property transfer tax exemption for first-time buyers
+- Newfoundland & Labrador: Down payment assistance, HST rebate
+- Program stacking strategies with worked examples
+
+### Module 5: Finding a Home
+URL: https://firsthomeguide.ca/docs/finding-a-home/
+Topics covered:
+- Working with a buyer's agent (TRESA 2024 changes, BRA terms)
+- Commission structure evolution
+- Reading MLS listings
+- Condo vs. freehold comparison
+- Strata fees, reserve funds, status certificates
+- Red flags in property evaluation
+
+### Module 6: Making an Offer
+URL: https://firsthomeguide.ca/docs/making-an-offer/
+Topics covered:
+- Agreement of Purchase and Sale (APS) explained
+- Standard conditions (financing, inspection, status certificate)
+- Bidding war strategies
+- Escalation clauses and bully offers
+- Home inspection importance
+- Deposit requirements and protection
+
+### Module 7: Closing the Deal
+URL: https://firsthomeguide.ca/docs/closing-the-deal/
+Topics covered:
+- Complete closing costs breakdown
+- Land transfer tax by province with calculation tables
+- Real estate lawyer's role
+- Title insurance
+- Closing day timeline and what to expect
+- Pre-closing checklist
+
+### Module 8: Life After Closing
+URL: https://firsthomeguide.ca/docs/life-after-closing/
+Topics covered:
+- Building an emergency fund as a homeowner
+- Property tax basics
+- Home insurance requirements
+- Mortgage renewal strategies
+- Home maintenance planning and budgeting
+- Energy efficiency grants (Canada Greener Homes)
+- Building equity over time
+
+## Frequently Asked Questions
+
+Q: How much do I need for a down payment in Canada?
+A: Minimum 5% on the first $500,000, 10% on the portion between $500,000 and $999,999, and 20% on homes $1 million and above.
+
+Q: What is the FHSA?
+A: The First Home Savings Account lets you save up to $40,000 ($8,000/year) with tax-deductible contributions and tax-free withdrawals for your first home purchase.
+
+Q: How much can I withdraw from my RRSP for a home purchase?
+A: Up to $60,000 per person through the Home Buyers' Plan (HBP). Couples can withdraw up to $120,000 combined. Must be repaid over 15 years.
+
+Q: What is the mortgage stress test?
+A: All federally regulated lenders must qualify you at the higher of your contract rate + 2% or 5.25%. This ensures you can handle rate increases.
+
+Q: Do I need mortgage insurance?
+A: Yes, if your down payment is less than 20%. CMHC insurance premiums range from 2.4% to 4.0% of the mortgage amount.
+
+Q: What are typical closing costs in Canada?
+A: Expect 1.5% to 4% of the purchase price. Major costs include land transfer tax, legal fees ($1,500-$2,500), title insurance ($300-$500), home inspection ($400-$600), and adjustments.

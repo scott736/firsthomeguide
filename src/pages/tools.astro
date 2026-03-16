@@ -1,0 +1,73 @@
+---
+import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import ProvinceSelector from '@/components/sections/province-selector';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Home Buying Calculators — FirstHomeGuide.ca"
+  description="Free mortgage calculator for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
+>
+  <MortgageCalculator client:load />
+
+  <ProvinceSelector client:load />
+
+  {/* Related guide modules */}
+  <section class="section-padding border-t">
+    <div class="container max-w-screen-xl">
+      <h2 class="mb-3 text-2xl font-semibold tracking-tight">
+        Continue learning
+      </h2>
+      <p class="text-muted-foreground mb-8 max-w-xl text-lg leading-snug">
+        Pair these calculators with our free guide modules for the full picture.
+      </p>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a
+          href="/guide/1-are-you-ready/1-first-time-buyer/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 group rounded-lg border p-5 transition-colors"
+        >
+          <p class="mb-1 text-sm font-semibold group-hover:text-chart-1">
+            Module 1
+          </p>
+          <p class="text-muted-foreground text-sm">
+            Are You Ready? — Credit scores, the stress test &amp; affordability
+          </p>
+        </a>
+        <a
+          href="/guide/2-saving-smart/1-fhsa/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 group rounded-lg border p-5 transition-colors"
+        >
+          <p class="mb-1 text-sm font-semibold group-hover:text-chart-1">
+            Module 2
+          </p>
+          <p class="text-muted-foreground text-sm">
+            Saving Smart — FHSA, RRSP HBP &amp; stacking strategies
+          </p>
+        </a>
+        <a
+          href="/guide/3-down-payments-mortgages/1-down-payment-rules/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 group rounded-lg border p-5 transition-colors"
+        >
+          <p class="mb-1 text-sm font-semibold group-hover:text-chart-1">
+            Module 3
+          </p>
+          <p class="text-muted-foreground text-sm">
+            Down Payments &amp; Mortgages — CMHC insurance, fixed vs. variable
+          </p>
+        </a>
+        <a
+          href="/guide/4-government-programs/1-federal-programs/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 group rounded-lg border p-5 transition-colors"
+        >
+          <p class="mb-1 text-sm font-semibold group-hover:text-chart-1">
+            Module 4
+          </p>
+          <p class="text-muted-foreground text-sm">
+            Government Programs — Federal &amp; provincial incentives by
+            province
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>

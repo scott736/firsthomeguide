@@ -1,0 +1,39 @@
+# FirstHomeGuide.ca
+
+> The most comprehensive free resource for first-time home buyers in Canada. 8 modules covering FHSA, RRSP Home Buyers' Plan, mortgage basics, government programs by province, closing costs, and everything you need to buy your first home with confidence.
+
+## About
+
+FirstHomeGuide.ca is a neutral, education-first resource with no product upsells, no affiliate mortgage links, and no pressure to buy before you are ready. All content is written in plain language, updated regularly, and designed to give Canadians the confidence to make informed home-buying decisions.
+
+- Author: FirstHomeGuide.ca Team
+- URL: https://firsthomeguide.ca
+- Updated: 2026
+
+## Guide Modules
+
+- [Welcome & Overview](https://firsthomeguide.ca/docs/): Introduction to the guide and how to use it
+- [Module 1: Are You Ready to Buy?](https://firsthomeguide.ca/docs/are-you-ready/): First-time buyer qualification, credit scores, mortgage stress test, financial readiness assessment
+- [Module 2: Saving Smart — FHSA, RRSP HBP & More](https://firsthomeguide.ca/docs/saving-smart/): First Home Savings Account, RRSP Home Buyers' Plan, TFSA strategies, saving timelines
+- [Module 3: Down Payments & Mortgage Basics](https://firsthomeguide.ca/docs/down-payments-mortgages/): Down payment rules, CMHC insurance, fixed vs variable rates, amortization, pre-approval
+- [Module 4: Government Programs by Province](https://firsthomeguide.ca/docs/government-programs/): All federal and provincial programs — FHSA, HBP, HBTC, GST rebate, land transfer tax rebates for all 10 provinces
+- [Module 5: Finding a Home](https://firsthomeguide.ca/docs/finding-a-home/): Working with realtors, MLS listings, condo vs freehold, property evaluation
+- [Module 6: Making an Offer](https://firsthomeguide.ca/docs/making-an-offer/): Agreement of Purchase and Sale, conditions, bidding strategies, home inspection, deposits
+- [Module 7: Closing the Deal](https://firsthomeguide.ca/docs/closing-the-deal/): Closing costs breakdown, land transfer tax, lawyer role, title insurance, closing day timeline
+- [Module 8: Life After Closing](https://firsthomeguide.ca/docs/life-after-closing/): Emergency fund, property taxes, home insurance, mortgage renewal, maintenance, equity building
+
+## Key Topics
+
+- First Home Savings Account (FHSA): Tax-deductible contributions, $40,000 lifetime limit, $8,000 annual limit, tax-free withdrawals
+- RRSP Home Buyers' Plan (HBP): $60,000 per person withdrawal, 15-year repayment, combining with FHSA
+- Mortgage Stress Test: Qualifying rate calculation, how it affects borrowing power
+- CMHC Mortgage Insurance: Premium rates by down payment percentage, when required
+- Down Payment Rules: 5% minimum, tiered structure, acceptable sources
+- Land Transfer Tax: Province-by-province rates and first-time buyer rebates
+- Closing Costs: Legal fees, title insurance, adjustments, home inspection, appraisal
+- Government Programs: Federal (HBTC, GST rebate) and all 10 provinces (Ontario, BC, Alberta, Quebec, Nova Scotia, Saskatchewan, Manitoba, New Brunswick, PEI, Newfoundland & Labrador)
+
+## Tools
+
+- [Mortgage Calculator](https://firsthomeguide.ca/tools/): Calculate monthly payments, CMHC insurance, and stress test qualification
+- [Province Selector](https://firsthomeguide.ca/docs/government-programs/): Find government programs specific to your province

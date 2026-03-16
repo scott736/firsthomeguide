@@ -1,0 +1,117 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "guide-module",
+      "pageBundle": false,
+      "previewPath": null,
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "required": true,
+          "description": "SEO meta description (150-160 characters ideal)"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Last Updated",
+          "name": "lastUpdated",
+          "type": "datetime"
+        }
+      ]
+    },
+    {
+      "name": "blog-post",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Date",
+          "name": "date",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Featured Image",
+          "name": "image",
+          "type": "image"
+        }
+      ]
+    }
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Guide Modules",
+      "path": "[[workspace]]/src/content/docs",
+      "contentTypes": ["guide-module"]
+    },
+    {
+      "title": "Changelog",
+      "path": "[[workspace]]/src/content/changelog",
+      "contentTypes": ["blog-post"]
+    }
+  ],
+  "frontMatter.content.publicFolder": "[[workspace]]/public",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.taxonomy.tags": [
+    "FHSA",
+    "RRSP",
+    "mortgage",
+    "down-payment",
+    "closing-costs",
+    "government-programs",
+    "first-time-buyer",
+    "ontario",
+    "british-columbia",
+    "alberta",
+    "quebec",
+    "nova-scotia",
+    "home-inspection",
+    "real-estate",
+    "credit-score",
+    "pre-approval"
+  ],
+  "frontMatter.taxonomy.categories": [
+    "Guide",
+    "News",
+    "Calculator",
+    "Provincial Programs"
+  ],
+  "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.dashboard.openOnStart": false
+}

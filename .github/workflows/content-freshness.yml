@@ -1,0 +1,135 @@
+name: Content Freshness Check
+
+on:
+  schedule:
+    # Run on the 1st of every month at 9am UTC
+    - cron: '0 9 1 * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check content freshness and update dates
+        run: |
+          #!/bin/bash
+          set -e
+
+          CURRENT_YEAR=$(date +%Y)
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          CHANGES_MADE=false
+          REPORT=""
+
+          echo "🔍 Checking content freshness as of $CURRENT_DATE..."
+          echo ""
+
+          # Check for outdated year references in MDX content files
+          echo "## Checking for outdated year references..."
+          OUTDATED_FILES=""
+          PREVIOUS_YEAR=$((CURRENT_YEAR - 1))
+
+          for file in $(find src/content/docs -name "*.mdx" -type f); do
+            # Check if file references the previous year in a way that suggests it needs updating
+            if grep -q "Updated for $PREVIOUS_YEAR\|as of $PREVIOUS_YEAR\|$PREVIOUS_YEAR rules\|$PREVIOUS_YEAR limits\|$PREVIOUS_YEAR rates" "$file" 2>/dev/null; then
+              OUTDATED_FILES="$OUTDATED_FILES\n- $file (references $PREVIOUS_YEAR)"
+            fi
+          done
+
+          if [ -n "$OUTDATED_FILES" ]; then
+            REPORT="$REPORT\n### ⚠️ Files with potentially outdated year references:\n$OUTDATED_FILES\n"
+          else
+            REPORT="$REPORT\n### ✅ No outdated year references found.\n"
+          fi
+
+          # Check hero badge year
+          HERO_FILE="src/components/sections/hero.tsx"
+          if [ -f "$HERO_FILE" ]; then
+            if grep -q "$PREVIOUS_YEAR Updated" "$HERO_FILE"; then
+              REPORT="$REPORT\n### ⚠️ Hero badge references $PREVIOUS_YEAR — needs update to $CURRENT_YEAR\n"
+              # Auto-update hero badge
+              sed -i "s/$PREVIOUS_YEAR Updated/$CURRENT_YEAR Updated/g" "$HERO_FILE"
+              sed -i "s/Updated for $PREVIOUS_YEAR/Updated for $CURRENT_YEAR/g" "$HERO_FILE"
+              CHANGES_MADE=true
+            fi
+          fi
+
+          # Check consts.ts for outdated references
+          if [ -f "src/consts.ts" ]; then
+            if grep -q "$PREVIOUS_YEAR" "src/consts.ts"; then
+              REPORT="$REPORT\n### ⚠️ src/consts.ts references $PREVIOUS_YEAR\n"
+            fi
+          fi
+
+          # Update llms.txt year reference
+          if [ -f "public/llms.txt" ]; then
+            if grep -q "Updated: $PREVIOUS_YEAR" "public/llms.txt"; then
+              sed -i "s/Updated: $PREVIOUS_YEAR/Updated: $CURRENT_YEAR/g" "public/llms.txt"
+              CHANGES_MADE=true
+              REPORT="$REPORT\n### 🔄 Updated llms.txt year to $CURRENT_YEAR\n"
+            fi
+          fi
+
+          # Check docs welcome page for outdated year references
+          WELCOME_FILE="src/content/docs/index.mdx"
+          if [ -f "$WELCOME_FILE" ]; then
+            if grep -q "$PREVIOUS_YEAR rules\|$PREVIOUS_YEAR" "$WELCOME_FILE"; then
+              sed -i "s/$PREVIOUS_YEAR rules/$CURRENT_YEAR rules/g" "$WELCOME_FILE"
+              sed -i "s/latest $PREVIOUS_YEAR/latest $CURRENT_YEAR/g" "$WELCOME_FILE"
+              CHANGES_MADE=true
+              REPORT="$REPORT\n### 🔄 Updated docs welcome page year references\n"
+            fi
+          fi
+
+          # Generate report
+          echo ""
+          echo "================================================="
+          echo "  CONTENT FRESHNESS REPORT — $CURRENT_DATE"
+          echo "================================================="
+          echo -e "$REPORT"
+
+          # If changes were made, create a PR
+          if [ "$CHANGES_MADE" = true ]; then
+            echo "Changes detected — creating pull request..."
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            BRANCH_NAME="content-freshness/$CURRENT_DATE"
+            git checkout -b "$BRANCH_NAME"
+            git add -A
+            git commit -m "chore: update content year references to $CURRENT_YEAR
+
+            Monthly content freshness check automatically updated year
+            references found in hero badge, docs, and llms.txt."
+            git push origin "$BRANCH_NAME"
+
+            # Create PR
+            gh pr create \
+              --title "Content Freshness: Update year references to $CURRENT_YEAR" \
+              --body "$(cat <<EOF
+          ## Monthly Content Freshness Check
+
+          This automated PR updates year references found during the monthly freshness scan.
+
+          ### Changes made:
+          $(echo -e "$REPORT")
+
+          ### What to review:
+          - [ ] Verify updated year references are accurate
+          - [ ] Check if any content needs manual updates for the new year (e.g., new program limits, rate changes)
+          - [ ] Review any flagged files that may need manual attention
+
+          ---
+          🤖 Generated by the Content Freshness GitHub Action
+          EOF
+          )"
+          else
+            echo "✅ No automated changes needed. All content appears current."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
