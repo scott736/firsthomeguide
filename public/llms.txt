@@ -12,15 +12,22 @@ FirstHomeGuide.ca is a neutral, education-first resource with no product upsells
 
 ## Guide Modules
 
-- [Welcome & Overview](https://firsthomeguide.ca/docs/): Introduction to the guide and how to use it
-- [Module 1: Are You Ready to Buy?](https://firsthomeguide.ca/docs/are-you-ready/): First-time buyer qualification, credit scores, mortgage stress test, financial readiness assessment
-- [Module 2: Saving Smart — FHSA, RRSP HBP & More](https://firsthomeguide.ca/docs/saving-smart/): First Home Savings Account, RRSP Home Buyers' Plan, TFSA strategies, saving timelines
-- [Module 3: Down Payments & Mortgage Basics](https://firsthomeguide.ca/docs/down-payments-mortgages/): Down payment rules, CMHC insurance, fixed vs variable rates, amortization, pre-approval
-- [Module 4: Government Programs by Province](https://firsthomeguide.ca/docs/government-programs/): All federal and provincial programs — FHSA, HBP, HBTC, GST rebate, land transfer tax rebates for all 10 provinces
-- [Module 5: Finding a Home](https://firsthomeguide.ca/docs/finding-a-home/): Working with realtors, MLS listings, condo vs freehold, property evaluation
-- [Module 6: Making an Offer](https://firsthomeguide.ca/docs/making-an-offer/): Agreement of Purchase and Sale, conditions, bidding strategies, home inspection, deposits
-- [Module 7: Closing the Deal](https://firsthomeguide.ca/docs/closing-the-deal/): Closing costs breakdown, land transfer tax, lawyer role, title insurance, closing day timeline
-- [Module 8: Life After Closing](https://firsthomeguide.ca/docs/life-after-closing/): Emergency fund, property taxes, home insurance, mortgage renewal, maintenance, equity building
+- [Welcome & Overview](https://firsthomeguide.ca/guide/welcome/): Introduction to the guide and how to use it
+- [Module 1: Are You Ready to Buy?](https://firsthomeguide.ca/guide/1-are-you-ready/1-first-time-buyer/): First-time buyer qualification, credit scores, mortgage stress test, financial readiness assessment, co-buying guide
+- [Module 2: Saving Smart — FHSA, RRSP HBP & More](https://firsthomeguide.ca/guide/2-saving-smart/1-fhsa/): First Home Savings Account, RRSP Home Buyers' Plan, TFSA strategies, saving timelines
+- [Module 3: Down Payments & Mortgage Basics](https://firsthomeguide.ca/guide/3-down-payments-mortgages/1-down-payment-rules/): Down payment rules, CMHC insurance, fixed vs variable rates, amortization, pre-approval, self-employed buyers
+- [Module 4: Government Programs by Province](https://firsthomeguide.ca/guide/4-government-programs/1-federal-programs/): All federal and provincial programs — FHSA, HBP, HBTC, GST rebate, land transfer tax rebates for all 10 provinces and 3 territories
+- [Module 5: Finding a Home](https://firsthomeguide.ca/guide/5-finding-a-home/1-working-with-realtor/): Working with realtors, building your team, MLS listings, condo vs freehold, property evaluation, pre-construction & new builds
+- [Module 6: Making an Offer](https://firsthomeguide.ca/guide/6-making-an-offer/1-purchase-agreement/): Agreement of Purchase and Sale, conditions, bidding strategies, home inspection, deposits
+- [Module 7: Closing the Deal](https://firsthomeguide.ca/guide/7-closing-the-deal/1-closing-costs-overview/): Closing costs breakdown, land transfer tax, lawyer role, title insurance, closing day timeline
+- [Module 8: Life After Closing](https://firsthomeguide.ca/guide/8-life-after-closing/1-emergency-fund/): Emergency fund, property taxes, home insurance, mortgage renewal, maintenance, equity building
+
+## New Pages
+
+- [Pre-Construction & New Builds Guide](https://firsthomeguide.ca/guide/5-finding-a-home/7-new-construction/): Buying pre-construction condos and new builds, assignment sales, Tarion warranty, deposit structures
+- [Glossary](https://firsthomeguide.ca/guide/glossary/): Comprehensive glossary of Canadian home-buying terms and definitions
+- [FAQ](https://firsthomeguide.ca/guide/faq/): 20 frequently asked questions covering every stage of the first-time home buying process
+- [Territories Guide](https://firsthomeguide.ca/guide/4-government-programs/8-territories/): Government programs for Yukon, Northwest Territories, and Nunavut
 
 ## Key Topics
 
@@ -31,9 +38,19 @@ FirstHomeGuide.ca is a neutral, education-first resource with no product upsells
 - Down Payment Rules: 5% minimum, tiered structure, acceptable sources
 - Land Transfer Tax: Province-by-province rates and first-time buyer rebates
 - Closing Costs: Legal fees, title insurance, adjustments, home inspection, appraisal
-- Government Programs: Federal (HBTC, GST rebate) and all 10 provinces (Ontario, BC, Alberta, Quebec, Nova Scotia, Saskatchewan, Manitoba, New Brunswick, PEI, Newfoundland & Labrador)
+- Government Programs: Federal (HBTC, GST rebate) and all 10 provinces and 3 territories (Ontario, BC, Alberta, Quebec, Nova Scotia, Saskatchewan, Manitoba, New Brunswick, PEI, Newfoundland & Labrador, Yukon, NWT, Nunavut)
 
-## Tools
+## Interactive Tools
 
-- [Mortgage Calculator](https://firsthomeguide.ca/tools/): Calculate monthly payments, CMHC insurance, and stress test qualification
-- [Province Selector](https://firsthomeguide.ca/docs/government-programs/): Find government programs specific to your province
+- [Mortgage Payment Calculator](https://firsthomeguide.ca/tools/): Calculate monthly payments, CMHC insurance, and stress test qualification
+- [Affordability Calculator](https://firsthomeguide.ca/tools/): Estimate how much home you can afford based on income, debts, and down payment
+- [Closing Cost Calculator](https://firsthomeguide.ca/tools/): Estimate total closing costs including land transfer tax, legal fees, and adjustments
+- [Rent vs. Buy Comparison](https://firsthomeguide.ca/tools/): Compare the long-term financial impact of renting versus buying
+- [FHSA vs. RRSP/HBP Comparison](https://firsthomeguide.ca/tools/): Compare the tax advantages and withdrawal rules of each savings vehicle
+- [Fixed vs. Variable Rate Comparison](https://firsthomeguide.ca/tools/): Model different rate scenarios to choose the best mortgage type
+- [Province-Specific Program Finder](https://firsthomeguide.ca/guide/4-government-programs/1-federal-programs/): Find government programs specific to your province or territory
+
+## Interactive Features
+
+- Interactive checklists throughout each module to track your home-buying progress
+- Guide progress tracking to bookmark where you left off across all 8 modules
