@@ -56,6 +56,14 @@ export default defineConfig({
           label: 'Module 8: Life After Closing',
           autogenerate: { directory: 'guide/8-life-after-closing' },
         },
+        {
+          label: 'FAQ',
+          slug: 'guide/faq',
+        },
+        {
+          label: 'Glossary',
+          slug: 'guide/glossary',
+        },
       ],
       customCss: ['./src/styles/global.css'],
       expressiveCode: {
