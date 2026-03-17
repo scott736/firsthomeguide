@@ -1,0 +1,33 @@
+---
+import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Closing Cost Calculator — FirstHomeGuide.ca"
+  description="Estimate your total closing costs including legal fees, land transfer tax, PST on CMHC insurance, and more. Province-specific calculations for Canadian first-time home buyers."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <ClosingCostCalculator client:load />
+
+  <section class="section-padding pt-8">
+    <div class="container max-w-screen-xl">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight">Learn more</h2>
+      <ul class="text-muted-foreground space-y-2 text-sm leading-relaxed">
+        <li>Read our <a href="/guide/7-closing-the-deal/1-closing-costs-overview/" class="text-foreground underline underline-offset-4 hover:text-chart-1">closing costs overview</a> to understand why these costs surprise so many first-time buyers.</li>
+        <li>See a <a href="/guide/7-closing-the-deal/2-cost-breakdown/" class="text-foreground underline underline-offset-4 hover:text-chart-1">detailed cost breakdown</a> of every fee you should plan for, from legal fees to utility adjustments.</li>
+        <li>Learn how <a href="/guide/7-closing-the-deal/3-land-transfer-tax/" class="text-foreground underline underline-offset-4 hover:text-chart-1">land transfer tax</a> is calculated in your province — usually your single largest closing cost.</li>
+      </ul>
+    </div>
+  </section>
+</DefaultLayout>

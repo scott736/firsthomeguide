@@ -1,0 +1,33 @@
+---
+import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Mortgage Calculator — FirstHomeGuide.ca"
+  description="Free Canadian mortgage calculator. Estimate monthly payments, CMHC insurance premiums, land transfer tax by province, and stress test qualification — built for first-time home buyers with 2026 rules."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <MortgageCalculator client:load />
+
+  <section class="section-padding pt-8">
+    <div class="container max-w-screen-xl">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight">Learn more</h2>
+      <ul class="text-muted-foreground space-y-2 text-sm leading-relaxed">
+        <li>Understand how your <a href="/guide/3-down-payments-mortgages/4-amortization/" class="text-foreground underline underline-offset-4 hover:text-chart-1">amortization period</a> affects your monthly payments and total interest paid.</li>
+        <li>See how the <a href="/guide/1-are-you-ready/4-stress-test/" class="text-foreground underline underline-offset-4 hover:text-chart-1">mortgage stress test</a> determines the rate you must qualify at — typically 2% above your contract rate.</li>
+        <li>If your down payment is under 20%, learn how <a href="/guide/3-down-payments-mortgages/2-cmhc-insurance/" class="text-foreground underline underline-offset-4 hover:text-chart-1">CMHC mortgage insurance</a> premiums are calculated and added to your mortgage.</li>
+      </ul>
+    </div>
+  </section>
+</DefaultLayout>

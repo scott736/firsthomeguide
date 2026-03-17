@@ -1,0 +1,22 @@
+---
+import ProvinceSelector from '@/components/sections/province-selector';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Programs by Province — FirstHomeGuide.ca"
+  description="Find every federal and provincial first-time home buyer program you qualify for. Province-specific incentives, rebates, and savings for Canadian buyers."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <ProvinceSelector client:load />
+</DefaultLayout>

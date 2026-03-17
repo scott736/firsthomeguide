@@ -1,0 +1,22 @@
+---
+import CityComparison from '@/components/sections/city-comparison';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="City Comparison Tool — FirstHomeGuide.ca"
+  description="Compare home prices, affordability, and costs across Canadian cities. Side-by-side data to help first-time buyers choose where to buy."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <CityComparison client:load />
+</DefaultLayout>

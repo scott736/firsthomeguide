@@ -1,0 +1,22 @@
+---
+import ComparisonTools from '@/components/sections/comparison-tools';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Rent vs Buy, FHSA vs RRSP, Fixed vs Variable — FirstHomeGuide.ca"
+  description="Compare renting versus buying, FHSA versus RRSP Home Buyers' Plan, and fixed versus variable mortgage rates. Side-by-side Canadian calculators for first-time home buyers."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <ComparisonTools client:load />
+</DefaultLayout>

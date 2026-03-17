@@ -46,7 +46,7 @@ const ITEMS = [
   },
   {
     title: 'Module 8: Life After Closing',
-    image: { src: '/images/home/hero.webp', width: 186, height: 103 },
+    image: { src: '/images/home/features/8.webp', width: 186, height: 103 },
     desc: 'Emergency funds, property taxes, home insurance, mortgage renewal strategy, and energy efficiency grants.',
   },
 ];

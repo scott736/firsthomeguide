@@ -1,0 +1,33 @@
+---
+import AffordabilityCalculator from '@/components/sections/affordability-calculator';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Affordability Calculator — FirstHomeGuide.ca"
+  description="Find out how much home you can afford based on your income, debts, and down payment. Uses Canadian GDS/TDS rules and stress test rates — built for first-time buyers with 2026 rules."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <AffordabilityCalculator client:load />
+
+  <section class="section-padding pt-8">
+    <div class="container max-w-screen-xl">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight">Learn more</h2>
+      <ul class="text-muted-foreground space-y-2 text-sm leading-relaxed">
+        <li>Dive deeper into the <a href="/guide/3-down-payments-mortgages/6-gds-tds-ratios/" class="text-foreground underline underline-offset-4 hover:text-chart-1">GDS and TDS ratios</a> lenders use to determine how much you can borrow.</li>
+        <li>Take our <a href="/guide/1-are-you-ready/5-financial-checklist/" class="text-foreground underline underline-offset-4 hover:text-chart-1">financial readiness checklist</a> to see if you are truly prepared beyond what the numbers show.</li>
+        <li>Learn how the <a href="/guide/1-are-you-ready/4-stress-test/" class="text-foreground underline underline-offset-4 hover:text-chart-1">mortgage stress test</a> reduces your maximum qualifying amount and why it exists.</li>
+      </ul>
+    </div>
+  </section>
+</DefaultLayout>

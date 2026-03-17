@@ -1,7 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-import { BookOpen, Calculator, MapPin, Search } from 'lucide-react';
+import {
+  ArrowLeftRight,
+  BookOpen,
+  Building2,
+  Calculator,
+  Calendar,
+  ClipboardList,
+  DollarSign,
+  Home,
+  MapPin,
+  Search,
+} from 'lucide-react';
 
 import { ThemeToggle } from '../elements/theme-toggle';
 
@@ -49,14 +60,50 @@ export const NAV_LINKS = [
     subitems: [
       {
         label: 'Mortgage Calculator',
-        href: '/tools',
+        href: '/tools/mortgage-calculator',
         description: 'Calculate payments, CMHC insurance, and land transfer tax',
         icon: Calculator,
       },
       {
+        label: 'Affordability Calculator',
+        href: '/tools/affordability-calculator',
+        description: 'Find out how much home you can afford based on income and debts',
+        icon: Home,
+      },
+      {
+        label: 'Closing Cost Calculator',
+        href: '/tools/closing-cost-calculator',
+        description: 'Estimate legal fees, land transfer tax, and total cash needed',
+        icon: DollarSign,
+      },
+      {
+        label: 'Comparison Tools',
+        href: '/tools/comparison-tools',
+        description: 'Rent vs Buy, FHSA vs RRSP, and Fixed vs Variable side by side',
+        icon: ArrowLeftRight,
+      },
+      {
+        label: 'Timeline Planner',
+        href: '/tools/timeline-planner',
+        description: 'Plan your home buying timeline from saving to closing',
+        icon: Calendar,
+      },
+      {
+        label: 'City Comparison',
+        href: '/tools/city-comparison',
+        description: 'Compare home prices and costs across Canadian cities',
+        icon: Building2,
+      },
+      {
+        label: 'Document Checklist',
+        href: '/tools/document-checklist',
+        description: 'Track every document needed for your mortgage application',
+        icon: ClipboardList,
+      },
+      {
         label: 'Programs by Province',
-        href: '/guide/4-government-programs/1-federal-programs/',
-        description: 'Find every federal and provincial program you qualify for',
+        href: '/tools/province-selector',
+        description: 'Find federal and provincial programs you qualify for',
         icon: MapPin,
       },
     ],
@@ -114,7 +161,12 @@ const Navbar = ({ currentPage }: NavbarProps) => {
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="">
-                      <ul className="grid w-[263px] gap-2">
+                      <ul className={cn(
+                        'grid gap-2',
+                        item.subitems.length > 3
+                          ? 'w-[540px] grid-cols-2'
+                          : 'w-[263px]',
+                      )}>
                         {item.subitems.map((subitem) => (
                           <li key={subitem.label}>
                             <NavigationMenuLink

@@ -1,0 +1,22 @@
+---
+import TimelinePlanner from '@/components/sections/timeline-planner';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Home Buying Timeline Planner — FirstHomeGuide.ca"
+  description="Plan your home buying timeline from saving to closing. See month-by-month milestones, savings projections, and key deadlines for Canadian first-time buyers."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <TimelinePlanner client:load />
+</DefaultLayout>
