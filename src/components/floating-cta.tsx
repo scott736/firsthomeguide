@@ -4,15 +4,7 @@ import { Phone } from 'lucide-react';
 
 import { LENDCITY } from '@/lib/lendcity';
 
-interface FloatingCtaProps {
-  currentPage: string;
-}
-
-export function FloatingCta({ currentPage }: FloatingCtaProps) {
-  if (currentPage.includes('/guide')) {
-    return null;
-  }
-
+export function FloatingCta() {
   return (
     <a
       href={LENDCITY.bookingUrl}

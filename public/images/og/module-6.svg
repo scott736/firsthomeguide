@@ -14,9 +14,9 @@
   <rect width="1200" height="630" fill="url(#bg)"/>
   <!-- Accent line -->
   <rect x="60" y="520" width="300" height="4" rx="2" fill="url(#accent)"/>
-  <!-- Lightning bolt icon -->
+  <!-- House icon -->
   <g transform="translate(1060, 60) scale(3.5)" opacity="0.15">
-    <path d="M15.1119 4.24585L11.3462 10.9307H25.9091L18.5273 23.7542H10.7972L14.5629 17.0693H0L7.38178 4.24585H15.1119Z" fill="url(#accent)"/>
+    <path d="M13 4 L1 13 H4 V24 H10 V17 H16 V24 H22 V13 H25 Z" fill="url(#accent)"/>
   </g>
   <!-- Site name -->
   <text x="60" y="80" fill="#a855f7" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">FirstHomeGuide.ca</text>

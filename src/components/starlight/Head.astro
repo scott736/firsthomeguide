@@ -1,7 +1,7 @@
 ---
 /**
  * Custom Starlight Head component override.
- * Adds structured data (JSON-LD), OG/Twitter meta tags, and per-module OG images
+ * Adds structured data (JSON-LD), OG/Twitter meta tags, and breadcrumb schema
  * for guide pages, improving SEO and social sharing.
  */
 import Default from '@astrojs/starlight/components/Head.astro';
@@ -12,34 +12,11 @@ const siteUrl = 'https://firsthomeguide.ca';
 const route = Astro.locals.starlightRoute;
 const title = route.entry.data.title;
 const description = route.entry.data.description || '';
-const slug = route.id ?? Astro.url.pathname.replace(/^\/|\/$/g, '');
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 
-// --- Per-module OG images ---
-const moduleOgMap: Record<string, string> = {
-  '1-are-you-ready': '/images/og/module-1.svg',
-  '2-saving-smart': '/images/og/module-2.svg',
-  '3-down-payments-mortgages': '/images/og/module-3.svg',
-  '4-government-programs': '/images/og/module-4.svg',
-  '5-finding-a-home': '/images/og/module-5.svg',
-  '6-making-an-offer': '/images/og/module-6.svg',
-  '7-closing-the-deal': '/images/og/module-7.svg',
-  '8-life-after-closing': '/images/og/module-8.svg',
-};
-
-function getOgImage(slug: string): string {
-  const guidePath = slug.startsWith('guide/') ? slug.slice('guide/'.length) : slug;
-  for (const [prefix, image] of Object.entries(moduleOgMap)) {
-    if (guidePath.startsWith(prefix)) {
-      return image;
-    }
-  }
-  return '/images/og/guide.svg';
-}
-
-const ogImagePath = getOgImage(slug);
-const ogImage = new URL(ogImagePath, siteUrl).href;
-const twitterImage = new URL('/images/og-image.jpeg', siteUrl).href;
+// Use JPEG for all OG/Twitter images — SVGs are not rendered by most social crawlers
+const ogImage = new URL('/images/og-image.jpeg', siteUrl).href;
+const twitterImage = ogImage;
 const ogImageAlt = "FirstHomeGuide.ca \u2014 Canada's Free First-Time Home Buyer Guide";
 
 // --- Breadcrumb generation ---
@@ -104,6 +81,7 @@ const articleSchema = {
       url: `${siteUrl}/layout/logo-light.svg`,
     },
   },
+  datePublished: '2025-01-15',
   mainEntityOfPage: canonicalURL,
   isPartOf: {
     '@type': 'Course',
@@ -147,6 +125,8 @@ const ogTitle = `${title} \u2014 FirstHomeGuide.ca`;
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={ogImageAlt} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="article:published_time" content="2025-01-15T00:00:00Z" />
 
 <!-- Twitter Card meta tags (JPEG fallback for compatibility) -->
 <meta name="twitter:card" content="summary_large_image" />

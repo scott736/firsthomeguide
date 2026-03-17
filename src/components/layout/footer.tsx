@@ -3,7 +3,7 @@
 import { Phone } from 'lucide-react';
 
 import Logo from '@/components/layout/logo';
-import { NAV_LINKS } from '@/components/layout/navbar';
+import { NAV_LINKS } from '@/components/navbar18';
 import { Button } from '@/components/ui/button';
 import { LENDCITY } from '@/lib/lendcity';
 
