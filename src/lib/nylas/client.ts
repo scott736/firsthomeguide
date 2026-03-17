@@ -313,6 +313,8 @@ export async function getAvailability(request: AvailabilityRequest): Promise<{ s
     );
     debugInfo.rawMemberCount = rawMembers.length;
     debugInfo.enrichedWithGrants = teamMembersToCheck.length;
+    debugInfo.apiKeySource = import.meta.env.NYLAS_API_KEY ? 'import.meta.env' : (process.env.NYLAS_API_KEY ? 'process.env' : 'MISSING');
+    debugInfo.apiKeyPreview = NYLAS_API_KEY ? `${NYLAS_API_KEY.slice(0, 6)}...${NYLAS_API_KEY.slice(-4)} (len=${NYLAS_API_KEY.length})` : 'EMPTY';
     debugInfo.memberDetails = enrichedMembers.map(m => ({
       id: m.id,
       email: m.email,
