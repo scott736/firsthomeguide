@@ -12,7 +12,7 @@ const siteUrl = 'https://firsthomeguide.ca';
 const route = Astro.locals.starlightRoute;
 const title = route.entry.data.title;
 const description = route.entry.data.description || '';
-const slug = route.slug;
+const slug = route.id ?? Astro.url.pathname.replace(/^\/|\/$/g, '');
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 
 // --- Per-module OG images ---
