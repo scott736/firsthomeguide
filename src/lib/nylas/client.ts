@@ -356,7 +356,6 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const availability = await (nylas.calendars.getAvailability as any)({
-        identifier: primaryGrantId,
         requestBody: {
           startTime: roundUp5Min(Math.floor(startDate.getTime() / 1000)),
           endTime: roundUp5Min(Math.floor(endDate.getTime() / 1000)),
