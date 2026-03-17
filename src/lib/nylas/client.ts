@@ -354,31 +354,44 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
       // Nylas requires timestamps to be multiples of 5 minutes
       const roundUp5Min = (ts: number) => Math.ceil(ts / 300) * 300;
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const availability = await (nylas.calendars.getAvailability as any)({
-        requestBody: {
-          startTime: roundUp5Min(Math.floor(startDate.getTime() / 1000)),
-          endTime: roundUp5Min(Math.floor(endDate.getTime() / 1000)),
-          durationMinutes,
-          intervalMinutes: schedulingConfig.slotInterval,
+      // Use Nylas REST API directly (SDK's getAvailability constructs wrong URL)
+      const apiUri = NYLAS_API_URI || 'https://api.us.nylas.com';
+      const availRes = await fetch(`${apiUri}/v3/calendars/availability`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${NYLAS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          start_time: roundUp5Min(Math.floor(startDate.getTime() / 1000)),
+          end_time: roundUp5Min(Math.floor(endDate.getTime() / 1000)),
+          duration_minutes: durationMinutes,
+          interval_minutes: schedulingConfig.slotInterval,
           participants: [
             {
               email: member.email,
-              // Only include openHours if available
-              ...(openHours && openHours.length > 0 && { openHours }),
+              ...(openHours && openHours.length > 0 && {
+                open_hours: openHours.map(oh => ({
+                  days: oh.days,
+                  timezone: oh.timezone,
+                  start: oh.start,
+                  end: oh.end,
+                  exdates: oh.exdates,
+                })),
+              }),
             },
           ],
-        },
+        }),
       });
 
+      const availData = await availRes.json();
+
       // Convert Nylas availability to our TimeSlot format
-      if (availability.data?.timeSlots) {
-        for (const slot of availability.data.timeSlots) {
-          const startTimestamp = slot.startTime as unknown as number;
-          const endTimestamp = slot.endTime as unknown as number;
+      if (availData.data?.time_slots) {
+        for (const slot of availData.data.time_slots) {
           allSlots.push({
-            startTime: new Date(startTimestamp * 1000).toISOString(),
-            endTime: new Date(endTimestamp * 1000).toISOString(),
+            startTime: new Date(slot.start_time * 1000).toISOString(),
+            endTime: new Date(slot.end_time * 1000).toISOString(),
             teamMemberId: member.id,
             available: true,
           });
