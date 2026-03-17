@@ -6,9 +6,11 @@ import {
   Building2,
   Calculator,
   Calendar,
+  ClipboardCheck,
   ClipboardList,
   DollarSign,
   Home,
+  Hourglass,
   MapPin,
   Menu,
   Search,
@@ -17,6 +19,7 @@ import React from 'react';
 
 import { ThemeToggle } from '@/components/elements/theme-toggle';
 import Logo from '@/components/layout/logo';
+import SiteSearch from '@/components/sections/site-search';
 import {
   Accordion,
   AccordionContent,
@@ -121,6 +124,20 @@ export const NAV_LINKS = [
           'Find federal and provincial programs you qualify for',
         icon: MapPin,
       },
+      {
+        label: 'Am I Ready? Assessment',
+        href: '/tools/readiness-assessment',
+        description:
+          'Evaluate your readiness and get personalized next steps',
+        icon: ClipboardCheck,
+      },
+      {
+        label: 'Cost of Waiting',
+        href: '/tools/cost-of-waiting',
+        description:
+          'See how delaying your purchase affects the total cost',
+        icon: Hourglass,
+      },
     ],
   },
   { label: 'About', href: '/about' },
@@ -197,14 +214,7 @@ const Navbar18 = ({ currentPage }: Navbar18Props) => {
 
       {/* Desktop right actions */}
       <div className="hidden items-center gap-1.5 md:flex">
-        <a
-          href="/guide/welcome/"
-          className="text-muted-foreground hover:text-foreground inline-flex size-8 items-center justify-center rounded-md transition-colors"
-          title="Search the guide"
-          aria-label="Search the guide"
-        >
-          <Search className="size-3.5" />
-        </a>
+        <SiteSearch />
         <ThemeToggle className="size-8" />
         <Button
           className="h-auto rounded-lg px-3 py-1.5 text-xs"
@@ -253,14 +263,7 @@ ListItem.displayName = 'ListItem';
 const MobileNav = ({ currentPage }: { currentPage: string }) => {
   return (
     <div className="mr-2 flex items-center gap-1 md:hidden">
-      <a
-        href="/guide/welcome/"
-        className="text-muted-foreground hover:text-foreground inline-flex size-8 items-center justify-center rounded-md transition-colors"
-        title="Search the guide"
-        aria-label="Search the guide"
-      >
-        <Search className="size-4" />
-      </a>
+      <SiteSearch />
       <ThemeToggle className="size-8" />
       <Popover>
         <PopoverTrigger>

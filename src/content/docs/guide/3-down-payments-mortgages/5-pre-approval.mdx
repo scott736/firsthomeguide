@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+import InteractiveChecklist from '../../../../components/sections/interactive-checklist.tsx';
+import PdfDownloadButton from '../../../../components/sections/pdf-download-button.tsx';
 
 A mortgage pre-approval tells you how much a lender is willing to lend you, at what interest rate, and under what conditions. It is an essential step before you start [house hunting](/guide/5-finding-a-home/1-working-with-realtor/) seriously. Without a pre-approval, you are guessing at your budget, and in competitive markets, sellers and realtors may not take your offers seriously.
 
@@ -79,6 +81,33 @@ Gathering your documents before starting the pre-approval process will speed thi
 :::caution
 Do not hide debts from your lender. They will pull your credit report and see everything. Undisclosed debts discovered during the verification process will delay your approval and damage your credibility with the lender. Be upfront about everything.
 :::
+
+### Pre-Approval Document Tracker
+
+Use this checklist to track which documents you have gathered. Your progress is saved automatically.
+
+<PdfDownloadButton client:visible label="Print this checklist" />
+
+<InteractiveChecklist
+  client:visible
+  checklistId="pre-approval-docs"
+  items={[
+    { id: "income-t4", label: "T4 slips from employer (last 2 years)", category: "Proof of Income" },
+    { id: "income-pay", label: "Recent pay stubs (last 30 days)", category: "Proof of Income" },
+    { id: "income-noa", label: "Notices of Assessment from CRA (last 2 years)", category: "Proof of Income" },
+    { id: "income-letter", label: "Letter of employment on company letterhead", category: "Proof of Income" },
+    { id: "dp-bank", label: "Bank statements for all accounts holding down payment funds (last 90 days)", category: "Proof of Down Payment" },
+    { id: "dp-fhsa", label: "FHSA statements (if using FHSA)", category: "Proof of Down Payment" },
+    { id: "dp-rrsp", label: "RRSP statements (if using Home Buyers' Plan)", category: "Proof of Down Payment" },
+    { id: "dp-gift", label: "Gift letter from family (if receiving a gift)", category: "Proof of Down Payment" },
+    { id: "id-photo", label: "Government-issued photo ID (driver's licence or passport)", category: "Identification" },
+    { id: "id-sin", label: "Social Insurance Number (SIN)", category: "Identification" },
+    { id: "debt-cc", label: "Credit card statements (current balances)", category: "Debt Information" },
+    { id: "debt-car", label: "Car loan or lease agreements", category: "Debt Information" },
+    { id: "debt-student", label: "Student loan balance statement", category: "Debt Information" },
+    { id: "debt-loc", label: "Line of credit statements", category: "Debt Information" },
+  ]}
+/>
 
 ---
 

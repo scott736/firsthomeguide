@@ -5,6 +5,9 @@ sidebar:
   order: 8
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 Getting a mortgage when you are self-employed in Canada is absolutely possible -- but the process is more involved than it is for salaried employees. Lenders want predictable, verifiable income, and the nature of self-employment often works against that expectation. Understanding what lenders look for, how to prepare your documentation, and which lenders are most flexible will put you in the strongest position to get approved at a competitive rate.
 
@@ -309,6 +312,34 @@ The best time to start preparing for a self-employed mortgage is 2 years before 
 :::
 
 Being self-employed does not disqualify you from homeownership -- it just means you need to be more strategic about the process. With the right preparation, the right professionals on your team, and a clear understanding of what lenders need, you can secure a competitive mortgage and buy the home you want.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={3}
+  moduleName="Down Payments & Mortgages"
+  questions={[
+    {
+      question: "What is the minimum down payment on a $600,000 home in Canada?",
+      options: ["$30,000 (5%)", "$35,000", "$40,000", "$60,000 (10%)"],
+      correctIndex: 1,
+      explanation: "It's 5% on the first $500K ($25,000) plus 10% on the next $100K ($10,000) = $35,000."
+    },
+    {
+      question: "When is CMHC mortgage insurance required?",
+      options: ["Always", "Down payment under 20%", "Down payment under 10%", "Only for condos"],
+      correctIndex: 1,
+      explanation: "Mortgage default insurance is required when your down payment is less than 20%."
+    },
+    {
+      question: "What does a mortgage pre-approval guarantee?",
+      options: ["You'll get the house", "A rate hold for 90-120 days", "Your closing costs", "The home's value"],
+      correctIndex: 1,
+      explanation: "Pre-approval gives you a rate hold (typically 90-120 days) but is not a final mortgage commitment."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={3} moduleName="Down Payments & Mortgages" totalModules={8} nextModuleHref="/guide/4-government-programs/1-federal-programs/" nextModuleName="Government Programs" />
 
 ---
 

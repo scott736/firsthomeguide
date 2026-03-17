@@ -7,11 +7,14 @@ import Features from '@/components/sections/features';
 import FeaturesTabsSection from '@/components/sections/features-tabs';
 import Features2 from '@/components/sections/features2';
 import Hero from '@/components/sections/hero';
+import SuccessStories from '@/components/sections/success-stories';
 import Testimonials from '@/components/sections/testimonials';
+import WelcomeBackBanner from '@/components/sections/welcome-back-banner';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <WelcomeBackBanner client:load />
   <Hero />
   <Features client:visible />
   <Features2 client:visible />
@@ -19,4 +22,5 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <FeaturesTabsSection client:visible />
   <Concierge client:visible />
   <Testimonials client:visible />
+  <SuccessStories client:visible />
 </DefaultLayout>

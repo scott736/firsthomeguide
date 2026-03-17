@@ -5,8 +5,11 @@ sidebar:
   order: 8
 ---
 
+import CompletionCertificate from '../../../../components/sections/completion-certificate.tsx';
 import InteractiveChecklist from '../../../../components/sections/interactive-checklist.tsx';
 import PdfDownloadButton from '../../../../components/sections/pdf-download-button.tsx';
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
 
 
 You have made it through all eight modules of the FirstHomeGuide.ca education program. From assessing your readiness and saving your down payment to finding the right home, negotiating your offer, and closing the deal — you now have the knowledge to navigate the Canadian home buying process with confidence.
@@ -120,6 +123,38 @@ Here are a few pieces of advice to carry with you:
 - **Enjoy your home.** Beyond all the financial planning and maintenance checklists, your home is where life happens. Make it yours. Make it comfortable. Make it a place you love coming back to.
 
 Welcome home.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={8}
+  moduleName="Life After Closing"
+  questions={[
+    {
+      question: "When do HBP repayments begin?",
+      options: ["Immediately", "After 1 year", "Second year after withdrawal", "After 5 years"],
+      correctIndex: 2,
+      explanation: "HBP repayments begin in the second year after your withdrawal and are spread over 15 years."
+    },
+    {
+      question: "What is the first thing you should do in your new home?",
+      options: ["Start renovating", "Change the locks", "Paint the walls", "Set up internet"],
+      correctIndex: 1,
+      explanation: "Changing all locks is the top priority — you don't know who has copies of existing keys."
+    },
+    {
+      question: "What should you do 120 days before your mortgage term ends?",
+      options: ["Nothing — your bank will auto-renew", "Start shopping for the best renewal rate", "Pay off the mortgage", "Refinance immediately"],
+      correctIndex: 1,
+      explanation: "Never auto-renew. Start shopping 120 days before your term ends to find the best rate."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={8} moduleName="Life After Closing" totalModules={8} />
+
+## Your Certificate of Completion
+
+<CompletionCertificate client:visible />
 
 ---
 

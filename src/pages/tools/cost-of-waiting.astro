@@ -1,0 +1,44 @@
+---
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
+import CostOfWaiting from '@/components/sections/cost-of-waiting';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Cost of Waiting Calculator — FirstHomeGuide.ca"
+  description="See how much more expensive a home gets for every month you wait. Calculate the real cost of delaying your first home purchase in Canada — including appreciation, rent, and additional interest."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <CostOfWaiting client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="Don't wait — get started today"
+        description="Book a free call with our mortgage team to find out exactly what you qualify for right now. No obligation."
+      />
+    </div>
+  </section>
+
+  <section class="section-padding pt-8">
+    <div class="container max-w-screen-xl">
+      <h2 class="mb-3 text-xl font-semibold tracking-tight">Learn more</h2>
+      <ul class="text-muted-foreground space-y-2 text-sm leading-relaxed">
+        <li>Start saving tax-free with the <a href="/guide/2-saving-smart/1-fhsa/" class="text-foreground underline underline-offset-4 hover:text-chart-1">First Home Savings Account (FHSA)</a>.</li>
+        <li>Understand how the <a href="/guide/1-are-you-ready/4-stress-test/" class="text-foreground underline underline-offset-4 hover:text-chart-1">mortgage stress test</a> affects your buying power.</li>
+        <li>Check your <a href="/tools/affordability-calculator" class="text-foreground underline underline-offset-4 hover:text-chart-1">maximum purchase price</a> based on your income and debts.</li>
+      </ul>
+    </div>
+  </section>
+</DefaultLayout>

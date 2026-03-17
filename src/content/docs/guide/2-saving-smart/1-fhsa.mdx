@@ -5,14 +5,16 @@ sidebar:
   order: 1
 ---
 
+import WhatsNext from '../../../../components/sections/whats-next.tsx';
+import GlossaryTooltip from '../../../../components/sections/glossary-tooltip.tsx';
 
-The FHSA is the single most powerful savings tool available to Canadian first-time home buyers. Introduced in April 2023, it combines the best features of an RRSP and a TFSA into one account -- giving you a **double tax advantage** that no other registered account offers. If you are a [first-time buyer](/guide/1-are-you-ready/1-first-time-buyer/) and you have not opened an FHSA yet, this page will explain why you should do so as soon as possible.
+The <GlossaryTooltip client:load term="FHSA" definition="First Home Savings Account — a registered account giving first-time buyers tax-deductible contributions ($8K/year, $40K lifetime) and tax-free withdrawals for a home purchase." /> is the single most powerful savings tool available to Canadian first-time home buyers. Introduced in April 2023, it combines the best features of an <GlossaryTooltip client:load term="RRSP" definition="Registered Retirement Savings Plan — a tax-sheltered investment account. First-time buyers can withdraw up to $60,000 tax-free under the Home Buyers' Plan." /> and a TFSA into one account -- giving you a **double tax advantage** that no other registered account offers. If you are a [first-time buyer](/guide/1-are-you-ready/1-first-time-buyer/) and you have not opened an FHSA yet, this page will explain why you should do so as soon as possible.
 
 ## How It Works
 
 The FHSA gives you **two tax advantages** -- a rare combination in Canadian tax law:
 
-1. **Tax-deductible contributions.** Every dollar you put into your FHSA reduces your taxable income, just like an RRSP. If you are in a 30% marginal tax bracket and contribute $8,000, you save $2,400 on your tax bill. In a 40% bracket, that same contribution saves you $3,200.
+1. **<GlossaryTooltip client:load term="Tax-deductible" definition="Reduces your taxable income — meaning you pay less income tax. FHSA contributions and RRSP contributions are both tax-deductible." /> contributions.** Every dollar you put into your FHSA reduces your taxable income, just like an RRSP. If you are in a 30% marginal tax bracket and contribute $8,000, you save $2,400 on your tax bill. In a 40% bracket, that same contribution saves you $3,200.
 
 2. **Tax-free qualifying withdrawals.** When you withdraw money from your FHSA to buy your first home, you pay **zero tax** on the withdrawal -- including all the investment growth inside the account. Unlike the [RRSP Home Buyers' Plan](/guide/2-saving-smart/2-rrsp-hbp/), you never have to repay the withdrawal.
 
@@ -135,6 +137,12 @@ Most major Canadian financial institutions offer FHSAs, including:
 - **Robo-advisors:** Wealthsimple Invest, Questwealth, CI Direct Investing
 
 If you want to invest in ETFs or individual stocks, an online brokerage (like Questrade or Wealthsimple) is the most cost-effective option. If you prefer simplicity and are happy with GICs or savings deposits, your existing bank can set one up quickly.
+
+<WhatsNext client:visible items={[
+  { title: "RRSP Home Buyers' Plan", description: "Learn how to combine HBP with your FHSA for up to $100K", href: "/guide/2-saving-smart/2-rrsp-hbp/", type: "guide" },
+  { title: "Affordability Calculator", description: "See how much home your savings can support", href: "/tools/affordability-calculator", type: "tool" },
+  { title: "Book a Free Call", description: "Get help setting up your FHSA and savings plan", href: "/book-a-call", type: "action" }
+]} />
 
 ---
 

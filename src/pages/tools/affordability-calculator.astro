@@ -1,6 +1,7 @@
 ---
 import AffordabilityCalculator from '@/components/sections/affordability-calculator';
 import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
+import ShareResults from '@/components/sections/share-results';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -20,6 +21,17 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <AffordabilityCalculator client:load />
+
+  <section class="pb-4 pt-0">
+    <div class="container max-w-screen-xl flex justify-end">
+      <ShareResults
+        client:load
+        title="Affordability Calculator Results"
+        summary="Find out how much home you can afford based on income, debts, and down payment — FirstHomeGuide.ca"
+        toolUrl="/tools/affordability-calculator"
+      />
+    </div>
+  </section>
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">

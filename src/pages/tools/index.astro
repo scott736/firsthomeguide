@@ -3,8 +3,10 @@ import AffordabilityCalculator from '@/components/sections/affordability-calcula
 import CityComparison from '@/components/sections/city-comparison';
 import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
 import ComparisonTools from '@/components/sections/comparison-tools';
+import CostOfWaiting from '@/components/sections/cost-of-waiting';
 import DocumentChecklist from '@/components/sections/document-checklist';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import ReadinessAssessment from '@/components/sections/readiness-assessment';
 import TimelinePlanner from '@/components/sections/timeline-planner';
 import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -69,8 +71,20 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   {/* Section divider */}
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
-  {/* 7. Province Selector */}
+  {/* 8. Province Selector */}
   <ProvinceSelector client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 9. Am I Ready? Assessment */}
+  <ReadinessAssessment client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 10. Cost of Waiting Calculator */}
+  <CostOfWaiting client:visible />
 
   {/* 6. Continue Learning */}
   <section class="section-padding border-t">

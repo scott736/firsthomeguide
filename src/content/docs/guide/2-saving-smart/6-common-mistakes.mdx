@@ -5,6 +5,9 @@ sidebar:
   order: 6
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 Saving for a home is a multi-year effort, and there are several pitfalls that trip up even well-intentioned buyers. Avoiding these common mistakes can save you thousands of dollars and months -- or even years -- of unnecessary delay. If you take nothing else from this section, remember: the earlier you start and the more strategically you use your accounts, the better off you will be.
 
@@ -139,6 +142,34 @@ A couple who reinvests $12,000/year in tax refunds accumulates an extra **$60,00
 - [ ] I am reinvesting my tax refunds, not spending them
 
 If you can check all of these boxes, you are already ahead of the vast majority of first-time buyers. If a few items gave you pause, address them now -- the sooner you correct course, the less it costs you.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={2}
+  moduleName="Saving Smart"
+  questions={[
+    {
+      question: "What is the maximum lifetime FHSA contribution?",
+      options: ["$8,000", "$40,000", "$60,000", "$100,000"],
+      correctIndex: 1,
+      explanation: "The FHSA lifetime limit is $40,000 ($8,000/year)."
+    },
+    {
+      question: "How much can a couple withdraw tax-free from the RRSP Home Buyers' Plan?",
+      options: ["$35,000 each", "$60,000 each", "$60,000 combined", "$120,000 combined"],
+      correctIndex: 1,
+      explanation: "Each person can withdraw up to $60,000 from their own RRSP, so a couple can access $120,000 combined."
+    },
+    {
+      question: "What happens if you miss an HBP repayment?",
+      options: ["Nothing — it's optional", "You pay a penalty fee", "The missed amount becomes taxable income", "Your FHSA is closed"],
+      correctIndex: 2,
+      explanation: "Missed HBP repayments are added to your taxable income for that year."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={2} moduleName="Saving Smart" totalModules={8} nextModuleHref="/guide/3-down-payments-mortgages/1-down-payment-rules/" nextModuleName="Down Payments & Mortgages" />
 
 ---
 
