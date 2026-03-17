@@ -1,6 +1,6 @@
 // @ts-check
 import mdx from '@astrojs/mdx';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
@@ -9,7 +9,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://firsthomeguide.ca',
-  adapter: node({ mode: 'standalone' }),
+  adapter: vercel(),
   integrations: [
     starlight({
       title: 'FirstHomeGuide.ca',
