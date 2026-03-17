@@ -12,9 +12,19 @@ export default defineConfig({
     starlight({
       title: 'FirstHomeGuide.ca',
       description: 'Your complete guide to buying your first home in Canada',
-      components: {
-        Head: './src/components/starlight/Head.astro',
-      },
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'manifest',
+            href: '/favicon/site.webmanifest',
+          },
+        },
+        {
+          tag: 'script',
+          content: "if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(()=>{});}",
+        },
+      ],
       logo: {
         light: './public/layout/logo-light.svg',
         dark: './public/layout/logo-dark.svg',
@@ -23,6 +33,7 @@ export default defineConfig({
       },
       favicon: '/favicon/favicon.svg',
       components: {
+        Head: './src/components/starlight/Head.astro',
         Sidebar: './src/components/starlight/Sidebar.astro',
       },
       sidebar: [
@@ -71,9 +82,6 @@ export default defineConfig({
           slug: 'guide/glossary',
         },
       ],
-      components: {
-        Head: './src/components/starlight/Head.astro',
-      },
       customCss: ['./src/styles/global.css'],
       expressiveCode: {
         themes: ['github-light', 'github-dark'],

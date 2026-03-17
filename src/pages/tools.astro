@@ -2,6 +2,7 @@
 import AffordabilityCalculator from '@/components/sections/affordability-calculator';
 import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
 import ComparisonTools from '@/components/sections/comparison-tools';
+import DocumentChecklist from '@/components/sections/document-checklist';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
 import TimelinePlanner from '@/components/sections/timeline-planner';
 import ProvinceSelector from '@/components/sections/province-selector';
@@ -10,7 +11,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 <DefaultLayout
   title="Home Buying Calculators & Tools — FirstHomeGuide.ca"
-  description="Free mortgage calculator, affordability calculator, closing cost estimator, and comparison tools for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
+  description="Free mortgage calculator, affordability calculator, closing cost estimator, document checklist, and comparison tools for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
 >
   {/* Page H1 */}
   <section class="section-padding pb-0">
@@ -55,7 +56,13 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   {/* Section divider */}
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
-  {/* 6. Province Selector */}
+  {/* 6. Document Checklist */}
+  <DocumentChecklist client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 7. Province Selector */}
   <ProvinceSelector client:visible />
 
   {/* 6. Continue Learning */}
