@@ -60,7 +60,6 @@ const FeaturesTabsSection = () => {
         <div className="space-y-6 text-balance lg:max-w-lg">
           <h2 className="text-4xxl leading-tight tracking-tight md:text-5xl">
             Everything competitors miss,{' '}
-            <br className="hidden lg:block" />
             we cover in{' '}
             <br className="hidden lg:block" />
             <span className="text-gradient">plain language</span>
