@@ -53,6 +53,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/aya-chukr.webp',
     bio: 'Led LendCity\'s expansion into Mexico and transformed operations with her analytical, evidence-based approach.',
     services: ['strategy-call', 'mexico-strategy-call'],
+    nylasGrants: [
+      { grantId: 'd1adb692-bc1c-4c93-8243-04d37846154d', provider: 'microsoft', email: 'aya@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -67,6 +70,7 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/christine-traynor.webp',
     bio: '20+ years as a real estate appraiser and now actively developing multi-family projects using CMHC financing.',
     services: ['strategy-call', 'cmhc-mli', 'development', 'owner-occupied', 'portfolio-review'],
+    // No Nylas grant yet — Christine has not connected her calendar
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -79,6 +83,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/david-cardozo.webp',
     bio: 'Active investor developing, renovating, and trading both residential and commercial projects across Canada and the U.S.',
     services: ['strategy-call', 'owner-occupied', 'portfolio-review', 'usa-strategy-call'],
+    nylasGrants: [
+      { grantId: '0c8ea60d-261a-43ce-8833-a5ab7b502b78', provider: 'microsoft', email: 'david@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -91,6 +98,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/gillian-irving.webp',
     bio: 'Acquired 35 properties across Southern Ontario in 18 months using a data-driven investment methodology.',
     services: ['strategy-call', 'owner-occupied', 'portfolio-review', 'usa-strategy-call'],
+    nylasGrants: [
+      { grantId: '517e312b-c888-456b-ae95-463559e21d9f', provider: 'microsoft', email: 'gillian@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -103,6 +113,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/jennifer-champion.webp',
     bio: 'Active developer currently building 66-unit and 165-unit multifamily apartment projects in Sooke, BC.',
     services: ['strategy-call', 'cmhc-mli', 'development', 'portfolio-review', 'owner-occupied'],
+    nylasGrants: [
+      { grantId: 'f7f08286-394b-4b0f-9c3a-7912bf5e4101', provider: 'microsoft', email: 'jennifer@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -115,6 +128,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/jeremy-kresky.webp',
     bio: 'Decade of experience in agricultural and commercial finance. Specializes in deals that don\'t fit conventional boxes.',
     services: ['strategy-call', 'agricultural', 'commercial', 'owner-occupied', 'portfolio-review'],
+    nylasGrants: [
+      { grantId: '8d5b3f8a-3ceb-4110-9fa6-cfa373ea0a69', provider: 'microsoft', email: 'jeremy@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -127,6 +143,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/kirann-sharma.webp',
     bio: 'Specializes in creative financing solutions for complex properties. Known for finding solutions when others say no.',
     services: ['strategy-call', 'owner-occupied'],
+    nylasGrants: [
+      { grantId: 'e2a98cec-ec41-4131-90bb-139ff3cf8b78', provider: 'microsoft', email: 'kirann@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -166,6 +185,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/chris-micucci.webp',
     bio: 'College professor who brings an educator\'s approach to mortgage financing, ensuring clients understand every step.',
     services: ['usa-strategy-call'],
+    nylasGrants: [
+      { grantId: '9a198c88-3442-4748-8070-1dc6875377c9', provider: 'microsoft', email: 'chris@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -191,6 +213,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/josh-bauerle.webp',
     bio: 'Licensed CPA and best-selling author with a growing rental portfolio across the U.S.',
     services: ['usa-strategy-call'],
+    nylasGrants: [
+      { grantId: '5013303a-2769-4a83-8fca-6e7354a208a9', provider: 'microsoft', email: 'josh@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
