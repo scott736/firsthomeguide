@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
   >
     {/* Background Blur */}
     <div
-      class="bg-background/10 absolute inset-0 z-[-2] backdrop-blur-[85px] will-change-transform md:backdrop-blur-[170px]"
+      class="bg-background/10 absolute inset-0 z-[-2]"
     >
     </div>
     {/* Noise Background */}
@@ -31,12 +31,12 @@ const currentPath = Astro.url.pathname;
     <a href="#main-content" class="skip-to-content">Skip to content</a>
     <Navbar18 client:load currentPage={currentPath} />
     <main id="main-content" class="flex-1"><slot /></main>
-    <Footer client:load currentPage={currentPath} />
+    <Footer client:visible currentPage={currentPath} />
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
       }
     </script>
-    <FloatingCta client:load currentPage={currentPath} />
+    <FloatingCta client:idle currentPage={currentPath} />
   </body>
 </html>

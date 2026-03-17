@@ -18,37 +18,43 @@ const REVIEWS = [
     name: 'First-time buyer',
     username: 'r/PersonalFinanceCanada',
     body: 'I have $40K saved. Between FHSA and RRSP HBP, I have no idea which to use first or if I can combine them. Why is this so complicated?',
-    img: 'https://avatar.vercel.sh/buyer1',
+    initials: 'FB',
+    color: 'bg-purple-500/15 text-purple-600 dark:text-purple-400',
   },
   {
     name: 'Confused in Ontario',
     username: 'r/RealEstateCanada',
     body: "Just found out about land transfer tax AFTER making an offer. That's an extra $8,000 nobody mentioned. Are there rebates for first-time buyers?",
-    img: 'https://avatar.vercel.sh/buyer2',
+    initials: 'CO',
+    color: 'bg-blue-500/15 text-blue-600 dark:text-blue-400',
   },
   {
     name: 'Saving for a home',
     username: 'r/MortgagesCanada',
     body: "Can someone explain the stress test like I'm 5? My broker said I qualify for less than I expected and I don't understand why.",
-    img: 'https://avatar.vercel.sh/buyer3',
+    initials: 'SH',
+    color: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400',
   },
   {
     name: 'New to real estate',
     username: 'r/TorontoRealEstate',
     body: "What are closing costs actually? I budgeted for the down payment but now I'm hearing I need another $15-20K on top of that??",
-    img: 'https://avatar.vercel.sh/buyer4',
+    initials: 'NR',
+    color: 'bg-amber-500/15 text-amber-600 dark:text-amber-400',
   },
   {
     name: 'Moving from renting',
     username: 'r/PersonalFinanceCanada',
     body: 'Is 5% down really enough? What is CMHC insurance and how much does it add to my mortgage? Nobody explains this clearly.',
-    img: 'https://avatar.vercel.sh/buyer5',
+    initials: 'MR',
+    color: 'bg-rose-500/15 text-rose-600 dark:text-rose-400',
   },
   {
     name: 'BC first-timer',
     username: 'r/VancouverRealEstate',
     body: "I wish there was ONE place that listed all the programs I qualify for based on my province. Instead I'm googling 50 different things.",
-    img: 'https://avatar.vercel.sh/buyer6',
+    initials: 'BC',
+    color: 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-400',
   },
 ];
 
@@ -106,15 +112,17 @@ const Testimonials = () => {
 export default Testimonials;
 
 const ReviewCard = ({
-  img,
   name,
   username,
   body,
+  initials,
+  color,
 }: {
-  img: string;
   name: string;
   username: string;
   body: string;
+  initials: string;
+  color: string;
 }) => {
   return (
     <Card
@@ -124,14 +132,14 @@ const ReviewCard = ({
       )}
     >
       <CardHeader className="flex items-center gap-4 p-0">
-        <img
-          className="rounded-full"
-          width={32}
-          height={32}
-          alt={`${name} avatar`}
-          loading="lazy"
-          src={img}
-        />
+        <div
+          className={cn(
+            'flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold',
+            color,
+          )}
+        >
+          {initials}
+        </div>
         <div className="flex flex-col">
           <CardTitle className="text-sm font-bold">{name}</CardTitle>
           <CardDescription className="text-muted-foreground text-xs">
