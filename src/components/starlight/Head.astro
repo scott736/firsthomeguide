@@ -1,0 +1,72 @@
+---
+/**
+ * Custom Starlight Head component that adds per-module OG images.
+ * Renders the default Starlight head entries, then injects module-specific
+ * og:image and twitter:image meta tags.
+ */
+
+const { head } = Astro.locals.starlightRoute;
+const slug = Astro.locals.starlightRoute.slug;
+
+// Map guide module directory prefixes to OG image paths
+const moduleMap: Record<string, string> = {
+  '1-are-you-ready': '/images/og/module-1.svg',
+  '2-saving-smart': '/images/og/module-2.svg',
+  '3-down-payments-mortgages': '/images/og/module-3.svg',
+  '4-government-programs': '/images/og/module-4.svg',
+  '5-finding-a-home': '/images/og/module-5.svg',
+  '6-making-an-offer': '/images/og/module-6.svg',
+  '7-closing-the-deal': '/images/og/module-7.svg',
+  '8-life-after-closing': '/images/og/module-8.svg',
+};
+
+// Determine the correct OG image based on the current page slug
+function getOgImage(slug: string): string {
+  // Strip "guide/" prefix if present
+  const guidePath = slug.startsWith('guide/') ? slug.slice('guide/'.length) : slug;
+
+  // Check each module prefix
+  for (const [prefix, image] of Object.entries(moduleMap)) {
+    if (guidePath.startsWith(prefix)) {
+      return image;
+    }
+  }
+
+  // Default: use the general guide OG image for welcome, faq, glossary, etc.
+  return '/images/og/guide.svg';
+}
+
+const ogImagePath = getOgImage(slug);
+const ogImageURL = new URL(ogImagePath, Astro.site);
+// Keep JPEG fallback for Twitter/X which requires raster images
+const twitterFallbackURL = new URL('/images/og-image.jpeg', Astro.site);
+
+// Filter out any existing og:image and twitter:image tags from the default head
+// so we can replace them with our module-specific versions
+const filteredHead = head.filter(({ tag, attrs }) => {
+  if (tag === 'meta') {
+    const prop = attrs?.property || attrs?.name;
+    if (
+      prop === 'og:image' ||
+      prop === 'og:image:width' ||
+      prop === 'og:image:height' ||
+      prop === 'og:image:alt' ||
+      prop === 'twitter:image'
+    ) {
+      return false;
+    }
+  }
+  return true;
+});
+---
+
+{filteredHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
+
+<!-- Per-module OG image -->
+<meta property="og:image" content={ogImageURL.href} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="FirstHomeGuide.ca" />
+
+<!-- Twitter/X fallback with raster image for compatibility -->
+<meta name="twitter:image" content={twitterFallbackURL.href} />

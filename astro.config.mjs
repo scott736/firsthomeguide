@@ -12,6 +12,9 @@ export default defineConfig({
     starlight({
       title: 'FirstHomeGuide.ca',
       description: 'Your complete guide to buying your first home in Canada',
+      components: {
+        Head: './src/components/starlight/Head.astro',
+      },
       logo: {
         light: './public/layout/logo-light.svg',
         dark: './public/layout/logo-dark.svg',
