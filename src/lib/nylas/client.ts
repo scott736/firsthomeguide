@@ -27,9 +27,13 @@ import { escapeHtml } from '@/lib/email';
 // Environment Variables
 // ============================================================================
 
-const NYLAS_API_KEY = import.meta.env.NYLAS_API_KEY;
-const NYLAS_API_URI = import.meta.env.NYLAS_API_URI || 'https://api.us.nylas.com';
-const NYLAS_CLIENT_ID = import.meta.env.NYLAS_CLIENT_ID;
+const NYLAS_API_KEY = import.meta.env.NYLAS_API_KEY
+  || (typeof process !== 'undefined' ? process.env.NYLAS_API_KEY : undefined);
+const NYLAS_API_URI = import.meta.env.NYLAS_API_URI
+  || (typeof process !== 'undefined' ? process.env.NYLAS_API_URI : undefined)
+  || 'https://api.us.nylas.com';
+const NYLAS_CLIENT_ID = import.meta.env.NYLAS_CLIENT_ID
+  || (typeof process !== 'undefined' ? process.env.NYLAS_CLIENT_ID : undefined);
 
 // ============================================================================
 // Client Initialization
@@ -723,7 +727,8 @@ export async function getEvent(teamMemberId: string, eventId: string): Promise<N
  * Verify webhook signature
  */
 export async function verifyWebhookSignature(payload: string, signature: string): Promise<boolean> {
-  const webhookSecret = import.meta.env.NYLAS_WEBHOOK_SECRET;
+  const webhookSecret = import.meta.env.NYLAS_WEBHOOK_SECRET
+    || (typeof process !== 'undefined' ? process.env.NYLAS_WEBHOOK_SECRET : undefined);
 
   if (!webhookSecret) {
     console.warn('NYLAS_WEBHOOK_SECRET not set — rejecting webhook for safety');
