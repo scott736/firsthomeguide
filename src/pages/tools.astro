@@ -1,5 +1,6 @@
 ---
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import TimelinePlanner from '@/components/sections/timeline-planner';
 import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -9,6 +10,12 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   description="Free mortgage calculator for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
 >
   <MortgageCalculator client:load />
+
+  <hr class="container max-w-screen-xl border-border" />
+
+  <TimelinePlanner client:visible />
+
+  <hr class="container max-w-screen-xl border-border" />
 
   <ProvinceSelector client:load />
 
