@@ -16,7 +16,7 @@ const TABS_DATA = [
     description:
       'Every federal and provincial incentive in one interactive lookup. No more piecing it together yourself.',
     image: {
-      src: '/images/home/features-tabs/1.webp',
+      src: '/images/home/features-tabs/1.svg',
       width: 550,
       height: 544,
     },
@@ -29,7 +29,7 @@ const TABS_DATA = [
     description:
       'Land transfer taxes, legal fees, title insurance, adjustments — the costs that surprise 73% of first-time buyers.',
     image: {
-      src: '/images/home/features-tabs/2.webp',
+      src: '/images/home/features-tabs/2.svg',
       width: 380,
       height: 525,
     },
@@ -41,7 +41,7 @@ const TABS_DATA = [
     description:
       '8 structured modules that take you from "Am I ready?" to "What happens after I get the keys?" — like a course, not a blog.',
     image: {
-      src: '/images/home/features-tabs/3.webp',
+      src: '/images/home/features-tabs/3.svg',
       width: 550,
       height: 544,
     },

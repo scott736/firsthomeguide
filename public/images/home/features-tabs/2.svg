@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="525" viewBox="0 0 380 525" fill="none">
+  <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main card -->
+    <rect x="40" y="50" width="300" height="430" rx="16" fill="#fff" fill-opacity="0.05" stroke-width="1.5" opacity="0.15"/>
+
+    <!-- Header -->
+    <text x="70" y="95" font-family="system-ui, sans-serif" font-size="16" fill="#fff" fill-opacity="0.8" font-weight="600" stroke="none">Closing Costs</text>
+    <text x="70" y="115" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.35" stroke="none">$500,000 purchase price</text>
+
+    <line x1="70" y1="135" x2="310" y2="135" stroke-width="1" opacity="0.1"/>
+
+    <!-- Land Transfer Tax -->
+    <text x="70" y="168" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.5" stroke="none">Land Transfer Tax</text>
+    <text x="310" y="168" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" text-anchor="end" stroke="none">$6,475</text>
+    <rect x="70" y="177" width="240" height="4" rx="2" fill="#fff" fill-opacity="0.06" stroke="none"/>
+    <rect x="70" y="177" width="156" height="4" rx="2" fill="#fff" fill-opacity="0.25" stroke="none"/>
+
+    <!-- Legal Fees -->
+    <text x="70" y="212" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.5" stroke="none">Legal Fees</text>
+    <text x="310" y="212" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" text-anchor="end" stroke="none">$2,000</text>
+    <rect x="70" y="221" width="240" height="4" rx="2" fill="#fff" fill-opacity="0.06" stroke="none"/>
+    <rect x="70" y="221" width="48" height="4" rx="2" fill="#fff" fill-opacity="0.25" stroke="none"/>
+
+    <!-- Title Insurance -->
+    <text x="70" y="256" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.5" stroke="none">Title Insurance</text>
+    <text x="310" y="256" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" text-anchor="end" stroke="none">$350</text>
+    <rect x="70" y="265" width="240" height="4" rx="2" fill="#fff" fill-opacity="0.06" stroke="none"/>
+    <rect x="70" y="265" width="8" height="4" rx="2" fill="#fff" fill-opacity="0.25" stroke="none"/>
+
+    <!-- Home Inspection -->
+    <text x="70" y="300" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.5" stroke="none">Home Inspection</text>
+    <text x="310" y="300" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" text-anchor="end" stroke="none">$500</text>
+    <rect x="70" y="309" width="240" height="4" rx="2" fill="#fff" fill-opacity="0.06" stroke="none"/>
+    <rect x="70" y="309" width="12" height="4" rx="2" fill="#fff" fill-opacity="0.25" stroke="none"/>
+
+    <!-- Property Tax Adjustment -->
+    <text x="70" y="344" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.5" stroke="none">Property Tax Adjustment</text>
+    <text x="310" y="344" font-family="system-ui, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" text-anchor="end" stroke="none">$1,800</text>
+    <rect x="70" y="353" width="240" height="4" rx="2" fill="#fff" fill-opacity="0.06" stroke="none"/>
+    <rect x="70" y="353" width="43" height="4" rx="2" fill="#fff" fill-opacity="0.25" stroke="none"/>
+
+    <!-- Divider -->
+    <line x1="70" y1="382" x2="310" y2="382" stroke-width="1.5" opacity="0.15"/>
+
+    <!-- Total -->
+    <text x="70" y="415" font-family="system-ui, sans-serif" font-size="15" fill="#fff" fill-opacity="0.6" font-weight="600" stroke="none">Total Hidden Costs</text>
+    <text x="310" y="415" font-family="system-ui, sans-serif" font-size="18" fill="#fff" fill-opacity="0.9" text-anchor="end" font-weight="700" stroke="none">$11,125</text>
+
+    <!-- Rebate badge -->
+    <rect x="70" y="435" width="175" height="28" rx="6" fill="#fff" fill-opacity="0.08" stroke="none"/>
+    <text x="82" y="454" font-family="system-ui, sans-serif" font-size="11" fill="#fff" fill-opacity="0.5" stroke="none">First-time buyer rebate: -$4,000</text>
+  </g>
+</svg>
