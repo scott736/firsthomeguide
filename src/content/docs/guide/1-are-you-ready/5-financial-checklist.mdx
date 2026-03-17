@@ -5,6 +5,9 @@ sidebar:
   order: 5
 ---
 
+import InteractiveChecklist from '../../../../components/sections/interactive-checklist.tsx';
+import PdfDownloadButton from '../../../../components/sections/pdf-download-button.tsx';
+
 
 Before you start shopping for homes or applying for mortgages, it is worth taking an honest look at your overall financial health. Buying a home is likely the largest financial commitment you will ever make, and going in well-prepared makes the process smoother, less stressful, and ultimately more successful.
 
@@ -98,40 +101,69 @@ Lenders care about income stability, and you should too. A mortgage is a long-te
 
 Work through each section honestly. Check off what applies, and make a plan for anything that does not.
 
-### Income and Employment
+<PdfDownloadButton client:visible label="Print this checklist" />
 
-- [ ] You have been employed in a stable job (or self-employed with 2+ years of documented income history) for at least 2 years
-- [ ] Your income is predictable and sufficient to cover housing costs plus your existing obligations
-- [ ] If you are on probation at a new job, you have a plan to wait until it ends before applying
-- [ ] If self-employed, you have 2 years of Notices of Assessment showing consistent income
+<InteractiveChecklist
+  client:visible
+  checklistId="financial-readiness"
+  items={[
+    { id: "income-1", label: "You have been employed in a stable job (or self-employed with 2+ years of documented income history) for at least 2 years", category: "Income and Employment" },
+    { id: "income-2", label: "Your income is predictable and sufficient to cover housing costs plus your existing obligations", category: "Income and Employment" },
+    { id: "income-3", label: "If you are on probation at a new job, you have a plan to wait until it ends before applying", category: "Income and Employment" },
+    { id: "income-4", label: "If self-employed, you have 2 years of Notices of Assessment showing consistent income", category: "Income and Employment" },
+    { id: "savings-1", label: "You have enough saved for a down payment (minimum 5% for homes under $500,000; 5% on the first $500,000 and 10% on the portion above $500,000 up to $999,999; 20% minimum for homes $1 million or more)", category: "Savings" },
+    { id: "savings-2", label: "You have an additional 1.5% to 4% of the purchase price set aside for closing costs (legal fees, land transfer tax, home inspection, title insurance, moving costs)", category: "Savings" },
+    { id: "savings-3", label: "You have an emergency fund of at least 3 to 6 months of expenses that is separate from your down payment and closing cost savings", category: "Savings" },
+    { id: "debt-1", label: "Your GDS ratio (housing costs / gross income) would be 32% or less with your projected mortgage payment", category: "Debt" },
+    { id: "debt-2", label: "Your TDS ratio (all debt payments / gross income) would be 44% or less", category: "Debt" },
+    { id: "debt-3", label: "You have a plan to pay off any high-interest consumer debt (credit cards at 20%+ interest) before or shortly after purchasing", category: "Debt" },
+    { id: "debt-4", label: "You have no outstanding collections or judgments on your credit report", category: "Debt" },
+    { id: "credit-1", label: "Your credit score is 680 or higher (check both Equifax and TransUnion)", category: "Credit" },
+    { id: "credit-2", label: "Your credit report is free of errors and unexpected items", category: "Credit" },
+    { id: "credit-3", label: "You have not applied for new credit in the past 6 months", category: "Credit" },
+    { id: "credit-4", label: "Both you and your partner (if applicable) meet the credit requirements", category: "Credit" },
+    { id: "lifestyle-1", label: "You plan to stay in the same area for at least 5 years", category: "Lifestyle Readiness" },
+    { id: "lifestyle-2", label: "You are comfortable taking on the responsibility of home maintenance and repairs", category: "Lifestyle Readiness" },
+    { id: "lifestyle-3", label: "You have discussed homeownership goals and finances openly with your partner (if buying together)", category: "Lifestyle Readiness" },
+    { id: "lifestyle-4", label: "You understand that homeownership reduces your flexibility to move quickly for job opportunities or lifestyle changes", category: "Lifestyle Readiness" },
+    { id: "lifestyle-5", label: "You are not buying because of social pressure — you genuinely want to own a home and have thought through the commitment", category: "Lifestyle Readiness" },
+  ]}
+/>
+
+<details>
+<summary>View static checklist (no JavaScript required)</summary>
+
+### Income and Employment
+- Stable job or 2+ years self-employment history
+- Predictable income sufficient for housing costs plus obligations
+- Plan to wait out probation period before applying
+- 2 years of Notices of Assessment if self-employed
 
 ### Savings
-
-- [ ] You have enough saved for a **down payment** (minimum 5% for homes under $500,000; 5% on the first $500,000 and 10% on the portion above $500,000 up to $999,999; 20% minimum for homes $1 million or more)
-- [ ] You have an additional **1.5% to 4%** of the purchase price set aside for **closing costs** (legal fees, land transfer tax, home inspection, title insurance, moving costs)
-- [ ] You have an **emergency fund** of at least 3 to 6 months of expenses that is separate from your down payment and closing cost savings
+- Down payment saved (5% minimum for homes under $500K)
+- Additional 1.5%–4% for closing costs
+- Emergency fund of 3–6 months of expenses (separate from down payment)
 
 ### Debt
-
-- [ ] Your GDS ratio (housing costs / gross income) would be **32% or less** with your projected mortgage payment
-- [ ] Your TDS ratio (all debt payments / gross income) would be **44% or less**
-- [ ] You have a plan to pay off any high-interest consumer debt (credit cards at 20%+ interest) before or shortly after purchasing
-- [ ] You have no outstanding collections or judgments on your credit report
+- GDS ratio would be 32% or less
+- TDS ratio would be 44% or less
+- Plan to pay off high-interest consumer debt
+- No outstanding collections or judgments
 
 ### Credit
-
-- [ ] Your credit score is **680 or higher** (check both Equifax and TransUnion)
-- [ ] Your credit report is free of errors and unexpected items
-- [ ] You have not applied for new credit in the past 6 months
-- [ ] Both you and your partner (if applicable) meet the credit requirements
+- Credit score 680 or higher
+- Credit report free of errors
+- No new credit applications in past 6 months
+- Partner also meets credit requirements (if applicable)
 
 ### Lifestyle Readiness
+- Plan to stay in same area for 5+ years
+- Comfortable with home maintenance responsibility
+- Discussed finances openly with partner (if buying together)
+- Understand reduced flexibility from homeownership
+- Buying for genuine desire, not social pressure
 
-- [ ] You plan to stay in the same area for at least **5 years**
-- [ ] You are comfortable taking on the responsibility of home maintenance and repairs
-- [ ] You have discussed homeownership goals and finances openly with your partner (if buying together)
-- [ ] You understand that homeownership reduces your flexibility to move quickly for job opportunities or lifestyle changes
-- [ ] You are not buying because of social pressure -- you genuinely want to own a home and have thought through the commitment
+</details>
 
 :::tip
 If you checked most of these boxes, you are in a strong position to start the home buying process. If several items gave you pause, that is perfectly okay -- it just means you have some preparation work to do first. Coming back to this checklist in 6 to 12 months after addressing the gaps is a smart strategy, not a failure. The worst thing you can do is rush into a purchase you are not ready for.

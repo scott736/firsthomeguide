@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-import { BookOpen, Calculator, MapPin } from 'lucide-react';
+import { BookOpen, Calculator, MapPin, Search } from 'lucide-react';
 
 import { ThemeToggle } from '../elements/theme-toggle';
 
@@ -153,7 +153,15 @@ const Navbar = ({ currentPage }: NavbarProps) => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="hidden w-47 items-center justify-end gap-4 lg:flex">
+        <div className="hidden items-center justify-end gap-3 lg:flex">
+          <a
+            href="/guide/welcome/"
+            className="text-muted-foreground hover:text-foreground inline-flex size-8 items-center justify-center rounded-md transition-colors"
+            title="Search the guide"
+            aria-label="Search the guide"
+          >
+            <Search className="size-4" />
+          </a>
           <ThemeToggle />
           {ACTION_BUTTONS.map((button) => (
             <Button
@@ -167,6 +175,14 @@ const Navbar = ({ currentPage }: NavbarProps) => {
           ))}
         </div>
         <div className="flex items-center gap-2 lg:hidden lg:gap-4">
+          <a
+            href="/guide/welcome/"
+            className="text-muted-foreground hover:text-foreground inline-flex size-8 items-center justify-center rounded-md transition-colors"
+            title="Search the guide"
+            aria-label="Search the guide"
+          >
+            <Search className="size-4" />
+          </a>
           <ThemeToggle />
           <button
             className="text-muted-foreground relative flex size-8 rounded-sm border lg:hidden"

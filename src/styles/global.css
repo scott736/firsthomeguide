@@ -252,6 +252,89 @@ html.theme-transition::view-transition-new(root) {
   animation: theme-mask 0.5s ease-in forwards;
 }
 
+/* Focus indicators for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background: var(--background);
+  color: var(--foreground);
+  border: 2px solid var(--foreground);
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Print styles */
+@media print {
+  /* Hide navigation, footer, sidebar, interactive elements */
+  nav,
+  footer,
+  .sl-sidebar,
+  .sidebar-pane,
+  [data-theme-toggle],
+  .no-print,
+  .guide-progress,
+  starlight-menu-button,
+  .right-sidebar,
+  .right-sidebar-panel,
+  header.header {
+    display: none !important;
+  }
+  /* Clean up typography */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  /* Full-width content */
+  main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .main-pane,
+  .content-panel {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  /* Add URL after links */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+  a[href^='#']::after,
+  a[href^='javascript']::after {
+    content: '';
+  }
+  /* Page breaks */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  table,
+  img {
+    page-break-inside: avoid;
+  }
+  /* Show print header */
+  .print-header {
+    display: block !important;
+  }
+}
+
 /* Handle reduced motion preference globally */
 @media (prefers-reduced-motion: reduce) {
   *,

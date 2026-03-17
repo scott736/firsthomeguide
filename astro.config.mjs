@@ -19,6 +19,9 @@ export default defineConfig({
         replacesTitle: true,
       },
       favicon: '/favicon/favicon.svg',
+      components: {
+        Sidebar: './src/components/starlight/Sidebar.astro',
+      },
       sidebar: [
         {
           label: 'Welcome',
