@@ -150,14 +150,22 @@ export const POST: APIRoute = async ({ request }) => {
     // Try server-side cache first (~50ms vs ~5-10s Nylas API call)
     const cachedSlots = cacheKey ? await getCachedSlots(cacheKey) : null;
 
-    const rawSlots = cachedSlots ?? await getAvailability({
-      serviceId,
-      teamMemberId,
-      startDate: adjustedStart,
-      endDate: adjustedEnd,
-      timezone,
-      duration,
-    });
+    let rawSlots: TimeSlot[];
+    let _debug: Record<string, unknown> | undefined;
+    if (cachedSlots) {
+      rawSlots = cachedSlots;
+    } else {
+      const result = await getAvailability({
+        serviceId,
+        teamMemberId,
+        startDate: adjustedStart,
+        endDate: adjustedEnd,
+        timezone,
+        duration,
+      });
+      rawSlots = result.slots;
+      _debug = result.debug;
+    }
 
     // Cache miss -> store for subsequent requests (fire-and-forget)
     if (cacheKey && !cachedSlots && rawSlots.length > 0) {
@@ -250,6 +258,7 @@ export const POST: APIRoute = async ({ request }) => {
             name: service.name,
             duration: service.duration,
           },
+          _debug,
         },
       }),
       {

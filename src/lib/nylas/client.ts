@@ -281,9 +281,10 @@ function getCalendarId(member: TeamMember): string {
  * Get available time slots for a service
  * Checks ALL connected calendars (Google + Microsoft) for conflicts
  */
-export async function getAvailability(request: AvailabilityRequest): Promise<TimeSlot[]> {
+export async function getAvailability(request: AvailabilityRequest): Promise<{ slots: TimeSlot[]; debug: Record<string, unknown> }> {
   const nylas = getNylasClient();
   const service = getServiceById(request.serviceId);
+  const debugInfo: Record<string, unknown> = {};
 
   if (!service) {
     throw new Error(`Service not found: ${request.serviceId}`);
@@ -310,13 +311,23 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
     teamMembersToCheck = enrichedMembers.filter(
       (member) => getTeamMemberGrantIds(member).length > 0
     );
+    debugInfo.rawMemberCount = rawMembers.length;
+    debugInfo.enrichedWithGrants = teamMembersToCheck.length;
+    debugInfo.memberDetails = enrichedMembers.map(m => ({
+      id: m.id,
+      email: m.email,
+      grantIds: getTeamMemberGrantIds(m),
+      hasNylasGrants: !!(m.nylasGrants && m.nylasGrants.length > 0),
+      hasNylasGrantId: !!m.nylasGrantId,
+    }));
   }
 
   if (teamMembersToCheck.length === 0) {
     if (import.meta.env.DEV) {
-      return generateMockAvailability(request);
+      return { slots: generateMockAvailability(request), debug: debugInfo };
     }
-    throw new Error('No team members available for this service');
+    debugInfo.error = 'No team members available for this service';
+    return { slots: [], debug: debugInfo };
   }
 
   // Shuffle team members for round-robin so no single person is consistently
@@ -386,6 +397,9 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
 
       const availData = await availRes.json();
 
+      debugInfo[`nylas_${member.id}_status`] = availRes.status;
+      debugInfo[`nylas_${member.id}_response`] = availData.error || `${(availData.data?.time_slots || []).length} slots`;
+
       // Convert Nylas availability to our TimeSlot format
       if (availData.data?.time_slots) {
         for (const slot of availData.data.time_slots) {
@@ -398,6 +412,7 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
         }
       }
     } catch (error) {
+      debugInfo[`error_${member.id}`] = error instanceof Error ? error.message : String(error);
       console.error(`Error getting availability for ${member.name}:`, error);
       // Continue with other team members
     }
@@ -406,12 +421,14 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
   // Sort slots by start time
   allSlots.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime());
 
+  debugInfo.totalSlots = allSlots.length;
+
   // For round-robin, deduplicate overlapping slots (keep first available team member)
   if (service.roundRobin && !request.teamMemberId) {
-    return deduplicateSlots(allSlots, schedulingConfig.slotInterval);
+    return { slots: deduplicateSlots(allSlots, schedulingConfig.slotInterval), debug: debugInfo };
   }
 
-  return allSlots;
+  return { slots: allSlots, debug: debugInfo };
 }
 
 /**
