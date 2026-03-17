@@ -1,6 +1,7 @@
 ---
 import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
 import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
+import ShareResults from '@/components/sections/share-results';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -20,6 +21,17 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <ClosingCostCalculator client:load />
+
+  <section class="pb-4 pt-0">
+    <div class="container max-w-screen-xl flex justify-end">
+      <ShareResults
+        client:load
+        title="Closing Cost Calculator Results"
+        summary="Estimate closing costs including legal fees, land transfer tax, and total cash needed — FirstHomeGuide.ca"
+        toolUrl="/tools/closing-cost-calculator"
+      />
+    </div>
+  </section>
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">

@@ -5,6 +5,9 @@ sidebar:
   order: 6
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 More Canadians than ever are pooling resources to buy a home. Whether you are purchasing with a romantic partner, a parent, a sibling, or a close friend, co-buying can be a smart path to homeownership in an era of record-high prices -- but only if everyone involved goes in with clear expectations, proper legal protections, and a shared understanding of the risks.
 
@@ -353,6 +356,34 @@ If any of these conversations feel too uncomfortable to have, that is a signal. 
 :::
 
 Co-buying is not for everyone, but for those who approach it with clear communication, proper legal protections, and realistic expectations, it can be a powerful way to enter the housing market years sooner than you could alone. The key is preparation: get the right legal structure, document everything, protect each other with insurance and agreements, and go in with your eyes open.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={1}
+  moduleName="Are You Ready?"
+  questions={[
+    {
+      question: "How does the CRA define a first-time home buyer in Canada?",
+      options: ["Never owned any property", "Haven't owned a principal residence in 4 calendar years", "Haven't owned a home in 10 years", "First time buying in this province"],
+      correctIndex: 1,
+      explanation: "The CRA uses a 4-calendar-year rule based on principal residence, not just any property ownership."
+    },
+    {
+      question: "What credit score do most lenders require for their best mortgage rates?",
+      options: ["600+", "650+", "680+", "750+"],
+      correctIndex: 2,
+      explanation: "Most major lenders require 680+ for their best rates, though some will lend at 600+ with higher rates."
+    },
+    {
+      question: "What is the mortgage stress test?",
+      options: ["A test of your credit score", "Qualifying at a rate higher than your contract rate", "A home inspection requirement", "A down payment threshold"],
+      correctIndex: 1,
+      explanation: "The stress test requires qualifying at the higher of your contract rate + 2% or the benchmark rate."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={1} moduleName="Are You Ready?" totalModules={8} nextModuleHref="/guide/2-saving-smart/1-fhsa/" nextModuleName="Saving Smart" />
 
 ---
 

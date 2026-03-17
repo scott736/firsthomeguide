@@ -1,0 +1,38 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+const route = Astro.locals.starlightRoute;
+const body = route.entry.body ?? '';
+const wordCount = body.split(/\s+/).filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 238));
+---
+
+<div class="page-title-with-reading-time">
+  <Default {...Astro.props}><slot /></Default>
+  <span class="reading-time-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    {readingMinutes} min read
+  </span>
+</div>
+
+<style>
+  .page-title-with-reading-time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  .reading-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.6;
+    white-space: nowrap;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-gray-5, var(--border, rgba(128,128,128,0.2)));
+  }
+</style>

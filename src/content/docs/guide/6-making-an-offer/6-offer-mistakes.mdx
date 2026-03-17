@@ -5,6 +5,9 @@ sidebar:
   order: 6
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 First-time home buyers are especially vulnerable to mistakes during the offer process. The combination of emotional excitement, competitive pressure, unfamiliar paperwork, and life-changing financial commitments creates a perfect storm for errors that can cost thousands — or tens of thousands — of dollars.
 
@@ -174,6 +177,34 @@ The best offer is one you can live with regardless of the outcome. If your offer
 :::
 
 Making an offer on a home is one of the most significant financial decisions of your life. Take it seriously, prepare thoroughly, lean on your professional team (realtor, mortgage broker, lawyer), and never let competitive pressure override your financial judgment. The mistakes described here are all avoidable — and avoiding them could save you tens of thousands of dollars.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={6}
+  moduleName="Making an Offer"
+  questions={[
+    {
+      question: "What makes an offer 'firm'?",
+      options: ["It's been signed by the seller", "All conditions have been fulfilled or waived", "The deposit has been paid", "The lawyer has reviewed it"],
+      correctIndex: 1,
+      explanation: "An offer becomes firm when all conditions are fulfilled or waived, legally binding both parties."
+    },
+    {
+      question: "How much deposit is typical for a resale home in Canada?",
+      options: ["$500", "1-5% of purchase price", "10% of purchase price", "First month's mortgage"],
+      correctIndex: 1,
+      explanation: "Deposits for resale transactions are typically 1-5% of the purchase price."
+    },
+    {
+      question: "What is the irrevocability period?",
+      options: ["The mortgage lock-in term", "Time during which an offer cannot be withdrawn", "The home inspection window", "The closing period"],
+      correctIndex: 1,
+      explanation: "The irrevocability period is the window during which your offer cannot be retracted."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={6} moduleName="Making an Offer" totalModules={8} nextModuleHref="/guide/7-closing-the-deal/1-closing-costs-overview/" nextModuleName="Closing the Deal" />
 
 ---
 

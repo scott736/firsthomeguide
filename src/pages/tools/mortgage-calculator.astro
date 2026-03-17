@@ -1,6 +1,7 @@
 ---
 import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import ShareResults from '@/components/sections/share-results';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -20,6 +21,17 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <MortgageCalculator client:load />
+
+  <section class="pb-4 pt-0">
+    <div class="container max-w-screen-xl flex justify-end">
+      <ShareResults
+        client:load
+        title="Mortgage Calculator Results"
+        summary="Calculate your monthly mortgage payment, CMHC insurance, and land transfer tax — FirstHomeGuide.ca"
+        toolUrl="/tools/mortgage-calculator"
+      />
+    </div>
+  </section>
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">

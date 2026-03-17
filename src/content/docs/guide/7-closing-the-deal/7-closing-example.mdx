@@ -5,6 +5,9 @@ sidebar:
   order: 7
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 The best way to understand closing costs is to see them applied to a real scenario. In this section, we walk through a complete closing cost calculation for a first-time buyer purchasing a **$500,000 home in Ontario** (outside the City of Toronto). We then show how the numbers change for a Toronto buyer and provide a comprehensive checklist to make sure nothing is missed.
 
@@ -215,6 +218,34 @@ Print this checklist and keep it with your closing documents. As you tick off ea
 Closing costs are a significant expense that every first-time buyer needs to plan for. Budget **3-5% of the purchase price**, hire a competent real estate lawyer early, and use the checklist above to make sure nothing is missed. You can also run your own numbers with our [closing cost calculator](/tools/closing-cost-calculator/). The more prepared you are, the smoother your closing day will be.
 
 Once you have the keys in hand, head to the next module — **Life After Closing** — for essential guidance on maintaining your home, managing your mortgage, and building equity over time.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={7}
+  moduleName="Closing the Deal"
+  questions={[
+    {
+      question: "What percentage of the purchase price should you budget for closing costs?",
+      options: ["1-2%", "3-5%", "7-10%", "15-20%"],
+      correctIndex: 1,
+      explanation: "Closing costs in Canada typically total 3-5% of the purchase price."
+    },
+    {
+      question: "What does title insurance protect against?",
+      options: ["Home repairs", "Property tax increases", "Defects in property title (fraud, liens, errors)", "Mortgage rate changes"],
+      correctIndex: 2,
+      explanation: "Title insurance protects against defects like fraud, forgery, survey errors, unknown liens, and encroachments."
+    },
+    {
+      question: "Who handles the legal transfer of property on closing day?",
+      options: ["Your realtor", "The bank", "Your real estate lawyer", "The seller"],
+      correctIndex: 2,
+      explanation: "Your real estate lawyer handles all legal aspects of closing — transferring funds, registering title, and disbursing keys."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={7} moduleName="Closing the Deal" totalModules={8} nextModuleHref="/guide/8-life-after-closing/1-emergency-fund/" nextModuleName="Life After Closing" />
 
 ---
 

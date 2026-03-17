@@ -5,6 +5,9 @@ sidebar:
   order: 8
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 Canada's three territories — Yukon, Northwest Territories, and Nunavut — offer a housing landscape unlike anywhere else in the country. All [federal first-time buyer programs](/guide/4-government-programs/1-federal-programs/) (the FHSA, RRSP Home Buyers' Plan, and Home Buyers' Tax Credit) apply in full, and there is no land transfer tax in any territory. But the realities of northern housing — extreme cold, remote communities, limited housing stock, and high construction costs — create unique challenges that southern Canadian buyers rarely face.
 
@@ -134,6 +137,34 @@ If you are considering homeownership in a community outside the territorial capi
 - Check the **availability of home inspection services**. You may need to fly an inspector in from Whitehorse, Yellowknife, or Iqaluit.
 - Understand the **water, sewage, and power infrastructure** in the community. Some communities rely on trucked water and sewage services, which add to monthly carrying costs.
 - Ask about **Internet and telecommunications**. Connectivity varies significantly between communities and can affect both your lifestyle and your home's resale value.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={4}
+  moduleName="Government Programs"
+  questions={[
+    {
+      question: "How much is the federal Home Buyers' Tax Credit worth?",
+      options: ["$500", "$1,000", "$1,500", "$4,000"],
+      correctIndex: 2,
+      explanation: "The HBTC is worth up to $1,500 (15% of the $10,000 claim amount)."
+    },
+    {
+      question: "Which province does NOT have a land transfer tax?",
+      options: ["Ontario", "British Columbia", "Alberta", "Quebec"],
+      correctIndex: 2,
+      explanation: "Alberta does not have a land transfer tax — only registration fees."
+    },
+    {
+      question: "What is the maximum Ontario land transfer tax rebate for first-time buyers?",
+      options: ["$2,000", "$4,000", "$4,475", "$8,000"],
+      correctIndex: 1,
+      explanation: "Ontario's provincial LTT rebate for first-time buyers is up to $4,000."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={4} moduleName="Government Programs" totalModules={8} nextModuleHref="/guide/5-finding-a-home/0-your-team/" nextModuleName="Finding a Home" />
 
 ---
 

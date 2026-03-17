@@ -36,6 +36,7 @@ export default defineConfig({
       favicon: '/favicon/favicon.svg',
       components: {
         Head: './src/components/starlight/Head.astro',
+        PageTitle: './src/components/starlight/PageTitle.astro',
         Sidebar: './src/components/starlight/Sidebar.astro',
       },
       sidebar: [

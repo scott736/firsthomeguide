@@ -1,0 +1,33 @@
+---
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
+import ReadinessAssessment from '@/components/sections/readiness-assessment';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Am I Ready to Buy? — Free Assessment — FirstHomeGuide.ca"
+  description="Take our free 2-minute assessment to evaluate your readiness to buy your first home in Canada. Get personalized recommendations for your next steps based on your credit, savings, and timeline."
+>
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <a
+        href="/tools"
+        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+      >
+        &larr; All Tools
+      </a>
+    </div>
+  </section>
+
+  <ReadinessAssessment client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="Want personalized guidance?"
+        description="Our mortgage team can review your full financial picture and create a plan tailored to your timeline — free, no obligation."
+      />
+    </div>
+  </section>
+</DefaultLayout>

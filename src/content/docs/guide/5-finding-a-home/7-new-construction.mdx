@@ -5,6 +5,9 @@ sidebar:
   order: 7
 ---
 
+import KnowledgeQuiz from '../../../../components/sections/knowledge-quiz.tsx';
+import MilestoneCelebration from '../../../../components/sections/milestone-celebration.tsx';
+
 
 Buying a brand-new home is fundamentally different from buying a resale property. The process is longer, the contracts are more complex, and the financial structure involves costs that do not exist in the resale market — most notably HST/GST, extended deposit schedules, and occupancy fees. But for many first-time buyers, a new build also means modern energy efficiency, a clean warranty, no bidding wars, and the ability to customize finishes before you move in.
 
@@ -465,6 +468,34 @@ Before committing to a pre-construction or new build purchase, make sure you hav
 - [ ] Confirmed your ability to lease the unit if needed
 
 Buying a pre-construction home can be an excellent path to homeownership — but it requires more patience, more due diligence, and a higher tolerance for uncertainty than buying resale. Go in with your eyes open, get proper legal advice, and budget conservatively for the timeline and costs ahead.
+
+<KnowledgeQuiz
+  client:visible
+  moduleNumber={5}
+  moduleName="Finding a Home"
+  questions={[
+    {
+      question: "What is a buyer's agent legally required to do?",
+      options: ["Find you the cheapest home", "Act in your best interest (fiduciary duty)", "Negotiate the lowest price", "Pay for the home inspection"],
+      correctIndex: 1,
+      explanation: "A buyer's agent has a fiduciary duty to act in your best interest, maintain confidentiality, and disclose material facts."
+    },
+    {
+      question: "What is a status certificate?",
+      options: ["A building permit", "A condo corporation's financial and legal snapshot", "A property tax assessment", "A home warranty document"],
+      correctIndex: 1,
+      explanation: "A status certificate provides a snapshot of the condo corporation's legal, financial, and operational health."
+    },
+    {
+      question: "What is a sunset clause in pre-construction?",
+      options: ["A deadline to move in", "A provision allowing contract cancellation if conditions aren't met", "A warranty expiry date", "A fixed closing date"],
+      correctIndex: 1,
+      explanation: "A sunset clause allows the developer (and sometimes the buyer) to cancel if conditions aren't met by a specific date."
+    },
+  ]}
+/>
+
+<MilestoneCelebration client:visible moduleNumber={5} moduleName="Finding a Home" totalModules={8} nextModuleHref="/guide/6-making-an-offer/1-purchase-agreement/" nextModuleName="Making an Offer" />
 
 ---
 

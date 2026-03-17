@@ -5,6 +5,7 @@ sidebar:
   order: 1
 ---
 
+import WhatsNext from '../../../../components/sections/whats-next.tsx';
 
 The federal government offers several programs designed to help first-time home buyers across every province and territory. These programs can be combined (or "stacked") to save you tens of thousands of dollars — but only if you know about them and claim them correctly. This page covers each federal program, who qualifies, and how to take advantage of them.
 
@@ -133,6 +134,12 @@ As of early 2026, check the latest status of this proposal. It may have been ena
 | **HBTC** | $1,500 tax credit | Tax credit | Yes |
 | **GST/HST Rebate** | Up to $6,300 federal + provincial rebates | Tax rebate | No |
 | **GST Exemption (2025 proposal)** | Up to ~$50,000 on new builds under $1M | Tax exemption | No |
+
+<WhatsNext client:visible items={[
+  { title: "Your Province's Programs", description: "Find additional grants and rebates available in your province", href: "/tools/province-selector", type: "tool" },
+  { title: "Closing Cost Calculator", description: "See how rebates reduce your total closing costs", href: "/tools/closing-cost-calculator", type: "tool" },
+  { title: "Book a Free Call", description: "Make sure you're claiming every program you qualify for", href: "/book-a-call", type: "action" }
+]} />
 
 ---
 
