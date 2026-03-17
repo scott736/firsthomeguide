@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
-const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
+const RESEND_API_KEY = import.meta.env.RESEND_API_KEY
+  || (typeof process !== 'undefined' ? process.env.RESEND_API_KEY : undefined);
 
 let resendClient: Resend | null = null;
 
