@@ -141,8 +141,8 @@ const Navbar = ({ currentPage }: NavbarProps) => {
   if (hideNavbar) return null;
 
   return (
-    <header className="lg:border-b">
-      <div className="relative z-50 container flex h-[var(--header-height)] items-center justify-between gap-4">
+    <header className="relative z-50 lg:border-b">
+      <div className="container flex h-[var(--header-height)] items-center justify-between gap-4">
         <Logo className="w-47" />
 
         <NavigationMenu className="hidden lg:flex">

@@ -1,7 +1,7 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/layout/footer';
-import Navbar from '@/components/layout/navbar';
+import { Navbar18 } from '@/components/navbar18';
 
 const { title, description, currentPage, frontmatter } = Astro.props;
 
@@ -23,7 +23,7 @@ const pageTitle = frontmatter?.title || title;
     <BaseHead title={title} description={description} />
   </head>
   <body class="antialiased">
-    <Navbar client:load currentPage={currentPage} />
+    <Navbar18 client:load currentPage={currentPage} />
     <main>
       <section class="container">
         <div class="hidden border-x border-b-0 p-7.5 md:block"></div>

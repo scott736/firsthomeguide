@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" fill="none">
+  <!-- Module 1: Are You Ready? - Checklist with checkmarks -->
+  <g stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Clipboard -->
+    <rect x="50" y="15" width="100" height="115" rx="8" opacity="0.9"/>
+    <rect x="75" y="8" width="50" height="14" rx="5" fill="#fff" opacity="0.3"/>
+    <!-- Check items -->
+    <rect x="65" y="38" width="16" height="16" rx="3"/>
+    <polyline points="68,47 73,52 79,42" stroke-width="2.5"/>
+    <line x1="90" y1="46" x2="135" y2="46" opacity="0.6"/>
+
+    <rect x="65" y="62" width="16" height="16" rx="3"/>
+    <polyline points="68,71 73,76 79,66" stroke-width="2.5"/>
+    <line x1="90" y1="70" x2="128" y2="70" opacity="0.6"/>
+
+    <rect x="65" y="86" width="16" height="16" rx="3"/>
+    <polyline points="68,95 73,100 79,90" stroke-width="2.5"/>
+    <line x1="90" y1="94" x2="132" y2="94" opacity="0.6"/>
+
+    <!-- Question mark accent -->
+    <circle cx="160" cy="30" r="18" opacity="0.15" fill="#fff"/>
+    <text x="153" y="37" font-family="Georgia, serif" font-size="22" fill="#fff" opacity="0.8">?</text>
+  </g>
+</svg>

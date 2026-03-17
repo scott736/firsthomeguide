@@ -11,42 +11,42 @@ import { cn } from '@/lib/utils';
 const ITEMS = [
   {
     title: 'Module 1: Are You Ready?',
-    image: { src: '/images/home/features/1.webp', width: 198, height: 133 },
+    image: { src: '/images/home/features/1.svg', width: 200, height: 140 },
     desc: 'Find out if you qualify as a first-time buyer, check your credit score, and understand the stress test.',
   },
   {
     title: 'Module 2: Saving Smart',
-    image: { src: '/images/home/features/2.webp', width: 148, height: 124 },
+    image: { src: '/images/home/features/2.svg', width: 200, height: 140 },
     desc: 'FHSA, RRSP Home Buyers\' Plan, and how to combine them for up to $100,000 per couple.',
   },
   {
     title: 'Module 3: Down Payments & Mortgages',
-    image: { src: '/images/home/features/3.webp', width: 154, height: 99 },
+    image: { src: '/images/home/features/3.svg', width: 200, height: 140 },
     desc: 'Down payment rules, CMHC insurance, fixed vs. variable rates, and getting pre-approved.',
   },
   {
     title: 'Module 4: Government Programs',
-    image: { src: '/images/home/features/4.webp', width: 171, height: 120 },
+    image: { src: '/images/home/features/4.svg', width: 200, height: 140 },
     desc: 'Every federal and provincial program in one place — from HBTC to land transfer rebates.',
   },
   {
     title: 'Module 5: Finding a Home',
-    image: { src: '/images/home/features/5.webp', width: 195, height: 74.6 },
+    image: { src: '/images/home/features/5.svg', width: 200, height: 140 },
     desc: 'Working with realtors, reading MLS listings, condo vs. freehold, and what to look for at showings.',
   },
   {
     title: 'Module 6: Making an Offer',
-    image: { src: '/images/home/features/6.webp', width: 148, height: 124 },
+    image: { src: '/images/home/features/6.svg', width: 200, height: 140 },
     desc: 'Purchase agreements, conditions, bidding wars, and why home inspections matter.',
   },
   {
     title: 'Module 7: Closing the Deal',
-    image: { src: '/images/home/features/7.webp', width: 186, height: 103 },
+    image: { src: '/images/home/features/7.svg', width: 200, height: 140 },
     desc: 'Complete closing cost breakdown: land transfer taxes, legal fees, title insurance, and what happens on closing day.',
   },
   {
     title: 'Module 8: Life After Closing',
-    image: { src: '/images/home/features/8.webp', width: 186, height: 103 },
+    image: { src: '/images/home/features/8.svg', width: 200, height: 140 },
     desc: 'Emergency funds, property taxes, home insurance, mortgage renewal strategy, and energy efficiency grants.',
   },
 ];

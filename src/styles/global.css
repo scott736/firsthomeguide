@@ -82,6 +82,14 @@
   /* --color-gray-900: var(--foreground); */
 }
 
+@utility w-nav-viewport {
+  width: var(--radix-navigation-menu-viewport-width);
+}
+
+@utility h-nav-viewport {
+  height: var(--radix-navigation-menu-viewport-height);
+}
+
 :root {
   /* StyleGlide */
   --display-family: var(--font-inter);

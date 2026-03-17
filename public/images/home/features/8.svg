@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" fill="none">
+  <!-- Module 8: Life After Closing - House with heart/home life -->
+  <g stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- House -->
+    <polygon points="100,15 45,60 155,60" stroke-width="2.5" opacity="0.9"/>
+    <rect x="55" y="60" width="90" height="60" opacity="0.9"/>
+    <!-- Chimney -->
+    <rect x="125" y="28" width="14" height="25"/>
+    <!-- Smoke -->
+    <path d="M132,28 C132,22 138,22 138,16 C138,10 144,10 144,4" opacity="0.3" fill="none"/>
+    <!-- Door -->
+    <rect x="88" y="85" width="24" height="35" rx="3"/>
+    <circle cx="106" cy="103" r="2.5" fill="#fff" opacity="0.6"/>
+    <!-- Windows -->
+    <rect x="62" y="72" width="18" height="15" rx="2"/>
+    <line x1="71" y1="72" x2="71" y2="87"/>
+    <line x1="62" y1="79.5" x2="80" y2="79.5"/>
+    <rect x="120" y="72" width="18" height="15" rx="2"/>
+    <line x1="129" y1="72" x2="129" y2="87"/>
+    <line x1="120" y1="79.5" x2="138" y2="79.5"/>
+    <!-- Heart above house -->
+    <path d="M92,38 C92,33 86,30 86,35 C86,40 92,45 92,45 C92,45 98,40 98,35 C98,30 92,33 92,38 Z" fill="#fff" opacity="0.5" stroke="none"/>
+    <!-- Garden/landscape accents -->
+    <g opacity="0.35">
+      <!-- Tree left -->
+      <line x1="25" y1="120" x2="25" y2="100"/>
+      <circle cx="25" cy="95" r="10"/>
+      <!-- Tree right -->
+      <line x1="175" y1="120" x2="175" y2="100"/>
+      <circle cx="175" cy="95" r="10"/>
+      <!-- Ground line -->
+      <line x1="15" y1="120" x2="185" y2="120"/>
+    </g>
+    <!-- Wrench/tools accent (maintenance) -->
+    <g opacity="0.4" transform="translate(160, 15)">
+      <path d="M5,20 L15,10"/>
+      <circle cx="17" cy="8" r="5"/>
+      <path d="M10,25 L20,15"/>
+      <rect x="18" y="13" width="8" height="3" rx="1" transform="rotate(-45, 22, 14.5)"/>
+    </g>
+  </g>
+</svg>

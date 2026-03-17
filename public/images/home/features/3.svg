@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" fill="none">
+  <!-- Module 3: Down Payments & Mortgages - House with percentage/calculator -->
+  <g stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- House -->
+    <polygon points="30,70 70,35 110,70" opacity="0.9"/>
+    <rect x="42" y="70" width="56" height="45" opacity="0.9"/>
+    <!-- Door -->
+    <rect x="60" y="88" width="18" height="27" rx="2"/>
+    <circle cx="74" cy="102" r="2" fill="#fff"/>
+    <!-- Window -->
+    <rect x="48" y="78" width="14" height="12" rx="1"/>
+    <line x1="55" y1="78" x2="55" y2="90"/>
+    <line x1="48" y1="84" x2="62" y2="84"/>
+    <!-- Calculator -->
+    <rect x="125" y="30" width="55" height="75" rx="6"/>
+    <rect x="132" y="37" width="41" height="16" rx="2" fill="#fff" opacity="0.2"/>
+    <!-- Calculator buttons -->
+    <circle cx="139" cy="64" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="153" cy="64" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="167" cy="64" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="139" cy="79" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="153" cy="79" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="167" cy="79" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="139" cy="94" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="153" cy="94" r="4" opacity="0.5" fill="#fff"/>
+    <circle cx="167" cy="94" r="4" opacity="0.5" fill="#fff"/>
+    <!-- Percentage sign -->
+    <text x="135" y="50" font-family="Arial" font-size="14" fill="#fff" opacity="0.8">5%</text>
+    <!-- Arrow connecting house to calculator -->
+    <path d="M112,80 L122,80" stroke-dasharray="3,3" opacity="0.4"/>
+  </g>
+</svg>

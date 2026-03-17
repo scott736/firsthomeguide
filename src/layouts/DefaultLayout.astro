@@ -1,7 +1,7 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/layout/footer';
-import Navbar from '@/components/layout/navbar';
+import { Navbar18 } from '@/components/navbar18';
 
 const { title, description } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -28,7 +28,7 @@ const currentPath = Astro.url.pathname;
     >
     </div>
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <Navbar client:load currentPage={currentPath} />
+    <Navbar18 client:load currentPage={currentPath} />
     <main id="main-content" class="flex-1"><slot /></main>
     <Footer client:load currentPage={currentPath} />
     <script>
