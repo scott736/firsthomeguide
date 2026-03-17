@@ -1,14 +1,21 @@
 ---
+import DocumentChecklist from '@/components/sections/document-checklist';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
 import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
 <DefaultLayout
-  title="Home Buying Calculators — FirstHomeGuide.ca"
-  description="Free mortgage calculator for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
+  title="Home Buying Calculators & Tools — FirstHomeGuide.ca"
+  description="Free mortgage calculator, document checklist generator, and province-specific tools for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes."
 >
   <MortgageCalculator client:load />
+
+  <hr class="border-border mx-auto max-w-screen-xl" />
+
+  <DocumentChecklist client:visible />
+
+  <hr class="border-border mx-auto max-w-screen-xl" />
 
   <ProvinceSelector client:load />
 

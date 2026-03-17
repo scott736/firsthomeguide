@@ -30,5 +30,10 @@ const currentPath = Astro.url.pathname;
     <Navbar client:load currentPage={currentPath} />
     <main class="flex-1"><slot /></main>
     <Footer client:load currentPage={currentPath} />
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      }
+    </script>
   </body>
 </html>

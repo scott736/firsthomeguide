@@ -12,6 +12,19 @@ export default defineConfig({
     starlight({
       title: 'FirstHomeGuide.ca',
       description: 'Your complete guide to buying your first home in Canada',
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'manifest',
+            href: '/favicon/site.webmanifest',
+          },
+        },
+        {
+          tag: 'script',
+          content: "if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(()=>{});}",
+        },
+      ],
       logo: {
         light: './public/layout/logo-light.svg',
         dark: './public/layout/logo-dark.svg',
