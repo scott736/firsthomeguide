@@ -1,0 +1,138 @@
+---
+/**
+ * Custom Starlight Head component override.
+ * Extends the default Head to inject structured data (JSON-LD) and OG/Twitter meta tags
+ * for guide pages, improving SEO and social sharing.
+ */
+import Default from '@astrojs/starlight/components/Head.astro';
+
+const siteUrl = 'https://firsthomeguide.ca';
+
+// Access page data via Astro.locals.starlightRoute (Starlight's current API)
+const route = Astro.locals.starlightRoute;
+const title = route.entry.data.title;
+const description = route.entry.data.description || '';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+
+// --- Breadcrumb generation ---
+// URL pattern: /guide/welcome/ or /guide/1-are-you-ready/1-first-time-buyer/
+const pathSegments = Astro.url.pathname.replace(/^\/|\/$/g, '').split('/');
+
+// Map module directory slugs to human-readable names
+const moduleNames: Record<string, string> = {
+  '1-are-you-ready': 'Are You Ready?',
+  '2-saving-smart': 'Saving Smart',
+  '3-down-payments-mortgages': 'Down Payments & Mortgages',
+  '4-government-programs': 'Government Programs',
+  '5-finding-a-home': 'Finding a Home',
+  '6-making-an-offer': 'Making an Offer',
+  '7-closing-the-deal': 'Closing the Deal',
+  '8-life-after-closing': 'Life After Closing',
+};
+
+// Build breadcrumb items dynamically from the URL path
+const breadcrumbItems: Array<{ name: string; item?: string }> = [
+  { name: 'Home', item: `${siteUrl}/` },
+  { name: 'Guide', item: `${siteUrl}/guide/welcome/` },
+];
+
+// If we have a module segment (e.g., "1-are-you-ready")
+if (pathSegments.length >= 3 && moduleNames[pathSegments[1]]) {
+  const moduleSlug = pathSegments[1];
+  const moduleName = moduleNames[moduleSlug];
+  // Module URL points to the first page in the module's directory
+  breadcrumbItems.push({
+    name: moduleName,
+    item: `${siteUrl}/guide/${moduleSlug}/`,
+  });
+}
+
+// The current page is always the last item (no "item" URL per schema spec)
+breadcrumbItems.push({ name: title });
+
+// Format breadcrumb list items with position
+const breadcrumbListItems = breadcrumbItems.map((crumb, index) => {
+  const item: Record<string, unknown> = {
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.name,
+  };
+  if (crumb.item) {
+    item.item = crumb.item;
+  }
+  return item;
+});
+
+// --- Article schema ---
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description,
+  author: {
+    '@type': 'Organization',
+    name: 'FirstHomeGuide.ca',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'FirstHomeGuide.ca',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/layout/logo-light.svg`,
+    },
+  },
+  mainEntityOfPage: canonicalURL,
+  isPartOf: {
+    '@type': 'Course',
+    name: "The Complete First-Time Home Buyer's Guide \u2014 Canada",
+    provider: {
+      '@type': 'Organization',
+      name: 'FirstHomeGuide.ca',
+    },
+  },
+  inLanguage: 'en-CA',
+};
+
+// --- BreadcrumbList schema ---
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbListItems,
+};
+
+// --- OG meta tag values ---
+const ogTitle = `${title} \u2014 FirstHomeGuide.ca`;
+const ogImage = `${siteUrl}/images/og-image.jpeg`;
+const ogImageAlt = "FirstHomeGuide.ca \u2014 Canada's Free First-Time Home Buyer Guide";
+---
+
+<!-- Render Starlight's default Head first (handles base meta, fonts, etc.) -->
+<Default {...Astro.props}><slot /></Default>
+
+<!-- Structured Data: Article -->
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<!-- Open Graph meta tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:site_name" content="FirstHomeGuide.ca" />
+<meta property="og:locale" content="en_CA" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogImageAlt} />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:creator" content="@FirstHomeGuideCA" />
+<meta name="twitter:site" content="@FirstHomeGuideCA" />

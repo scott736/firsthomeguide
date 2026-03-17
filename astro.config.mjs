@@ -57,6 +57,9 @@ export default defineConfig({
           autogenerate: { directory: 'guide/8-life-after-closing' },
         },
       ],
+      components: {
+        Head: './src/components/starlight/Head.astro',
+      },
       customCss: ['./src/styles/global.css'],
       expressiveCode: {
         themes: ['github-light', 'github-dark'],
