@@ -1,5 +1,6 @@
 ---
 import AffordabilityCalculator from '@/components/sections/affordability-calculator';
+import CityComparison from '@/components/sections/city-comparison';
 import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
 import ComparisonTools from '@/components/sections/comparison-tools';
 import DocumentChecklist from '@/components/sections/document-checklist';
@@ -56,7 +57,13 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   {/* Section divider */}
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
-  {/* 6. Document Checklist */}
+  {/* 6. City Comparison */}
+  <CityComparison client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 7. Document Checklist */}
   <DocumentChecklist client:visible />
 
   {/* Section divider */}
