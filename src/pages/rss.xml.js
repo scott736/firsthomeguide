@@ -10,8 +10,10 @@ export async function GET(context) {
     description: SITE_DESCRIPTION,
     site: context.site,
     items: docs.map((doc) => ({
-      ...doc.data,
+      title: doc.data.title,
+      description: doc.data.description || '',
       link: `/${doc.id}/`,
+      pubDate: new Date('2025-01-15'),
     })),
   });
 }
