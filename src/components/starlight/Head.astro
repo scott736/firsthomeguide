@@ -1,7 +1,7 @@
 ---
 /**
  * Custom Starlight Head component override.
- * Extends the default Head to inject structured data (JSON-LD) and OG/Twitter meta tags
+ * Adds structured data (JSON-LD), OG/Twitter meta tags, and per-module OG images
  * for guide pages, improving SEO and social sharing.
  */
 import Default from '@astrojs/starlight/components/Head.astro';
@@ -12,13 +12,39 @@ const siteUrl = 'https://firsthomeguide.ca';
 const route = Astro.locals.starlightRoute;
 const title = route.entry.data.title;
 const description = route.entry.data.description || '';
+const slug = route.slug;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 
+// --- Per-module OG images ---
+const moduleOgMap: Record<string, string> = {
+  '1-are-you-ready': '/images/og/module-1.svg',
+  '2-saving-smart': '/images/og/module-2.svg',
+  '3-down-payments-mortgages': '/images/og/module-3.svg',
+  '4-government-programs': '/images/og/module-4.svg',
+  '5-finding-a-home': '/images/og/module-5.svg',
+  '6-making-an-offer': '/images/og/module-6.svg',
+  '7-closing-the-deal': '/images/og/module-7.svg',
+  '8-life-after-closing': '/images/og/module-8.svg',
+};
+
+function getOgImage(slug: string): string {
+  const guidePath = slug.startsWith('guide/') ? slug.slice('guide/'.length) : slug;
+  for (const [prefix, image] of Object.entries(moduleOgMap)) {
+    if (guidePath.startsWith(prefix)) {
+      return image;
+    }
+  }
+  return '/images/og/guide.svg';
+}
+
+const ogImagePath = getOgImage(slug);
+const ogImage = new URL(ogImagePath, siteUrl).href;
+const twitterImage = new URL('/images/og-image.jpeg', siteUrl).href;
+const ogImageAlt = "FirstHomeGuide.ca \u2014 Canada's Free First-Time Home Buyer Guide";
+
 // --- Breadcrumb generation ---
-// URL pattern: /guide/welcome/ or /guide/1-are-you-ready/1-first-time-buyer/
 const pathSegments = Astro.url.pathname.replace(/^\/|\/$/g, '').split('/');
 
-// Map module directory slugs to human-readable names
 const moduleNames: Record<string, string> = {
   '1-are-you-ready': 'Are You Ready?',
   '2-saving-smart': 'Saving Smart',
@@ -30,27 +56,22 @@ const moduleNames: Record<string, string> = {
   '8-life-after-closing': 'Life After Closing',
 };
 
-// Build breadcrumb items dynamically from the URL path
 const breadcrumbItems: Array<{ name: string; item?: string }> = [
   { name: 'Home', item: `${siteUrl}/` },
   { name: 'Guide', item: `${siteUrl}/guide/welcome/` },
 ];
 
-// If we have a module segment (e.g., "1-are-you-ready")
 if (pathSegments.length >= 3 && moduleNames[pathSegments[1]]) {
   const moduleSlug = pathSegments[1];
   const moduleName = moduleNames[moduleSlug];
-  // Module URL points to the first page in the module's directory
   breadcrumbItems.push({
     name: moduleName,
     item: `${siteUrl}/guide/${moduleSlug}/`,
   });
 }
 
-// The current page is always the last item (no "item" URL per schema spec)
 breadcrumbItems.push({ name: title });
 
-// Format breadcrumb list items with position
 const breadcrumbListItems = breadcrumbItems.map((crumb, index) => {
   const item: Record<string, unknown> = {
     '@type': 'ListItem',
@@ -104,8 +125,6 @@ const breadcrumbSchema = {
 
 // --- OG meta tag values ---
 const ogTitle = `${title} \u2014 FirstHomeGuide.ca`;
-const ogImage = `${siteUrl}/images/og-image.jpeg`;
-const ogImageAlt = "FirstHomeGuide.ca \u2014 Canada's Free First-Time Home Buyer Guide";
 ---
 
 <!-- Render Starlight's default Head first (handles base meta, fonts, etc.) -->
@@ -129,10 +148,10 @@ const ogImageAlt = "FirstHomeGuide.ca \u2014 Canada's Free First-Time Home Buyer
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={ogImageAlt} />
 
-<!-- Twitter Card meta tags -->
+<!-- Twitter Card meta tags (JPEG fallback for compatibility) -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={ogTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image" content={twitterImage} />
 <meta name="twitter:creator" content="@FirstHomeGuideCA" />
 <meta name="twitter:site" content="@FirstHomeGuideCA" />

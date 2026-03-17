@@ -14,8 +14,13 @@ const pathname = Astro.url.pathname;
 const structuredDataType = pathname === '/' ? 'home' : pathname.startsWith('/guide') ? 'guide' : pathname.startsWith('/tools') ? 'tools' : 'module' as const;
 const finalTitle = title || SITE_METADATA.title.default;
 const finalDescription = description || SITE_METADATA.description;
-const finalImage = image || SITE_METADATA.openGraph.images[0].url;
+
+// Use tools-specific OG image for the tools page, otherwise use provided or default
+const isToolsPage = pathname === '/tools' || pathname === '/tools/';
+const finalImage = image || (isToolsPage ? '/images/og/tools.svg' : SITE_METADATA.openGraph.images[0].url);
 const imageURL = new URL(finalImage, Astro.url);
+// Keep JPEG fallback for Twitter/X which requires raster images
+const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
 ---
 
 <!-- Structured Data -->
@@ -101,7 +106,7 @@ const imageURL = new URL(finalImage, Astro.url);
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={finalTitle} />
 <meta property="twitter:description" content={finalDescription} />
-<meta property="twitter:image" content={imageURL} />
+<meta property="twitter:image" content={twitterImageURL} />
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
 
 {Astro.url.pathname === '/' && (
