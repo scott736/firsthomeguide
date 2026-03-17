@@ -351,12 +351,15 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
         exdates: [] as string[], // Required by Nylas SDK types
       }));
 
+      // Nylas requires timestamps to be multiples of 5 minutes
+      const roundUp5Min = (ts: number) => Math.ceil(ts / 300) * 300;
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const availability = await (nylas.calendars.getAvailability as any)({
         identifier: primaryGrantId,
         requestBody: {
-          startTime: Math.floor(startDate.getTime() / 1000),
-          endTime: Math.floor(endDate.getTime() / 1000),
+          startTime: roundUp5Min(Math.floor(startDate.getTime() / 1000)),
+          endTime: roundUp5Min(Math.floor(endDate.getTime() / 1000)),
           durationMinutes,
           intervalMinutes: schedulingConfig.slotInterval,
           participants: [
