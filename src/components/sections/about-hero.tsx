@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button';
+import { LENDCITY } from '@/lib/lendcity';
+
 export default function AboutHero() {
   return (
     <section className="section-padding container">
@@ -7,26 +10,30 @@ export default function AboutHero() {
       </div>
 
       <h1 className="my-5 text-5xl leading-none tracking-tight lg:text-7xl">
-        Canada&apos;s missing home buyer
+        Built by mortgage professionals
         <br className="hidden sm:block" />
-        education platform.
+        who believe education comes first.
       </h1>
 
       <p className="text-muted-foreground leading-snug md:text-lg lg:text-xl">
-        FirstHomeGuide.ca exists because 85% of prospective Canadian homeowners
-        say they don&apos;t feel comfortable with the home buying or mortgage
-        process. Official resources are scattered across government PDFs and
-        isolated web pages. Private guides lead you to their own mortgage
-        products. There&apos;s no single, neutral, comprehensive platform that
-        walks Canadians through every step — from &ldquo;Am I ready?&rdquo; to
-        &ldquo;What happens after closing?&rdquo;
+        {LENDCITY.name} is a team of licensed mortgage professionals under{' '}
+        {LENDCITY.brokerage} who saw first-hand how unprepared first-time buyers
+        felt walking into the biggest purchase of their lives. So we built
+        FirstHomeGuide.ca — a completely free, comprehensive education platform.
+        When you&apos;re ready to take the next step, our concierge team walks
+        you through every stage from pre-approval to closing.
         <br />
         <br />
-        We built the resource we wish existed when we started looking. Eight
-        structured modules, province-specific program lookups, interactive
-        calculators, and plain-language explainers — all free, with no product
-        upsell.
+        Eight structured modules, province-specific program lookups, interactive
+        calculators, and plain-language explainers — all free. And when
+        you&apos;re ready, our team is here to help.
       </p>
+
+      <div className="mt-8">
+        <Button asChild size="lg">
+          <a href={LENDCITY.bookingUrl}>Book a Free Call</a>
+        </Button>
+      </div>
     </section>
   );
 }

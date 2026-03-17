@@ -1,5 +1,6 @@
 ---
 import CityComparison from '@/components/sections/city-comparison';
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -19,4 +20,10 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <CityComparison client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner client:visible />
+    </div>
+  </section>
 </DefaultLayout>

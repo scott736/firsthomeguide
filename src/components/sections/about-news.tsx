@@ -1,3 +1,5 @@
+import { LENDCITY } from '@/lib/lendcity';
+
 const stats = [
   {
     stat: '85%',
@@ -10,11 +12,12 @@ const stats = [
     description:
       'of prospective home buyers said they\'d feel "more confident" with access to quick advice from a professional.',
     source: 'TD Bank 2025 Survey',
+    cta: true,
   },
   {
     stat: '$0',
     description:
-      'is what it should cost to learn how to buy a home. Every module, calculator, and provincial program lookup is completely free.',
+      'is what it costs to learn how to buy a home. Every module, calculator, and provincial program lookup is free — built and maintained by LendCity\'s mortgage team.',
     source: 'FirstHomeGuide.ca',
   },
 ];
@@ -35,6 +38,17 @@ export default function AboutNews() {
                 {item.description}
               </p>
               <p className="text-muted-foreground text-sm">{item.source}</p>
+              {item.cta && (
+                <p className="text-sm font-medium">
+                  That&apos;s exactly what LendCity provides.{' '}
+                  <a
+                    href={LENDCITY.bookingUrl}
+                    className="text-chart-1 hover:text-chart-2 underline underline-offset-2 transition-colors"
+                  >
+                    Book a free call
+                  </a>
+                </p>
+              )}
             </div>
           ))}
         </div>

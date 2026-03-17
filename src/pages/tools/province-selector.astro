@@ -1,4 +1,5 @@
 ---
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -19,4 +20,14 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <ProvinceSelector client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="Find every program you qualify for"
+        description="Our team knows every federal and provincial program inside out. Book a free call and we'll match you with everything available."
+      />
+    </div>
+  </section>
 </DefaultLayout>

@@ -2,6 +2,7 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 import AIAutomation from '@/components/sections/ai-automation';
+import Concierge from '@/components/sections/concierge';
 import Features from '@/components/sections/features';
 import FeaturesTabsSection from '@/components/sections/features-tabs';
 import Features2 from '@/components/sections/features2';
@@ -16,5 +17,6 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <Features2 client:visible />
   <AIAutomation client:visible />
   <FeaturesTabsSection client:visible />
+  <Concierge client:visible />
   <Testimonials client:visible />
 </DefaultLayout>

@@ -1,4 +1,5 @@
 ---
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import TimelinePlanner from '@/components/sections/timeline-planner';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -19,4 +20,14 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <TimelinePlanner client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="Let's build your plan together"
+        description="Our team can create a personalized home-buying timeline based on your specific situation — book a free call."
+      />
+    </div>
+  </section>
 </DefaultLayout>

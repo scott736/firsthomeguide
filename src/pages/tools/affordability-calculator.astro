@@ -1,5 +1,6 @@
 ---
 import AffordabilityCalculator from '@/components/sections/affordability-calculator';
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -19,6 +20,16 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <AffordabilityCalculator client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="Want a professional opinion?"
+        description="Our licensed advisors can review your financial picture and tell you exactly what you qualify for — free consultation."
+      />
+    </div>
+  </section>
 
   <section class="section-padding pt-8">
     <div class="container max-w-screen-xl">

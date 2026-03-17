@@ -1,4 +1,7 @@
+import { Phone } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
+import { LENDCITY } from '@/lib/lendcity';
 
 interface SVGProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
@@ -12,7 +15,7 @@ export default function Hero() {
           <div className="flex max-w-3xl flex-1 flex-col items-start gap-5">
             <div className="flex items-center rounded-full border p-1 text-xs">
               <span className="bg-muted rounded-full px-3 py-1">
-                2026 Updated
+                Powered by {LENDCITY.name}
               </span>
               <span className="px-3">Updated for 2026 mortgage rules &amp; FHSA limits</span>
             </div>
@@ -39,8 +42,15 @@ export default function Hero() {
                 <a href="/guide/4-government-programs/1-federal-programs/">Browse by Province</a>
               </Button>
             </div>
+            <a
+              href={LENDCITY.bookingUrl}
+              className="text-muted-foreground hover:text-foreground flex items-center justify-center gap-2 text-sm transition-colors"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Book a Free Call
+            </a>
             <div className="text-center text-sm">
-              Free forever · No sign-up required · Updated for 2026
+              Free education · Expert guidance when you're ready · Updated for 2026
             </div>
           </div>
         </div>

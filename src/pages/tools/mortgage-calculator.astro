@@ -1,4 +1,5 @@
 ---
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -19,6 +20,16 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <MortgageCalculator client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="See what you actually qualify for"
+        description="Our mortgage team can run your full pre-approval numbers and find you the best rate — free, no obligation."
+      />
+    </div>
+  </section>
 
   <section class="section-padding pt-8">
     <div class="container max-w-screen-xl">

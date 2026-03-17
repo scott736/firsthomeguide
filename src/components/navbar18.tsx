@@ -196,7 +196,7 @@ const Navbar18 = ({ currentPage }: Navbar18Props) => {
       </NavigationMenu>
 
       {/* Desktop right actions */}
-      <div className="hidden items-center gap-1 md:flex">
+      <div className="hidden items-center gap-1.5 md:flex">
         <a
           href="/guide/welcome/"
           className="text-muted-foreground hover:text-foreground inline-flex size-8 items-center justify-center rounded-md transition-colors"
@@ -207,7 +207,6 @@ const Navbar18 = ({ currentPage }: Navbar18Props) => {
         </a>
         <ThemeToggle className="size-8" />
         <Button
-          variant="outline"
           className="h-auto rounded-lg px-3 py-1.5 text-xs"
           asChild
         >

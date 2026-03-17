@@ -1,5 +1,6 @@
 ---
 import DocumentChecklist from '@/components/sections/document-checklist';
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -19,4 +20,14 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <DocumentChecklist client:load />
+
+  <section class="section-padding pt-0">
+    <div class="container max-w-screen-xl">
+      <LendCityCtaBanner
+        client:visible
+        headline="We handle the paperwork"
+        description="Our concierge team collects, reviews, and submits all your documents — so nothing gets missed."
+      />
+    </div>
+  </section>
 </DefaultLayout>
