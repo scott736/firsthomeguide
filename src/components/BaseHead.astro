@@ -7,7 +7,7 @@ import StructuredData from './StructuredData.astro';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image } = Astro.props;
+const { title, description, image, noindex = false } = Astro.props;
 
 // Determine structured data type based on the page
 const pathname = Astro.url.pathname;
@@ -15,9 +15,8 @@ const structuredDataType = pathname === '/' ? 'home' : pathname.startsWith('/gui
 const finalTitle = title || SITE_METADATA.title.default;
 const finalDescription = description || SITE_METADATA.description;
 
-// Use tools-specific OG image for the tools page, otherwise use provided or default
-const isToolsPage = pathname === '/tools' || pathname === '/tools/';
-const finalImage = image || (isToolsPage ? '/images/og/tools.svg' : SITE_METADATA.openGraph.images[0].url);
+// Always use JPEG OG image — SVGs are not rendered by most social crawlers
+const finalImage = image || SITE_METADATA.openGraph.images[0].url;
 const imageURL = new URL(finalImage, Astro.url);
 // Keep JPEG fallback for Twitter/X which requires raster images
 const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
@@ -32,7 +31,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta
   name="robots"
-  content={`${SITE_METADATA.robots.index ? 'index' : 'noindex'}, ${SITE_METADATA.robots.follow ? 'follow' : 'nofollow'}`}
+  content={`${noindex ? 'noindex' : (SITE_METADATA.robots.index ? 'index' : 'noindex')}, ${SITE_METADATA.robots.follow ? 'follow' : 'nofollow'}`}
 />
 <meta name="keywords" content={SITE_METADATA.keywords.join(', ')} />
 <meta name="author" content={SITE_METADATA.authors[0].name} />
@@ -75,6 +74,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
   href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#030712" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -100,6 +100,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
   content={SITE_METADATA.openGraph.images[0].height.toString()}
 />
 <meta property="og:image:alt" content={SITE_METADATA.openGraph.images[0].alt} />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:locale" content="en_CA" />
 
 <!-- Twitter -->
@@ -109,6 +110,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={twitterImageURL} />
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
+<meta property="twitter:site" content={SITE_METADATA.twitter.creator} />
 
 {Astro.url.pathname === '/' && (
   <link rel="preload" as="image" type="image/webp" href="/images/home/hero.webp" />
