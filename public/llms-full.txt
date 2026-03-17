@@ -9,7 +9,7 @@ This file provides AI systems with a complete overview of all content available 
 The guide is organized into 8 sequential modules that follow the home-buying journey:
 
 ### Module 1: Are You Ready to Buy?
-URL: https://firsthomeguide.ca/docs/are-you-ready/
+URL: https://firsthomeguide.ca/guide/1-are-you-ready/1-first-time-buyer/
 Topics covered:
 - The 4-year rule for first-time buyer qualification
 - Investment property exception
@@ -18,9 +18,10 @@ Topics covered:
 - Free credit monitoring tools (Borrowell, Credit Karma)
 - Mortgage stress test explained with examples
 - Financial readiness checklist
+- Co-buying guide: purchasing with a partner, family, or friend — ownership structures, legal considerations, and exit strategies
 
 ### Module 2: Saving Smart — FHSA, RRSP HBP & More
-URL: https://firsthomeguide.ca/docs/saving-smart/
+URL: https://firsthomeguide.ca/guide/2-saving-smart/1-fhsa/
 Topics covered:
 - First Home Savings Account (FHSA) — $8,000/year, $40,000 lifetime, double tax advantage
 - RRSP Home Buyers' Plan (HBP) — $60,000 per person (2026 limit), 15-year repayment
@@ -29,7 +30,7 @@ Topics covered:
 - Saving timelines for different budgets
 
 ### Module 3: Down Payments & Mortgage Basics
-URL: https://firsthomeguide.ca/docs/down-payments-mortgages/
+URL: https://firsthomeguide.ca/guide/3-down-payments-mortgages/1-down-payment-rules/
 Topics covered:
 - Tiered down payment rules (5% on first $500K, 10% on portion above, 20% on $1M+)
 - CMHC mortgage insurance (premiums from 2.4% to 4.0%)
@@ -39,9 +40,10 @@ Topics covered:
 - Mortgage pre-approval process
 - GDS/TDS ratios
 - Lender types (Big 5, credit unions, mortgage brokers, monoline)
+- Self-employed buyers: qualifying for a mortgage with non-traditional income, BFS programs, documentation requirements
 
 ### Module 4: Government Programs by Province
-URL: https://firsthomeguide.ca/docs/government-programs/
+URL: https://firsthomeguide.ca/guide/4-government-programs/1-federal-programs/
 Topics covered:
 - Federal: FHSA, HBP, HBTC ($1,500 credit), GST/HST New Housing Rebate
 - Ontario: LTT rebate ($4,000), Toronto MLTT rebate ($4,475), HST rebate on new homes ($24,000)
@@ -56,18 +58,37 @@ Topics covered:
 - Newfoundland & Labrador: Down payment assistance, HST rebate
 - Program stacking strategies with worked examples
 
+### Territories (Yukon, NWT, Nunavut)
+URL: https://firsthomeguide.ca/guide/4-government-programs/8-territories/
+Topics covered:
+- Yukon: First-time home buyer programs, down payment assistance, territorial grants
+- Northwest Territories: NWTHC homeownership programs, housing subsidies, northern-specific considerations
+- Nunavut: NHC programs, government staff housing, unique northern housing challenges
+- Northern-specific considerations: building costs, shipping and logistics, permafrost, limited inventory
+
 ### Module 5: Finding a Home
-URL: https://firsthomeguide.ca/docs/finding-a-home/
+URL: https://firsthomeguide.ca/guide/5-finding-a-home/1-working-with-realtor/
 Topics covered:
 - Working with a buyer's agent (TRESA 2024 changes, BRA terms)
+- Building your team: selecting a real estate agent, mortgage broker, lawyer, and home inspector
 - Commission structure evolution
 - Reading MLS listings
 - Condo vs. freehold comparison
 - Strata fees, reserve funds, status certificates
 - Red flags in property evaluation
 
+### Pre-Construction & New Builds Guide
+URL: https://firsthomeguide.ca/guide/5-finding-a-home/7-new-construction/
+Topics covered:
+- Pre-construction buying process: purchase timelines, occupancy vs. closing, interim occupancy fees
+- Assignment sales: how they work, costs, legal risks
+- Tarion warranty coverage for new homes in Ontario
+- Deposit structures: typical schedules (5% at signing, 5% at 90 days, 5% at 180 days, 5% at occupancy)
+- New build upgrades: what is worth paying for and what is not
+- Builder reputation research, delayed closing compensation, and buyer protections by province
+
 ### Module 6: Making an Offer
-URL: https://firsthomeguide.ca/docs/making-an-offer/
+URL: https://firsthomeguide.ca/guide/6-making-an-offer/1-purchase-agreement/
 Topics covered:
 - Agreement of Purchase and Sale (APS) explained
 - Standard conditions (financing, inspection, status certificate)
@@ -77,7 +98,7 @@ Topics covered:
 - Deposit requirements and protection
 
 ### Module 7: Closing the Deal
-URL: https://firsthomeguide.ca/docs/closing-the-deal/
+URL: https://firsthomeguide.ca/guide/7-closing-the-deal/1-closing-costs-overview/
 Topics covered:
 - Complete closing costs breakdown
 - Land transfer tax by province with calculation tables
@@ -87,7 +108,7 @@ Topics covered:
 - Pre-closing checklist
 
 ### Module 8: Life After Closing
-URL: https://firsthomeguide.ca/docs/life-after-closing/
+URL: https://firsthomeguide.ca/guide/8-life-after-closing/1-emergency-fund/
 Topics covered:
 - Building an emergency fund as a homeowner
 - Property tax basics
@@ -96,6 +117,44 @@ Topics covered:
 - Home maintenance planning and budgeting
 - Energy efficiency grants (Canada Greener Homes)
 - Building equity over time
+
+### Glossary
+URL: https://firsthomeguide.ca/guide/glossary/
+A comprehensive glossary of Canadian home-buying terms and definitions. Covers real estate, mortgage, legal, and financial terminology that first-time buyers encounter during the purchasing process. Organized alphabetically for quick reference.
+
+### FAQ
+URL: https://firsthomeguide.ca/guide/faq/
+20 frequently asked questions covering the entire first-time home buying journey in Canada. Topics include down payment requirements, FHSA and RRSP HBP details, the mortgage stress test, CMHC insurance, closing costs, credit scores, choosing between fixed and variable rates, the Home Buyers' Tax Credit, buying with a partner, pre-construction purchases, conditional offers, how long the process takes, first steps for getting started, self-employed qualification, property types, necessity of a real estate lawyer, bidding wars, and saving goals.
+
+## Interactive Tools
+
+URL: https://firsthomeguide.ca/tools/
+
+### Mortgage Payment Calculator
+Calculates monthly mortgage payments based on purchase price, down payment, interest rate, and amortization. Automatically computes CMHC insurance premiums when down payment is below 20%. Shows stress test qualifying rate.
+
+### Affordability Calculator
+Estimates maximum affordable home price based on household income, monthly debts, down payment saved, and current interest rates. Uses GDS/TDS ratios to determine borrowing power.
+
+### Closing Cost Calculator
+Estimates total closing costs by province, including land transfer tax, legal fees, title insurance, home inspection, appraisal fees, and property tax/utility adjustments. Factors in first-time buyer rebates where applicable.
+
+### Rent vs. Buy Comparison
+Compares the long-term financial outcomes of renting versus buying over a user-specified time horizon. Accounts for home appreciation, mortgage interest, opportunity cost of the down payment, maintenance, property taxes, and rent increases.
+
+### FHSA vs. RRSP/HBP Comparison
+Side-by-side comparison of the First Home Savings Account and the RRSP Home Buyers' Plan. Models the tax benefit of each savings vehicle based on marginal tax rate, contribution amounts, and withdrawal timeline.
+
+### Fixed vs. Variable Rate Comparison
+Models different interest rate scenarios to help buyers choose between fixed and variable mortgage rates. Shows total interest paid, monthly payment differences, and break-even points under rising, stable, and falling rate environments.
+
+### Province-Specific Program Finder
+Interactive tool to discover all federal and provincial/territorial first-time buyer programs available based on your location. Displays eligibility criteria, benefit amounts, and application steps for each program.
+
+## Interactive Features
+
+- Interactive checklists throughout each module to track your home-buying progress
+- Guide progress tracking to bookmark where you left off across all 8 modules
 
 ## Frequently Asked Questions
 
@@ -116,3 +175,45 @@ A: Yes, if your down payment is less than 20%. CMHC insurance premiums range fro
 
 Q: What are typical closing costs in Canada?
 A: Expect 1.5% to 4% of the purchase price. Major costs include land transfer tax, legal fees ($1,500-$2,500), title insurance ($300-$500), home inspection ($400-$600), and adjustments.
+
+Q: What credit score do I need to buy a home?
+A: A credit score of 680+ is ideal for the best mortgage rates. The minimum to qualify is typically 600 for insured mortgages, though some lenders may accept lower scores with compensating factors.
+
+Q: Should I choose a fixed or variable mortgage rate?
+A: Fixed rates offer payment certainty over your term, while variable rates are historically cheaper over time but carry rate-change risk. Your choice depends on your risk tolerance, financial stability, and current rate environment.
+
+Q: What is the Home Buyers' Tax Credit (HBTC)?
+A: A federal non-refundable tax credit worth $1,500 (based on $10,000 at 15%). Available to first-time home buyers in the year they purchase a qualifying home.
+
+Q: Can I buy a home with a partner or friend?
+A: Yes. Co-buying is increasingly common. Key decisions include choosing an ownership structure (joint tenancy vs. tenants in common), having a co-ownership agreement, and understanding each party's liability on the mortgage.
+
+Q: How does buying pre-construction work?
+A: You sign an Agreement of Purchase and Sale with the builder, pay deposits on a schedule (typically 15-20% total), wait for construction (1-4 years), go through interim occupancy, then close when the condo is registered. Tarion warranty protects buyers in Ontario.
+
+Q: What conditions should I include in my offer?
+A: The three most common conditions are financing (5 business days to secure mortgage approval), home inspection (to identify structural or safety issues), and status certificate review (for condos). Your agent may recommend additional conditions based on the property.
+
+Q: How long does it take to buy a home in Canada?
+A: The entire process typically takes 3 to 6 months from starting your search to closing day. Saving for a down payment can add 1 to 5 years. Closing itself is usually 30 to 90 days after your offer is accepted.
+
+Q: What is the first step to buying a home?
+A: Start by checking your credit score and getting a mortgage pre-approval. This tells you how much you can borrow and shows sellers you are a serious buyer. Open an FHSA as early as possible to start the tax-advantaged savings clock.
+
+Q: Can I qualify for a mortgage if I am self-employed?
+A: Yes, but you typically need at least 2 years of self-employment history. Lenders may use a Business-for-Self (BFS) program and look at your Notice of Assessment. A larger down payment or strong business financials can improve your approval odds.
+
+Q: What types of properties can first-time buyers purchase?
+A: First-time buyers can purchase detached houses, semi-detached homes, townhouses, condos, and in some cases duplexes or triplexes (if you live in one unit). Each property type has different down payment, insurance, and maintenance considerations.
+
+Q: Do I need a real estate lawyer?
+A: Yes, in most Canadian provinces a real estate lawyer is required to close a property purchase. They review the Agreement of Purchase and Sale, conduct title searches, register the mortgage, and handle the transfer of funds on closing day.
+
+Q: How do I handle a bidding war?
+A: Set a firm maximum price before you bid. Consider including a pre-approval letter, a larger deposit, and flexible closing dates to strengthen your offer. Your agent can advise on escalation clauses and whether to waive conditions.
+
+Q: How much should I save beyond the down payment?
+A: Plan to save an additional 1.5% to 4% of the purchase price for closing costs, plus 3 to 6 months of housing expenses as an emergency fund. Having a financial buffer reduces stress and protects you from unexpected costs after closing.
+
+Q: Are there programs for buyers in the territories?
+A: Yes. Yukon, Northwest Territories, and Nunavut each have territorial housing programs and grants for first-time buyers, on top of federal programs like the FHSA, HBP, and HBTC. Northern-specific challenges include higher building costs and limited inventory.
