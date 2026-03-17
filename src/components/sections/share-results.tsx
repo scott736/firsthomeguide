@@ -3,7 +3,6 @@
 import { useCallback, useState } from 'react';
 
 import { Check, Copy, Link, Share2 } from 'lucide-react';
-import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -40,10 +39,9 @@ export default function ShareResults({
     try {
       await navigator.clipboard.writeText(getFullUrl());
       setCopiedLink(true);
-      toast.success('Link copied to clipboard');
       setTimeout(() => setCopiedLink(false), 2000);
     } catch {
-      toast.error('Failed to copy link');
+      // Clipboard not available
     }
   }, [getFullUrl]);
 
@@ -52,10 +50,9 @@ export default function ShareResults({
     try {
       await navigator.clipboard.writeText(text);
       setCopiedSummary(true);
-      toast.success('Summary copied to clipboard');
       setTimeout(() => setCopiedSummary(false), 2000);
     } catch {
-      toast.error('Failed to copy summary');
+      // Clipboard not available
     }
   }, [title, summary, getFullUrl]);
 
@@ -67,11 +64,8 @@ export default function ShareResults({
         url: getFullUrl(),
       });
       setOpen(false);
-    } catch (err) {
-      // User cancelled or share failed silently
-      if (err instanceof Error && err.name !== 'AbortError') {
-        toast.error('Sharing failed');
-      }
+    } catch {
+      // User cancelled or share failed
     }
   }, [title, summary, getFullUrl]);
 

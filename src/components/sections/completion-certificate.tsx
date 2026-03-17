@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Award, Download, Share2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { Award, Check, Download, Share2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -114,6 +113,7 @@ function formatDate(date: Date): string {
 export default function CompletionCertificate() {
   const [mounted, setMounted] = useState(false);
   const [visitedPages, setVisitedPages] = useState<Set<string>>(new Set());
+  const [shared, setShared] = useState(false);
 
   useEffect(() => {
     setVisitedPages(getVisitedPages());
@@ -146,19 +146,18 @@ export default function CompletionCertificate() {
     if (supportsShare) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
-        if (err instanceof Error && err.name !== 'AbortError') {
-          toast.error('Sharing failed');
-        }
+      } catch {
+        // User cancelled or share failed
       }
     } else {
       try {
         await navigator.clipboard.writeText(
           `${shareData.title}\n\n${shareData.text}\n\n${shareData.url}`,
         );
-        toast.success('Achievement copied to clipboard');
+        setShared(true);
+        setTimeout(() => setShared(false), 2000);
       } catch {
-        toast.error('Failed to copy to clipboard');
+        // Clipboard not available
       }
     }
   }, [supportsShare]);
@@ -358,8 +357,8 @@ export default function CompletionCertificate() {
 
             <CardFooter className="certificate-actions flex-col gap-3 sm:flex-row sm:justify-center">
               <Button onClick={handleShare} className="gap-2">
-                <Share2 className="size-4" />
-                Share Your Achievement
+                {shared ? <Check className="size-4" /> : <Share2 className="size-4" />}
+                {shared ? 'Copied!' : 'Share Your Achievement'}
               </Button>
               <Button
                 variant="outline"
