@@ -1,5 +1,6 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
+import { FloatingCta } from '@/components/floating-cta';
 import Footer from '@/components/layout/footer';
 import { Navbar18 } from '@/components/navbar18';
 
@@ -36,5 +37,6 @@ const currentPath = Astro.url.pathname;
         navigator.serviceWorker.register('/sw.js').catch(() => {});
       }
     </script>
+    <FloatingCta client:load currentPage={currentPath} />
   </body>
 </html>

@@ -29,6 +29,7 @@ import {
 } from '@/components/ui/carousel';
 import { ChartContainer, ChartTooltip } from '@/components/ui/chart';
 import { Separator } from '@/components/ui/separator';
+import { LENDCITY } from '@/lib/lendcity';
 import { cn } from '@/lib/utils';
 
 const MAIN_CHART_DATA = [
@@ -233,11 +234,12 @@ const Features2 = () => {
                   <Shield className="h-4.5 w-4.5" />
                 </div>
                 <h3 className="text-accent-foreground text-lg font-bold lg:text-xl">
-                  Built Different from Other Guides
+                  Built by Mortgage Professionals
                 </h3>
                 <p className="text-muted-foreground leading-snug lg:text-lg">
-                  No product upsell. No mortgage application at the end. Just
-                  clear, neutral education.
+                  Created by licensed mortgage advisors at {LENDCITY.name} who
+                  believe every first-time buyer deserves free, expert
+                  education — and personal guidance when you're ready.
                 </p>
               </div>
 
@@ -365,13 +367,20 @@ const Features2 = () => {
         {/* Feature Cards Carousel */}
         <FeatureCarousel />
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <Button
             variant="secondary"
             className="border-input bg-accent max-w-64 flex-1 border"
             asChild
           >
             <a href="/guide/welcome/">Start Learning</a>
+          </Button>
+          <Button
+            variant="outline"
+            className="max-w-64 flex-1"
+            asChild
+          >
+            <a href={LENDCITY.bookingUrl}>Talk to an Advisor</a>
           </Button>
         </div>
       </div>
@@ -382,9 +391,9 @@ const Features2 = () => {
 const featureCards = [
   {
     icon: Shield,
-    title: 'Neutral & Unbiased',
+    title: 'Expert-Backed Education',
     description:
-      'No mortgage applications, no product upsells. Just clear, honest education for Canadian buyers.',
+      'Built by licensed mortgage professionals at LendCity. The education is free and unbiased — when you\'re ready for personalized help, we\'re here.',
   },
   {
     icon: MapPin,

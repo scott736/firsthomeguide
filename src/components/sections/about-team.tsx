@@ -1,10 +1,12 @@
-import { ArrowRight, BookCheck, Globe, Scale, Shield } from 'lucide-react';
+import { ArrowRight, BookCheck, Globe, Handshake, Scale, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { LENDCITY } from '@/lib/lendcity';
 
 const values = [
   {
     title: 'Neutral & Unbiased',
     description:
-      'No mortgage applications at the end. No referral links. No sponsored content. Every recommendation is based on publicly available government data — never a financial product pitch.',
+      'Our education is free and unbiased — built on government data and real experience. When you\u2019re ready for next steps, our licensed team provides personalized guidance with no pressure.',
     icon: Scale,
   },
   {
@@ -112,8 +114,9 @@ export default function AboutTeam() {
           <div>
             <h3 className="text-lg font-semibold">Verified & up to date</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-snug">
-              Content reviewed against official government sources and updated
-              regularly. Last comprehensive review: March 2026.
+              Content reviewed by {LENDCITY.name}&apos;s licensed mortgage
+              professionals and verified against official government sources.
+              Updated regularly. Last comprehensive review: March 2026.
             </p>
           </div>
           <div className="bg-chart-1/10 flex-shrink-0 rounded-lg px-4 py-2 text-center">
@@ -142,6 +145,31 @@ export default function AboutTeam() {
           <p className="text-muted-foreground mt-1 text-sm">
             cost — free forever
           </p>
+        </div>
+      </div>
+
+      {/* Beyond the Guide */}
+      <div className="bg-muted/30 mt-10 rounded-lg border p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="bg-chart-1/10 flex size-9 items-center justify-center rounded-md">
+                <Handshake className="text-chart-1 size-5" />
+              </div>
+              <h3 className="text-lg font-semibold">Beyond the Guide</h3>
+            </div>
+            <p className="text-muted-foreground mt-3 text-sm leading-snug max-w-xl">
+              When you&apos;re ready to move from learning to buying,{' '}
+              {LENDCITY.name}&apos;s concierge team is here. We walk you through
+              every stage — pre-approval, house hunting, offer strategy, and
+              closing — with licensed professionals by your side the entire way.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <Button asChild size="lg">
+              <a href={LENDCITY.bookingUrl}>Book a Free Call</a>
+            </Button>
+          </div>
         </div>
       </div>
 
