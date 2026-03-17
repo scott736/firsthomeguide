@@ -27,12 +27,12 @@ export default function Logo({
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 40 30"
+        viewBox="0 0 26 28"
         fill="none"
         className={cn('w-7 object-contain', iconClassName)}
       >
         <path
-          d="M23.1469 0.00488281L17.4401 10.1355H39.5096L28.3228 29.569H16.6081L22.3149 19.4384H0.245361L11.4322 0.00488281H23.1469Z"
+          d="M13 4 L1 13 H4 V24 H10 V17 H16 V24 H22 V13 H25 Z"
           fill="#9A5CD0"
         />
       </svg>
