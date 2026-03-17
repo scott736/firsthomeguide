@@ -24,10 +24,10 @@ const Footer = ({ currentPage }: FooterProps) => {
           iconClassName="w-10"
         />
 
-        <h2 className="my-8 text-2xl lg:my-6 lg:text-5xl">
+        <p className="my-8 text-2xl lg:my-6 lg:text-5xl">
           Your home buying journey{' '}
           <span className="text-gradient">starts here.</span>
-        </h2>
+        </p>
 
         <div className="mx-auto flex max-w-sm justify-center gap-4.5">
           <Button className="flex-1" asChild>

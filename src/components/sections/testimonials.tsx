@@ -129,6 +129,7 @@ const ReviewCard = ({
           width={32}
           height={32}
           alt={`${name} avatar`}
+          loading="lazy"
           src={img}
         />
         <div className="flex flex-col">

@@ -161,6 +161,7 @@ const FeaturesTabsSection = () => {
                               alt={tab.title}
                               width={tab.image.width}
                               height={tab.image.height}
+                              loading="lazy"
                               className="object-contain invert dark:invert-0"
                             />
                           </motion.div>
@@ -198,6 +199,7 @@ const FeaturesTabsSection = () => {
                   alt={tab.title}
                   width={tab.image.width}
                   height={tab.image.height}
+                  loading="lazy"
                   className="object-contain invert dark:invert-0"
                 />
               </motion.div>

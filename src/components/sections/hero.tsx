@@ -48,7 +48,9 @@ export default function Hero() {
         {/* Hero Image */}
         <img
           src="/images/home/hero.webp"
-          alt="App screenshot"
+          alt="FirstHomeGuide.ca — Canada's complete first-time home buyer guide showing mortgage calculator and step-by-step modules"
+          fetchpriority="high"
+          loading="eager"
           className="ring-foreground/5 mt-10 w-full rounded-xs shadow-2xl ring-6 invert md:mt-20 md:rounded-sm md:px-[1px] md:ring-16 lg:mt-30 dark:invert-0"
           width={1440}
           height={905}

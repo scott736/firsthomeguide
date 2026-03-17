@@ -94,6 +94,7 @@ const imageURL = new URL(finalImage, Astro.url);
   content={SITE_METADATA.openGraph.images[0].height.toString()}
 />
 <meta property="og:image:alt" content={SITE_METADATA.openGraph.images[0].alt} />
+<meta property="og:locale" content="en_CA" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content={SITE_METADATA.twitter.card} />
@@ -102,3 +103,7 @@ const imageURL = new URL(finalImage, Astro.url);
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={imageURL} />
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
+
+{Astro.url.pathname === '/' && (
+  <link rel="preload" as="image" type="image/webp" href="/images/home/hero.webp" />
+)}
