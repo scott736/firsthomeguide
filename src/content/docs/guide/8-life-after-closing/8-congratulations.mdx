@@ -5,6 +5,9 @@ sidebar:
   order: 8
 ---
 
+import InteractiveChecklist from '../../../../components/sections/interactive-checklist.tsx';
+import PdfDownloadButton from '../../../../components/sections/pdf-download-button.tsx';
+
 
 You have made it through all eight modules of the FirstHomeGuide.ca education program. From assessing your readiness and saving your down payment to finding the right home, negotiating your offer, and closing the deal — you now have the knowledge to navigate the Canadian home buying process with confidence.
 
@@ -14,32 +17,65 @@ This is no small accomplishment. Buying your first home is one of the biggest fi
 
 The first week in your new home is exciting — and busy. Here are the essential tasks to take care of right away:
 
+<PdfDownloadButton client:visible label="Print this checklist" />
+
+<InteractiveChecklist
+  client:visible
+  checklistId="first-week"
+  items={[
+    { id: "safety-1", label: "Change all the locks — you do not know who has copies of the existing keys ($200–$500 for a locksmith, or $50–$150 DIY)", category: "Safety and Security (Day 1-2)" },
+    { id: "safety-2", label: "Locate the main water shut-off valve — typically in the basement, near the front of the house, or near the water meter", category: "Safety and Security (Day 1-2)" },
+    { id: "safety-3", label: "Locate the electrical panel — know how to reset a tripped breaker and label each circuit", category: "Safety and Security (Day 1-2)" },
+    { id: "safety-4", label: "Locate the gas shut-off valve (if applicable) — usually near the gas meter on the exterior", category: "Safety and Security (Day 1-2)" },
+    { id: "safety-5", label: "Locate the furnace and water heater — check their age on the labels", category: "Safety and Security (Day 1-2)" },
+    { id: "safety-6", label: "Test all smoke detectors and carbon monoxide detectors — replace batteries or units older than 10 years", category: "Safety and Security (Day 1-2)" },
+    { id: "utility-1", label: "Confirm all utilities are active in your name — electricity, gas, water, sewer, internet", category: "Utilities and Services (Day 1-3)" },
+    { id: "utility-2", label: "Set up garbage and recycling collection with your municipality", category: "Utilities and Services (Day 1-3)" },
+    { id: "utility-3", label: "Set up mail forwarding with Canada Post (~$100–$150 for 12 months)", category: "Utilities and Services (Day 1-3)" },
+    { id: "utility-4", label: "Record all utility meter readings — take photos for your baseline", category: "Utilities and Services (Day 1-3)" },
+    { id: "admin-1", label: "Update your address with the CRA (via My Account portal)", category: "Administrative Updates (First Week)" },
+    { id: "admin-2", label: "Update your driver's licence and health card", category: "Administrative Updates (First Week)" },
+    { id: "admin-3", label: "Update your address with your bank, credit cards, and insurance companies", category: "Administrative Updates (First Week)" },
+    { id: "admin-4", label: "Update your address with your employer for payroll and tax purposes", category: "Administrative Updates (First Week)" },
+    { id: "admin-5", label: "Notify your auto insurance company — your address affects premiums", category: "Administrative Updates (First Week)" },
+    { id: "settle-1", label: "Do a thorough walkthrough — check every room, closet, outlet, faucet, and light switch", category: "Getting Settled (First Week)" },
+    { id: "settle-2", label: "Clean before unpacking — focus on kitchens, bathrooms, and floors", category: "Getting Settled (First Week)" },
+    { id: "settle-3", label: "Meet your neighbours and introduce yourself", category: "Getting Settled (First Week)" },
+    { id: "settle-4", label: "Take photos of every room to document the current condition", category: "Getting Settled (First Week)" },
+  ]}
+/>
+
+<details>
+<summary>View static checklist (no JavaScript required)</summary>
+
 ### Safety and Security (Day 1-2)
-- [ ] **Change all the locks.** This is non-negotiable. You do not know who has copies of the existing keys — previous owners, their family, former cleaners, contractors, neighbours, or past tenants. A locksmith can re-key all the locks in your home for $200 to $500, or you can replace the lock cylinders yourself for $50 to $150.
-- [ ] **Locate the main water shut-off valve.** Know where it is and how to turn it off. If a pipe bursts at 2:00 AM, you need to stop the water flow immediately. The shut-off is typically in the basement, near the front of the house, or near the water meter.
-- [ ] **Locate the electrical panel.** Know where your circuit breaker panel is and how to reset a tripped breaker. Label each breaker with the area or appliance it controls if the previous owner did not already do so.
-- [ ] **Locate the gas shut-off valve** (if applicable). If your home has natural gas, know where the main gas shut-off is located (usually near the gas meter on the exterior of the house) and how to turn it off in an emergency.
-- [ ] **Locate the furnace and water heater.** Know where they are, how old they are (check the labels), and how to turn them off if needed.
-- [ ] **Test all smoke detectors and carbon monoxide detectors.** Press the test button on each unit. Replace batteries if they are old, and replace the entire unit if it is more than 10 years old. Check that there is at least one smoke detector on every level of the home and near all sleeping areas.
+- Change all the locks
+- Locate the main water shut-off valve
+- Locate the electrical panel
+- Locate the gas shut-off valve (if applicable)
+- Locate the furnace and water heater
+- Test all smoke detectors and carbon monoxide detectors
 
 ### Utilities and Services (Day 1-3)
-- [ ] **Confirm all utilities are active** in your name — electricity, gas, water, sewer, internet, and any other services.
-- [ ] **Set up garbage and recycling collection.** Contact your municipality to confirm your pickup schedule and any setup steps for a new account.
-- [ ] **Set up mail forwarding** with Canada Post. The service costs approximately $100 to $150 for 12 months and redirects mail from your old address to your new one. This catches any mail you forgot to update.
-- [ ] **Record all utility meter readings.** Take photos of your electricity, gas, and water meters on move-in day so you have a baseline and can verify that your first bills are accurate.
+- Confirm all utilities are active in your name
+- Set up garbage and recycling collection
+- Set up mail forwarding with Canada Post
+- Record all utility meter readings
 
 ### Administrative Updates (First Week)
-- [ ] **Update your address with the CRA.** This is important for receiving tax credits, benefits (like the GST/HST credit and Canada Child Benefit), and correspondence. You can update your address through your My Account portal on the CRA website.
-- [ ] **Update your driver's licence and health card.** Most provinces require you to update these within a certain number of days of moving.
-- [ ] **Update your address with your bank, credit cards, and insurance companies.**
-- [ ] **Update your address with your employer** for payroll and tax purposes.
-- [ ] **Notify your auto insurance company.** Your address affects your auto insurance premiums — a change of address could increase or decrease your rate.
+- Update your address with the CRA
+- Update your driver's licence and health card
+- Update your address with bank, credit cards, and insurance
+- Update your address with your employer
+- Notify your auto insurance company
 
 ### Getting Settled (First Week)
-- [ ] **Do a thorough walkthrough** now that the home is empty (or mostly empty). Check every room, closet, outlet, faucet, and light switch. Note anything that needs attention and prioritize repairs.
-- [ ] **Clean before unpacking.** This is the easiest time to deep clean — before furniture and boxes are everywhere. Focus on kitchens, bathrooms, and floors.
-- [ ] **Meet your neighbours.** Introduce yourself. Good neighbour relationships make homeownership more enjoyable and can be invaluable when you need a recommendation for a plumber, advice on the neighbourhood, or someone to keep an eye on your house while you are away.
-- [ ] **Take photos of every room.** Document the current condition of the home for your records. These photos can be useful for insurance purposes and for tracking improvements over time.
+- Do a thorough walkthrough
+- Clean before unpacking
+- Meet your neighbours
+- Take photos of every room
+
+</details>
 
 :::tip
 You do not need to do everything in the first week. Focus on safety (locks, shut-offs, detectors), essential utilities, and the most critical administrative updates. Everything else — decorating, organizing, and non-urgent repairs — can wait. Give yourself permission to settle in gradually.

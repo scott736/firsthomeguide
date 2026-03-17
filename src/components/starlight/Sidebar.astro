@@ -1,0 +1,11 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import GuideProgressWidget from '../guide-progress-widget.astro';
+---
+
+<div class="guide-progress-wrapper" style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--sl-color-gray-6, var(--border, rgba(128,128,128,0.2)));">
+  <GuideProgressWidget />
+</div>
+
+<Default {...Astro.props}><slot /></Default>

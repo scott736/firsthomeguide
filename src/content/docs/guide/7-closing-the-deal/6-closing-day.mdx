@@ -5,6 +5,9 @@ sidebar:
   order: 6
 ---
 
+import InteractiveChecklist from '../../../../components/sections/interactive-checklist.tsx';
+import PdfDownloadButton from '../../../../components/sections/pdf-download-button.tsx';
+
 
 Closing day is the day you officially become a homeowner. It is the day the property's title transfers from the seller to you, the mortgage is registered, funds are exchanged, and you receive the keys to your new home. It is exciting — but it is also a day with a lot of moving parts happening behind the scenes.
 
@@ -130,27 +133,57 @@ Do not schedule your move for the exact closing date if you can avoid it. Try to
 
 Use this checklist to make sure you are prepared for closing day:
 
+<PdfDownloadButton client:visible label="Print this checklist" />
+
+<InteractiveChecklist
+  client:visible
+  checklistId="closing-day"
+  items={[
+    { id: "before-1", label: "Home insurance arranged and proof sent to lawyer and lender", category: "Before Closing Day" },
+    { id: "before-2", label: "Utility accounts set up in your name for the closing date", category: "Before Closing Day" },
+    { id: "before-3", label: "Closing funds delivered to your lawyer (certified cheque or wire transfer)", category: "Before Closing Day" },
+    { id: "before-4", label: "All documents signed at your lawyer's office", category: "Before Closing Day" },
+    { id: "before-5", label: "Final walkthrough completed", category: "Before Closing Day" },
+    { id: "before-6", label: "Movers booked (for closing day afternoon or the following day)", category: "Before Closing Day" },
+    { id: "day-1", label: "Phone charged and available — your lawyer and realtor may need to reach you", category: "On Closing Day" },
+    { id: "day-2", label: "Keep the day as free as possible — avoid scheduling work meetings or other commitments", category: "On Closing Day" },
+    { id: "day-3", label: "Wait for confirmation from your lawyer or realtor that keys are ready", category: "On Closing Day" },
+    { id: "day-4", label: "Pick up keys or meet your realtor for key handover", category: "On Closing Day" },
+    { id: "after-1", label: "Do a quick walk through the empty home", category: "After Receiving Keys" },
+    { id: "after-2", label: "Test all light switches, outlets, and faucets", category: "After Receiving Keys" },
+    { id: "after-3", label: "Locate the electrical panel, water shut-off, and furnace", category: "After Receiving Keys" },
+    { id: "after-4", label: "Check that all included appliances and fixtures are present", category: "After Receiving Keys" },
+    { id: "after-5", label: "Change the locks (or have a locksmith scheduled)", category: "After Receiving Keys" },
+    { id: "after-6", label: "Take photos of all meter readings (electricity, gas, water)", category: "After Receiving Keys" },
+  ]}
+/>
+
+<details>
+<summary>View static checklist (no JavaScript required)</summary>
+
 **Before Closing Day:**
-- [ ] Home insurance arranged and proof sent to lawyer and lender
-- [ ] Utility accounts set up in your name for the closing date
-- [ ] Closing funds delivered to your lawyer (certified cheque or wire transfer)
-- [ ] All documents signed at your lawyer's office
-- [ ] Final walkthrough completed
-- [ ] Movers booked (for closing day afternoon or the following day)
+- Home insurance arranged and proof sent to lawyer and lender
+- Utility accounts set up in your name for the closing date
+- Closing funds delivered to your lawyer (certified cheque or wire transfer)
+- All documents signed at your lawyer's office
+- Final walkthrough completed
+- Movers booked (for closing day afternoon or the following day)
 
 **On Closing Day:**
-- [ ] Phone charged and available — your lawyer and realtor may need to reach you
-- [ ] Keep the day as free as possible — avoid scheduling work meetings or other commitments
-- [ ] Wait for confirmation from your lawyer or realtor that keys are ready
-- [ ] Pick up keys or meet your realtor for key handover
+- Phone charged and available — your lawyer and realtor may need to reach you
+- Keep the day as free as possible
+- Wait for confirmation from your lawyer or realtor that keys are ready
+- Pick up keys or meet your realtor for key handover
 
 **After Receiving Keys:**
-- [ ] Do a quick walk through the empty home
-- [ ] Test all light switches, outlets, and faucets
-- [ ] Locate the electrical panel, water shut-off, and furnace
-- [ ] Check that all included appliances and fixtures are present
-- [ ] Change the locks (or have a locksmith scheduled)
-- [ ] Take photos of all meter readings (electricity, gas, water)
+- Do a quick walk through the empty home
+- Test all light switches, outlets, and faucets
+- Locate the electrical panel, water shut-off, and furnace
+- Check that all included appliances and fixtures are present
+- Change the locks (or have a locksmith scheduled)
+- Take photos of all meter readings (electricity, gas, water)
+
+</details>
 
 ---
 
