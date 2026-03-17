@@ -1,18 +1,57 @@
 ---
+import AffordabilityCalculator from '@/components/sections/affordability-calculator';
+import ClosingCostCalculator from '@/components/sections/closing-cost-calculator';
+import ComparisonTools from '@/components/sections/comparison-tools';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
 import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
 <DefaultLayout
-  title="Home Buying Calculators — FirstHomeGuide.ca"
-  description="Free mortgage calculator for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
+  title="Home Buying Calculators & Tools — FirstHomeGuide.ca"
+  description="Free mortgage calculator, affordability calculator, closing cost estimator, and comparison tools for Canadian first-time home buyers. Estimate monthly payments, CMHC insurance, stress test qualification, and land transfer taxes by province."
 >
+  {/* Page H1 */}
+  <section class="section-padding pb-0">
+    <div class="container max-w-screen-xl">
+      <h1 class="text-4xxl leading-tight tracking-tight md:text-5xl lg:text-6xxl">
+        Home Buying Calculators &amp; <span class="text-gradient">Tools</span>
+      </h1>
+      <p class="text-muted-foreground mt-4 max-w-2xl text-lg leading-snug md:text-xl">
+        Free interactive tools to help you plan your home purchase — built for
+        Canadian first-time buyers with 2026 rules and rates.
+      </p>
+    </div>
+  </section>
+
+  {/* 1. Mortgage Calculator */}
   <MortgageCalculator client:load />
 
-  <ProvinceSelector client:load />
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
-  {/* Related guide modules */}
+  {/* 2. Affordability Calculator */}
+  <AffordabilityCalculator client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 3. Closing Cost Calculator */}
+  <ClosingCostCalculator client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 4. Comparison Tools (Rent vs Buy, FHSA vs RRSP, Fixed vs Variable) */}
+  <ComparisonTools client:visible />
+
+  {/* Section divider */}
+  <div class="container max-w-screen-xl"><hr class="border-border" /></div>
+
+  {/* 5. Province Selector */}
+  <ProvinceSelector client:visible />
+
+  {/* 6. Continue Learning */}
   <section class="section-padding border-t">
     <div class="container max-w-screen-xl">
       <h2 class="mb-3 text-2xl font-semibold tracking-tight">
