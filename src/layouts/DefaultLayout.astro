@@ -37,6 +37,6 @@ const currentPath = Astro.url.pathname;
         navigator.serviceWorker.register('/sw.js').catch(() => {});
       }
     </script>
-    <FloatingCta client:load currentPage={currentPath} />
+    <FloatingCta client:load />
   </body>
 </html>
