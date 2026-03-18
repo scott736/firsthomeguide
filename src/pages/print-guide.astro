@@ -1,0 +1,604 @@
+---
+import { getCollection, render } from 'astro:content';
+import { GUIDE_MODULES } from '@/lib/guide-sections';
+
+// Fetch all guide docs
+const allDocs = await getCollection('docs', (entry) =>
+  entry.id.startsWith('guide/'),
+);
+const docsMap = new Map(allDocs.map((doc) => [doc.id, doc]));
+
+// Build ordered sections matching GUIDE_MODULES order
+const orderedSections: {
+  id: string;
+  title: string;
+  moduleName: string;
+  Content: any;
+}[] = [];
+
+for (const mod of GUIDE_MODULES) {
+  for (const section of mod.pages) {
+    const doc = docsMap.get(section.id);
+    if (doc) {
+      const { Content } = await render(doc);
+      orderedSections.push({
+        id: section.id,
+        title: doc.data.title,
+        moduleName: mod.name,
+        Content,
+      });
+    }
+  }
+}
+
+// Group by module for rendering with module headers
+const moduleGroups: {
+  name: string;
+  sections: typeof orderedSections;
+}[] = [];
+
+let currentModule = '';
+for (const section of orderedSections) {
+  if (section.moduleName !== currentModule) {
+    currentModule = section.moduleName;
+    moduleGroups.push({ name: currentModule, sections: [] });
+  }
+  moduleGroups[moduleGroups.length - 1].sections.push(section);
+}
+---
+
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>My Custom Guide — FirstHomeGuide.ca</title>
+    <style>
+      /* Base print-ready styles */
+      :root {
+        --text: #1a1a2e;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --accent: #7c3aed;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--text);
+        background: #fff;
+      }
+
+      /* Loading state */
+      #loading-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        gap: 1rem;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      #loading-state .spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Empty state */
+      #empty-state {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      #empty-state h2 {
+        font-size: 1.5rem;
+      }
+
+      #empty-state a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Print controls bar */
+      #print-controls {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 1.5rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      #print-controls .info {
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
+      #print-controls .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text);
+        transition: background 0.15s;
+      }
+
+      .btn:hover {
+        background: #f9fafb;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+
+      .btn-primary:hover {
+        background: #6d28d9;
+      }
+
+      /* Content area */
+      #guide-content {
+        display: none;
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+
+      /* Cover page */
+      .cover-page {
+        text-align: center;
+        padding: 4rem 0 3rem;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 2rem;
+      }
+
+      .cover-page h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .cover-page p {
+        color: var(--muted);
+        font-size: 1.0625rem;
+      }
+
+      .cover-page .date {
+        font-size: 0.875rem;
+        margin-top: 1rem;
+      }
+
+      /* Table of contents */
+      .toc {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .toc h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .toc-module {
+        margin-bottom: 0.75rem;
+      }
+
+      .toc-module-name {
+        font-weight: 600;
+        font-size: 0.9375rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .toc-section {
+        padding-left: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      /* Module header */
+      .module-header {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+        page-break-before: always;
+      }
+
+      .module-header:first-child {
+        page-break-before: auto;
+      }
+
+      .module-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      /* Section content */
+      .print-section {
+        margin-bottom: 2.5rem;
+        page-break-inside: avoid;
+      }
+
+      .print-section h1 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        padding-bottom: 0.375rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* Content typography */
+      .print-section h2 {
+        font-size: 1.175rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .print-section h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-top: 1.25rem;
+        margin-bottom: 0.375rem;
+      }
+
+      .print-section p {
+        margin-bottom: 0.75rem;
+      }
+
+      .print-section ul,
+      .print-section ol {
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+      }
+
+      .print-section li {
+        margin-bottom: 0.25rem;
+      }
+
+      .print-section table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+        font-size: 0.9375rem;
+      }
+
+      .print-section th,
+      .print-section td {
+        border: 1px solid var(--border);
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+      }
+
+      .print-section th {
+        background: #f9fafb;
+        font-weight: 600;
+      }
+
+      .print-section blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        color: var(--muted);
+      }
+
+      .print-section code {
+        background: #f3f4f6;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+      }
+
+      .print-section a {
+        color: var(--accent);
+      }
+
+      /* Starlight aside/callout boxes */
+      .print-section .starlight-aside {
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 0.375rem;
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        background: #fafafa;
+      }
+
+      /* Footer */
+      .print-footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      /* Print media */
+      @media print {
+        #print-controls,
+        #loading-state {
+          display: none !important;
+        }
+
+        body {
+          font-size: 11pt;
+          line-height: 1.5;
+        }
+
+        #guide-content {
+          padding: 0;
+        }
+
+        .module-header {
+          page-break-before: always;
+        }
+
+        .module-header:first-child {
+          page-break-before: auto;
+        }
+
+        .print-section {
+          page-break-inside: avoid;
+        }
+
+        h2,
+        h3 {
+          page-break-after: avoid;
+        }
+
+        table,
+        img {
+          page-break-inside: avoid;
+        }
+
+        a[href]::after {
+          content: '';
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading state -->
+    <div id="loading-state">
+      <div class="spinner"></div>
+      <p>Preparing your custom guide...</p>
+    </div>
+
+    <!-- Empty state (no selections) -->
+    <div id="empty-state">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="color: var(--muted)"
+      >
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+      <h2>No sections selected</h2>
+      <p style="color: var(--muted)">
+        Go back and pick the sections you want in your custom guide.
+      </p>
+      <a href="/my-guide">Choose Sections</a>
+    </div>
+
+    <!-- Print controls -->
+    <div id="print-controls">
+      <span class="info" id="section-count"></span>
+      <div class="actions">
+        <a href="/my-guide" class="btn">Edit Selections</a>
+        <button class="btn btn-primary" onclick="window.print()">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path
+              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+            ></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print / Save as PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Rendered guide content (hidden until JS processes it) -->
+    <div id="guide-content">
+      <!-- Cover page -->
+      <div class="cover-page">
+        <h1>My Custom Home Buying Guide</h1>
+        <p>FirstHomeGuide.ca</p>
+        <p class="date" id="print-date"></p>
+      </div>
+
+      <!-- Table of contents (populated by JS) -->
+      <div class="toc" id="toc">
+        <h2>Contents</h2>
+        <div id="toc-list"></div>
+      </div>
+
+      {
+        moduleGroups.map((group) => (
+          <div data-module={group.name}>
+            <div class="module-header">
+              <h2>{group.name}</h2>
+            </div>
+            {group.sections.map((section) => (
+              <section
+                class="print-section"
+                data-section-id={section.id}
+              >
+                <h1>{section.title}</h1>
+                <section.Content />
+              </section>
+            ))}
+          </div>
+        ))
+      }
+
+      <div class="print-footer">
+        <p>
+          Generated from FirstHomeGuide.ca — Canada's free first-time home
+          buyer education platform.
+        </p>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        const STORAGE_KEY = 'fhg-custom-guide';
+        let selectedIds;
+
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          selectedIds = stored ? new Set(JSON.parse(stored)) : new Set();
+        } catch {
+          selectedIds = new Set();
+        }
+
+        const loading = document.getElementById('loading-state');
+        const empty = document.getElementById('empty-state');
+        const controls = document.getElementById('print-controls');
+        const content = document.getElementById('guide-content');
+
+        if (selectedIds.size === 0) {
+          loading.style.display = 'none';
+          empty.style.display = 'flex';
+          return;
+        }
+
+        // Remove unselected sections
+        document
+          .querySelectorAll('[data-section-id]')
+          .forEach(function (el) {
+            if (!selectedIds.has(el.getAttribute('data-section-id'))) {
+              el.remove();
+            }
+          });
+
+        // Remove empty module groups (where all sections were removed)
+        document.querySelectorAll('[data-module]').forEach(function (el) {
+          if (el.querySelectorAll('[data-section-id]').length === 0) {
+            el.remove();
+          }
+        });
+
+        // Build table of contents
+        var tocList = document.getElementById('toc-list');
+        if (tocList) {
+          var html = '';
+          document.querySelectorAll('[data-module]').forEach(function (mod) {
+            var modName = mod.getAttribute('data-module');
+            html += '<div class="toc-module">';
+            html +=
+              '<div class="toc-module-name">' +
+              modName +
+              '</div>';
+            html += '<div class="toc-section">';
+            mod
+              .querySelectorAll('.print-section h1')
+              .forEach(function (h1) {
+                html += h1.textContent + '<br>';
+              });
+            html += '</div></div>';
+          });
+          tocList.innerHTML = html;
+        }
+
+        // Set date
+        var dateEl = document.getElementById('print-date');
+        if (dateEl) {
+          dateEl.textContent = new Date().toLocaleDateString('en-CA', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          });
+        }
+
+        // Count remaining sections
+        var remaining = document.querySelectorAll(
+          '[data-section-id]',
+        ).length;
+        var countEl = document.getElementById('section-count');
+        if (countEl) {
+          countEl.textContent =
+            remaining +
+            ' section' +
+            (remaining !== 1 ? 's' : '') +
+            ' in your custom guide';
+        }
+
+        // Show content
+        loading.style.display = 'none';
+        controls.style.display = 'flex';
+        content.style.display = 'block';
+      })();
+    </script>
+  </body>
+</html>
