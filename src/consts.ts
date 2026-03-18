@@ -47,7 +47,7 @@ export const SITE_METADATA = {
     siteName: 'FirstHomeGuide.ca',
     images: [
       {
-        url: '/images/og-image.jpeg',
+        url: '/images/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'FirstHomeGuide.ca — Your Free Step-by-Step Guide to Buying Your First Home in Canada',
@@ -58,7 +58,7 @@ export const SITE_METADATA = {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ['/images/og-image.jpeg'],
+    images: ['/images/og-image.webp'],
     creator: '@FirstHomeGuideCA',
   },
 };

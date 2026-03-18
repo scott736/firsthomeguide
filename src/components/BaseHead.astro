@@ -31,11 +31,10 @@ if (pathname === '/') {
 const finalTitle = title || SITE_METADATA.title.default;
 const finalDescription = description || SITE_METADATA.description;
 
-// Always use JPEG OG image — SVGs are not rendered by most social crawlers
+// Use WebP OG image — SVGs are not rendered by most social crawlers
 const finalImage = image || SITE_METADATA.openGraph.images[0].url;
 const imageURL = new URL(finalImage, Astro.url);
-// Keep JPEG fallback for Twitter/X which requires raster images
-const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
+const twitterImageURL = new URL('/images/og-image.webp', Astro.url);
 ---
 
 <!-- Structured Data -->
@@ -116,7 +115,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
   content={SITE_METADATA.openGraph.images[0].height.toString()}
 />
 <meta property="og:image:alt" content={SITE_METADATA.openGraph.images[0].alt} />
-<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:type" content="image/webp" />
 <meta property="og:locale" content="en_CA" />
 
 <!-- Twitter -->

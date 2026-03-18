@@ -7,7 +7,7 @@ Plasma Astro Template is a premium template built by https://www.shadcnblocks.co
 
 ## Screenshot
 
-![Plasma Astro Template screenshot](./public/images/og-image.jpeg)
+![Plasma Astro Template screenshot](./public/images/og-image.webp)
 
 ## Getting Started
 
