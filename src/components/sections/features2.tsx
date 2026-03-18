@@ -116,12 +116,15 @@ const Features2 = () => {
                         opacity={0.3}
                         horizontal={true}
                         vertical={false}
-                        horizontalCoordinatesGenerator={(props) => [
-                          props.yAxis.scale(25),
-                          props.yAxis.scale(50),
-                          props.yAxis.scale(75),
-                          props.yAxis.scale(100),
-                        ]}
+                        horizontalCoordinatesGenerator={(props) => {
+                          if (typeof props.yAxis?.scale !== 'function') return [];
+                          return [
+                            props.yAxis.scale(25),
+                            props.yAxis.scale(50),
+                            props.yAxis.scale(75),
+                            props.yAxis.scale(100),
+                          ];
+                        }}
                       />
                       <XAxis
                         dataKey="month"
