@@ -1,9 +1,4 @@
-'use client';
-
-import { useRef } from 'react';
-
 import { ArrowRight, Home, MapPin, Quote } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -74,117 +69,81 @@ const STORIES: SuccessStory[] = [
 const VISIBLE_STORIES = STORIES.slice(0, 4);
 
 export default function SuccessStories() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
-
   return (
-    <section className="section-padding" ref={sectionRef}>
+    <section className="section-padding">
       <div className="container">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <motion.h2
-            className="text-4xxl leading-tight tracking-tight md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <h2 className="text-4xxl leading-tight tracking-tight md:text-5xl">
             From guide readers to{' '}
             <span className="text-gradient">homeowners</span>
-          </motion.h2>
-          <motion.p
-            className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug"
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.15,
-            }}
-          >
+          </h2>
+          <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug">
             Real stories from Canadians who used FirstHomeGuide.ca to buy their
             first home
-          </motion.p>
+          </p>
         </div>
 
         {/* Stories Grid */}
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {VISIBLE_STORIES.map((story, index) => (
-            <motion.div
+          {VISIBLE_STORIES.map((story) => (
+            <Card
               key={story.name}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              transition={{
-                duration: 0.5,
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0.2 + index * 0.1,
-              }}
+              className={cn(
+                'h-full bg-transparent p-6 transition-colors duration-200 md:p-8',
+                'hover:bg-accent/40',
+              )}
             >
-              <Card
-                className={cn(
-                  'h-full bg-transparent p-6 transition-colors duration-200 md:p-8',
-                  'hover:bg-accent/40',
-                )}
-              >
-                <CardHeader className="flex items-start gap-4 p-0">
-                  <div className="flex w-full items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <img
-                        className="size-10 rounded-full"
-                        width={40}
-                        height={40}
-                        alt={story.name}
-                        loading="lazy"
-                        src={story.avatar}
-                      />
-                      <div>
-                        <p className="text-sm font-bold">{story.name}</p>
-                        <p className="text-muted-foreground flex items-center gap-1 text-xs">
-                          <MapPin className="size-3" />
-                          {story.location}
-                        </p>
-                      </div>
+              <CardHeader className="flex items-start gap-4 p-0">
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img
+                      className="size-10 rounded-full"
+                      width={40}
+                      height={40}
+                      alt={`${story.name} avatar`}
+                      loading="lazy"
+                      src={story.avatar}
+                    />
+                    <div>
+                      <p className="text-sm font-bold">{story.name}</p>
+                      <p className="text-muted-foreground flex items-center gap-1 text-xs">
+                        <MapPin className="size-3" />
+                        {story.location}
+                      </p>
                     </div>
-                    <Quote className="text-chart-1/20 size-8 shrink-0" />
                   </div>
-                </CardHeader>
+                  <Quote className="text-chart-1/20 size-8 shrink-0" />
+                </div>
+              </CardHeader>
 
-                <CardContent className="space-y-4 p-0 pt-4">
-                  <blockquote className="text-muted-foreground text-sm leading-relaxed">
-                    &ldquo;{story.story}&rdquo;
-                  </blockquote>
+              <CardContent className="space-y-4 p-0 pt-4">
+                <blockquote className="text-muted-foreground text-sm leading-relaxed">
+                  &ldquo;{story.story}&rdquo;
+                </blockquote>
 
-                  <div className="flex flex-wrap gap-2">
-                    <Badge
-                      variant="secondary"
-                      className="gap-1.5 text-xs font-normal"
-                    >
-                      <Home className="size-3" />
-                      {story.purchased}
-                    </Badge>
-                    <Badge
-                      variant="outline"
-                      className="text-xs font-normal"
-                    >
-                      {story.savings}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge
+                    variant="secondary"
+                    className="gap-1.5 text-xs font-normal"
+                  >
+                    <Home className="size-3" />
+                    {story.purchased}
+                  </Badge>
+                  <Badge
+                    variant="outline"
+                    className="text-xs font-normal"
+                  >
+                    {story.savings}
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          className="mt-14 flex flex-col items-center gap-3 text-center"
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-            delay: 0.6,
-          }}
-        >
+        <div className="mt-14 flex flex-col items-center gap-3 text-center">
           <Button asChild size="lg" className="text-base">
             <a href="/guide/welcome/">
               Start Your Journey
@@ -194,7 +153,7 @@ export default function SuccessStories() {
           <p className="text-muted-foreground text-sm">
             Free, no account required
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

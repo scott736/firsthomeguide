@@ -1,9 +1,4 @@
-'use client';
-
-import { useRef } from 'react';
-
 import { BookOpen, FileCheck, Home, Key, Phone } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -47,37 +42,20 @@ const STEPS = [
 ];
 
 const Concierge = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-
   return (
-    <section className="section-padding" ref={sectionRef}>
+    <section className="section-padding">
       <div className="container">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <motion.h2
-            className="text-4xxl leading-tight tracking-tight md:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <h2 className="text-4xxl leading-tight tracking-tight md:text-5xl">
             From Learning to Keys —{' '}
             <span className="text-gradient">We're With You Every Step</span>
-          </motion.h2>
-          <motion.p
-            className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug"
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1],
-              delay: 0.15,
-            }}
-          >
+          </h2>
+          <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug">
             FirstHomeGuide.ca is built by {LENDCITY.name}, licensed mortgage
             professionals who provide free education and personalized concierge
             service for first-time home buyers across Canada.
-          </motion.p>
+          </p>
         </div>
 
         {/* Timeline Steps */}
@@ -85,15 +63,8 @@ const Concierge = () => {
           {STEPS.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <motion.div
+              <div
                 key={step.number}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.22, 1, 0.36, 1],
-                  delay: 0.2 + index * 0.1,
-                }}
                 className="relative"
               >
                 {/* Connector line (desktop only, between cards) */}
@@ -129,22 +100,13 @@ const Concierge = () => {
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* CTA */}
-        <motion.div
-          className="mt-14 flex flex-col items-center gap-4 text-center"
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-            delay: 0.7,
-          }}
-        >
+        <div className="mt-14 flex flex-col items-center gap-4 text-center">
           <Button asChild size="lg" className="text-base">
             <a href={LENDCITY.bookingUrl} target="_blank" rel="noopener noreferrer">
               Book Your Free Call
@@ -159,7 +121,7 @@ const Concierge = () => {
               {LENDCITY.phone}
             </a>
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
