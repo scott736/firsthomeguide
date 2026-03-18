@@ -425,6 +425,45 @@ const RegionShape = ({
         />
       )}
 
+      {/* Orbiting border particles (only visible when selected) */}
+      {isSelected && (
+        <g className="pointer-events-none">
+          {/* Use first sub-path for particle motion */}
+          <path
+            id={`path-${slug}`}
+            d={path.d.split(/\s*M\s/).filter(Boolean).map((s, i) => (i === 0 ? `M ${s}` : '')).join('')
+              || path.d}
+            fill="none"
+            stroke="none"
+          />
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <g key={i} filter="url(#particle-glow)">
+              <circle r={2.5 - i * 0.15} fill="var(--chart-2)" opacity={0.9 - i * 0.1}>
+                <animateMotion
+                  dur={`${8 + i * 2}s`}
+                  begin={`${i * 1.3}s`}
+                  repeatCount="indefinite"
+                  rotate="auto"
+                >
+                  <mpath href={`#path-${slug}`} />
+                </animateMotion>
+              </circle>
+              {/* Trailing glow */}
+              <circle r={4.5 - i * 0.2} fill="var(--chart-1)" opacity={0.25 - i * 0.03}>
+                <animateMotion
+                  dur={`${8 + i * 2}s`}
+                  begin={`${i * 1.3}s`}
+                  repeatCount="indefinite"
+                  rotate="auto"
+                >
+                  <mpath href={`#path-${slug}`} />
+                </animateMotion>
+              </circle>
+            </g>
+          ))}
+        </g>
+      )}
+
       {/* Main shape */}
       <motion.path
         d={path.d}
@@ -705,6 +744,22 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                     height="160%"
                   >
                     <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feComposite
+                      in="SourceGraphic"
+                      in2="blur"
+                      operator="over"
+                    />
+                  </filter>
+
+                  {/* Particle glow filter */}
+                  <filter
+                    id="particle-glow"
+                    x="-200%"
+                    y="-200%"
+                    width="500%"
+                    height="500%"
+                  >
+                    <feGaussianBlur stdDeviation="3" result="blur" />
                     <feComposite
                       in="SourceGraphic"
                       in2="blur"
