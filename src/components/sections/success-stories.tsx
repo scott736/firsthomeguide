@@ -132,7 +132,7 @@ export default function SuccessStories() {
                         className="size-10 rounded-full"
                         width={40}
                         height={40}
-                        alt={`${story.name} avatar`}
+                        alt={story.name}
                         loading="lazy"
                         src={story.avatar}
                       />

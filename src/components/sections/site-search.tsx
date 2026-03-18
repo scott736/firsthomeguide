@@ -454,6 +454,7 @@ export default function SiteSearch() {
                 type="button"
                 onClick={handleClose}
                 className="text-muted-foreground hover:text-foreground shrink-0"
+                aria-label="Close search"
               >
                 <X className="size-4" />
               </button>
