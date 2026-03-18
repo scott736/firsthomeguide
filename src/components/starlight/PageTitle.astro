@@ -7,6 +7,8 @@ const body = route.entry.body ?? '';
 const wordCount = body.split(/\s+/).filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.round(wordCount / 238));
 const pageId = route.entry.id;
+const pageTitle = route.entry.data.title;
+const pageDescription = route.entry.data.description || '';
 ---
 
 <div class="page-title-with-reading-time">
@@ -25,7 +27,56 @@ const pageId = route.entry.id;
     <svg class="save-icon-filled" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
     <span class="save-label">Save</span>
   </button>
+  <button
+    class="share-btn no-print"
+    title="Share this article with a friend"
+    aria-label="Share this article with a friend"
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+    <span>Share</span>
+  </button>
 </div>
+
+<!-- Share with a Friend dialog -->
+<dialog class="share-dialog no-print" data-title={pageTitle} data-description={pageDescription}>
+  <div class="share-dialog-inner">
+    <div class="share-dialog-header">
+      <h2>Share with a Friend</h2>
+      <button class="share-dialog-close" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <form class="share-form">
+      <p class="share-article-preview">{pageTitle}</p>
+
+      <label class="share-label">
+        Friend's email
+        <input type="email" name="friendEmail" required placeholder="friend@example.com" class="share-input" />
+      </label>
+
+      <label class="share-label">
+        Your email
+        <input type="email" name="senderEmail" required placeholder="you@example.com" class="share-input" />
+      </label>
+
+      <!-- Honeypot -->
+      <input type="text" name="website" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" />
+
+      <button type="submit" class="share-submit-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send
+      </button>
+    </form>
+
+    <div class="share-success" hidden>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>Sent!</strong> Your friend will receive the article shortly.</p>
+    </div>
+
+    <div class="share-error" hidden>
+      <p></p>
+    </div>
+  </div>
+</dialog>
 
 <style>
   .page-title-with-reading-time {
@@ -46,7 +97,8 @@ const pageId = route.entry.id;
     border-radius: 9999px;
     border: 1px solid var(--sl-color-gray-5, var(--border, rgba(128,128,128,0.2)));
   }
-  .save-to-guide-btn {
+  .save-to-guide-btn,
+  .share-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -62,7 +114,8 @@ const pageId = route.entry.id;
     opacity: 0.6;
     transition: opacity 0.15s, border-color 0.15s, color 0.15s;
   }
-  .save-to-guide-btn:hover {
+  .save-to-guide-btn:hover,
+  .share-btn:hover {
     opacity: 1;
   }
   .save-to-guide-btn.saved {
@@ -78,6 +131,124 @@ const pageId = route.entry.id;
   }
   .save-to-guide-btn.saved .save-icon-filled {
     display: inline;
+  }
+
+  /* Share dialog */
+  .share-dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    max-width: 420px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background: var(--sl-color-bg, #fff);
+    color: var(--sl-color-text, #1a1a1a);
+  }
+  .share-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .share-dialog-inner {
+    padding: 1.5rem;
+  }
+  .share-dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .share-dialog-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .share-dialog-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--sl-color-gray-3, #888);
+    padding: 0 0.25rem;
+    line-height: 1;
+  }
+  .share-article-preview {
+    margin: 0 0 1rem;
+    padding: 0.75rem;
+    background: var(--sl-color-gray-6, #f3f4f6);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--sl-color-text, #374151);
+  }
+  .share-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--sl-color-gray-2, #555);
+  }
+  .share-input {
+    display: block;
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--sl-color-gray-5, #d1d5db);
+    border-radius: 6px;
+    background: var(--sl-color-bg, #fff);
+    color: var(--sl-color-text, #1a1a1a);
+    box-sizing: border-box;
+  }
+  .share-input:focus {
+    outline: 2px solid var(--sl-color-accent, #7c3aed);
+    outline-offset: -1px;
+    border-color: transparent;
+  }
+  .share-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: var(--sl-color-accent, #7c3aed);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .share-submit-btn:hover {
+    opacity: 0.9;
+  }
+  .share-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .share-success {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+  .share-success p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #166534;
+  }
+  .share-error {
+    padding: 0.75rem;
+    background: #fef2f2;
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+  .share-error p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #991b1b;
   }
 </style>
 
@@ -134,6 +305,84 @@ const pageId = route.entry.id;
     updateUI();
   }
 
+  function initShareButton() {
+    const shareBtn = document.querySelector('.share-btn') as HTMLButtonElement;
+    const dialog = document.querySelector('.share-dialog') as HTMLDialogElement;
+    if (!shareBtn || !dialog) return;
+
+    const form = dialog.querySelector('.share-form') as HTMLFormElement;
+    const closeBtn = dialog.querySelector('.share-dialog-close') as HTMLButtonElement;
+    const successEl = dialog.querySelector('.share-success') as HTMLElement;
+    const errorEl = dialog.querySelector('.share-error') as HTMLElement;
+    const submitBtn = dialog.querySelector('.share-submit-btn') as HTMLButtonElement;
+
+    function resetDialog() {
+      form.hidden = false;
+      successEl.hidden = true;
+      errorEl.hidden = true;
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send';
+    }
+
+    shareBtn.addEventListener('click', () => {
+      resetDialog();
+      dialog.showModal();
+    });
+
+    closeBtn.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('/api/share-article', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            friendEmail: formData.get('friendEmail'),
+            senderEmail: formData.get('senderEmail'),
+            articleTitle: dialog.dataset.title || document.title,
+            articleDescription: dialog.dataset.description || '',
+            articleUrl: window.location.href,
+            website: formData.get('website'),
+          }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          form.hidden = true;
+          successEl.hidden = false;
+        } else {
+          errorEl.hidden = false;
+          const errorP = errorEl.querySelector('p')!;
+          errorP.textContent = data.error || 'Something went wrong. Please try again.';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send';
+        }
+      } catch {
+        errorEl.hidden = false;
+        const errorP = errorEl.querySelector('p')!;
+        errorP.textContent = 'Something went wrong. Please try again.';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send';
+      }
+    });
+  }
+
   initSaveButton();
-  document.addEventListener('astro:page-load', initSaveButton);
+  initShareButton();
+  document.addEventListener('astro:page-load', () => {
+    initSaveButton();
+    initShareButton();
+  });
 </script>

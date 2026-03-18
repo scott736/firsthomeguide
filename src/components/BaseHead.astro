@@ -11,7 +11,23 @@ const { title, description, image, noindex = false } = Astro.props;
 
 // Determine structured data type based on the page
 const pathname = Astro.url.pathname;
-const structuredDataType = pathname === '/' ? 'home' : pathname.startsWith('/guide') ? 'guide' : pathname.startsWith('/tools') ? 'tools' : 'module' as const;
+let structuredDataType: 'home' | 'guide' | 'tools' | 'tool-page' | 'about' | 'page';
+let toolSlug: string | undefined;
+
+if (pathname === '/') {
+  structuredDataType = 'home';
+} else if (pathname === '/about' || pathname === '/about/') {
+  structuredDataType = 'about';
+} else if (pathname.startsWith('/guide')) {
+  structuredDataType = 'guide';
+} else if (pathname === '/tools' || pathname === '/tools/') {
+  structuredDataType = 'tools';
+} else if (pathname.startsWith('/tools/')) {
+  structuredDataType = 'tool-page';
+  toolSlug = pathname.replace(/^\/tools\//, '').replace(/\/$/, '');
+} else {
+  structuredDataType = 'page';
+}
 const finalTitle = title || SITE_METADATA.title.default;
 const finalDescription = description || SITE_METADATA.description;
 
@@ -23,7 +39,7 @@ const twitterImageURL = new URL('/images/og-image.jpeg', Astro.url);
 ---
 
 <!-- Structured Data -->
-<StructuredData type={structuredDataType} />
+<StructuredData type={structuredDataType} title={finalTitle} description={finalDescription} toolSlug={toolSlug} />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
