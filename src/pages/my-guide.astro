@@ -1,0 +1,25 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import GuideBuilder from '@/components/sections/guide-builder';
+---
+
+<DefaultLayout
+  title="Build My Custom Guide — FirstHomeGuide.ca"
+  description="Select the sections you want and export a custom PDF of your personalized first-time home buyer guide."
+>
+  <div class="section-padding">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          Build Your Custom Guide
+        </h1>
+        <p class="text-muted-foreground text-lg max-w-xl mx-auto">
+          Pick the sections that matter most to you, then print or save as PDF.
+          Your selections are saved automatically.
+        </p>
+      </div>
+
+      <GuideBuilder client:load />
+    </div>
+  </div>
+</DefaultLayout>

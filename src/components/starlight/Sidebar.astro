@@ -8,4 +8,55 @@ import GuideProgressWidget from '../guide-progress-widget.astro';
   <GuideProgressWidget />
 </div>
 
+<a href="/my-guide" class="custom-guide-link">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+    <rect x="6" y="14" width="12" height="8"></rect>
+  </svg>
+  <span>Build My Custom Guide</span>
+  <span class="custom-guide-count" id="custom-guide-count"></span>
+</a>
+
+<style>
+  .custom-guide-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0 0;
+    border-bottom: 1px solid var(--sl-color-gray-6, var(--border, rgba(128,128,128,0.2)));
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--sl-color-accent, var(--chart-1, #7c3aed));
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .custom-guide-link:hover {
+    background: var(--sl-color-gray-7, rgba(128,128,128,0.05));
+  }
+  .custom-guide-count {
+    margin-left: auto;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+</style>
+
+<script>
+  function updateCount() {
+    const el = document.getElementById('custom-guide-count');
+    if (!el) return;
+    try {
+      const stored = localStorage.getItem('fhg-custom-guide');
+      const count = stored ? JSON.parse(stored).length : 0;
+      el.textContent = count > 0 ? `${count} selected` : '';
+    } catch {
+      el.textContent = '';
+    }
+  }
+  updateCount();
+  document.addEventListener('astro:page-load', updateCount);
+</script>
+
 <Default {...Astro.props}><slot /></Default>

@@ -6,6 +6,7 @@ const route = Astro.locals.starlightRoute;
 const body = route.entry.body ?? '';
 const wordCount = body.split(/\s+/).filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.round(wordCount / 238));
+const pageId = route.entry.id;
 ---
 
 <div class="page-title-with-reading-time">
@@ -14,6 +15,16 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 238));
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
     {readingMinutes} min read
   </span>
+  <button
+    class="save-to-guide-btn no-print"
+    data-page-id={pageId}
+    title="Add to my custom guide"
+    aria-label="Save this section to my custom guide"
+  >
+    <svg class="save-icon-outline" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+    <svg class="save-icon-filled" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+    <span class="save-label">Save</span>
+  </button>
 </div>
 
 <style>
@@ -35,4 +46,94 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 238));
     border-radius: 9999px;
     border: 1px solid var(--sl-color-gray-5, var(--border, rgba(128,128,128,0.2)));
   }
+  .save-to-guide-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid var(--sl-color-gray-5, var(--border, rgba(128,128,128,0.2)));
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .save-to-guide-btn:hover {
+    opacity: 1;
+  }
+  .save-to-guide-btn.saved {
+    opacity: 1;
+    color: var(--sl-color-accent, var(--chart-1, #7c3aed));
+    border-color: var(--sl-color-accent, var(--chart-1, #7c3aed));
+  }
+  .save-icon-filled {
+    display: none;
+  }
+  .save-to-guide-btn.saved .save-icon-outline {
+    display: none;
+  }
+  .save-to-guide-btn.saved .save-icon-filled {
+    display: inline;
+  }
 </style>
+
+<script>
+  function initSaveButton() {
+    const STORAGE_KEY = 'fhg-custom-guide';
+    const btn = document.querySelector('.save-to-guide-btn') as HTMLButtonElement;
+    if (!btn) return;
+
+    const pageId = btn.dataset.pageId;
+    if (!pageId) return;
+
+    function getSelected(): Set<string> {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? new Set(JSON.parse(stored)) : new Set();
+      } catch {
+        return new Set();
+      }
+    }
+
+    function save(selected: Set<string>) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([...selected]));
+      } catch {}
+    }
+
+    function updateUI() {
+      const selected = getSelected();
+      const isSaved = selected.has(pageId);
+      btn.classList.toggle('saved', isSaved);
+      const label = btn.querySelector('.save-label');
+      if (label) label.textContent = isSaved ? 'Saved' : 'Save';
+      btn.title = isSaved ? 'Remove from my custom guide' : 'Add to my custom guide';
+    }
+
+    btn.addEventListener('click', () => {
+      const selected = getSelected();
+      if (selected.has(pageId)) {
+        selected.delete(pageId);
+      } else {
+        selected.add(pageId);
+      }
+      save(selected);
+      updateUI();
+
+      // Also update the sidebar count
+      const countEl = document.getElementById('custom-guide-count');
+      if (countEl) {
+        countEl.textContent = selected.size > 0 ? `${selected.size} selected` : '';
+      }
+    });
+
+    updateUI();
+  }
+
+  initSaveButton();
+  document.addEventListener('astro:page-load', initSaveButton);
+</script>
