@@ -39,7 +39,7 @@ export default function Hero() {
                 <a href="/guide/welcome/">Start the Free Guide</a>
               </Button>
               <Button className="flex-1 md:min-w-45" variant="outline" asChild>
-                <a href="/guide/4-government-programs/1-federal-programs/">Browse by Province</a>
+                <a href="/tools/province-selector">Browse by Province</a>
               </Button>
             </div>
             <a

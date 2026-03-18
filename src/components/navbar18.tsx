@@ -57,9 +57,9 @@ export const NAV_LINKS = [
       },
       {
         label: 'Programs by Province',
-        href: '/guide/4-government-programs/1-federal-programs/',
+        href: '/tools/province-selector',
         description:
-          'Find every federal and provincial program you qualify for',
+          'Interactive map of federal and provincial programs by region',
         icon: MapPin,
       },
     ],
