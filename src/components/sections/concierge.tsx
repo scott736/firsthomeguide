@@ -58,7 +58,7 @@ const Concierge = () => {
           <motion.h2
             className="text-4xxl leading-tight tracking-tight md:text-5xl"
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             From Learning to Keys —{' '}
@@ -67,7 +67,7 @@ const Concierge = () => {
           <motion.p
             className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug"
             initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{
               duration: 0.6,
               ease: [0.22, 1, 0.36, 1],
@@ -88,7 +88,7 @@ const Concierge = () => {
               <motion.div
                 key={step.number}
                 initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
                 transition={{
                   duration: 0.5,
                   ease: [0.22, 1, 0.36, 1],
@@ -138,7 +138,7 @@ const Concierge = () => {
         <motion.div
           className="mt-14 flex flex-col items-center gap-4 text-center"
           initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{
             duration: 0.5,
             ease: [0.22, 1, 0.36, 1],
