@@ -367,6 +367,66 @@ for (const section of orderedSections) {
         color: var(--muted);
       }
 
+      /* Print-only LendCity CTA — hidden on screen, visible in PDF */
+      .print-cta {
+        display: none;
+      }
+
+      .print-cta-inner {
+        page-break-before: always;
+        border: 2px solid var(--accent);
+        border-radius: 0.75rem;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .print-cta-inner h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .print-cta-inner .tagline {
+        font-size: 1.125rem;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .print-cta-inner p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .print-cta-contact {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .print-cta-contact .phone {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 0.375rem;
+      }
+
+      .print-cta-contact .web {
+        font-size: 1rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .print-cta-contact .license {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
       /* Print media */
       @media print {
         #print-controls,
@@ -407,6 +467,10 @@ for (const section of orderedSections) {
 
         a[href]::after {
           content: '';
+        }
+
+        .print-cta {
+          display: block !important;
         }
       }
     </style>
@@ -501,6 +565,28 @@ for (const section of orderedSections) {
           </div>
         ))
       }
+
+      <!-- Print-only LendCity CTA — hidden on screen, appears in PDF -->
+      <div class="print-cta">
+        <div class="print-cta-inner">
+          <h2>Ready to Take the Next Step?</h2>
+          <p class="tagline">From First Lesson to First Home</p>
+          <p>
+            You've done the research — now let a licensed mortgage professional
+            help you put it into action. Book a free, no-obligation call with the
+            LendCity team and get personalized guidance on your home buying journey.
+          </p>
+          <p>
+            Whether you need help with pre-approvals, understanding your budget,
+            or navigating first-time buyer programs, we're here to help.
+          </p>
+          <div class="print-cta-contact">
+            <div class="phone">1-519-960-0370</div>
+            <div class="web">firsthomeguide.ca/book-a-call</div>
+            <p class="license">LendCity &middot; Mortgage Architects &middot; FSRA Brokerage Licence #12728</p>
+          </div>
+        </div>
+      </div>
 
       <div class="print-footer">
         <p>
