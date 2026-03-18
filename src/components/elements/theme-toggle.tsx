@@ -182,6 +182,7 @@ export function ThemeToggle({ className }: ThemeToggleProps = {}) {
       data-theme-toggle
       ref={buttonRef}
       className={className}
+      aria-label="Toggle theme"
     >
       <m.svg
         strokeWidth="4"

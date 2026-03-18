@@ -266,7 +266,7 @@ const MobileNav = ({ currentPage }: { currentPage: string }) => {
       <SiteSearch />
       <ThemeToggle className="size-8" />
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger aria-label="Open menu">
           <Menu className="size-5 text-foreground" />
         </PopoverTrigger>
         <PopoverContent
