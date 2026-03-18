@@ -317,7 +317,7 @@ export function SchedulingWidget({
         return (
           <AvailabilityPicker
             service={selectedService}
-            teamMember={selectedTeamMember || undefined}
+            teamMember={selectedService.roundRobin ? undefined : (selectedTeamMember || undefined)}
             selectedSlot={selectedSlot}
             onSelectSlot={handleSlotSelect}
             timezone={timezone}

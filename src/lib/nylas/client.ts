@@ -416,21 +416,43 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
 
 /**
  * Remove duplicate time slots (for round-robin scheduling)
+ * Distributes slots across team members so no single person gets all bookings.
  */
 function deduplicateSlots(slots: TimeSlot[], intervalMinutes: number): TimeSlot[] {
-  const seen = new Map<string, TimeSlot>();
+  // Group all candidates for each time interval
+  const groups = new Map<string, TimeSlot[]>();
 
   for (const slot of slots) {
-    // Round to interval to group similar slots
     const roundedStart = roundToInterval(new Date(slot.startTime), intervalMinutes);
     const key = roundedStart.toISOString();
-
-    if (!seen.has(key)) {
-      seen.set(key, slot);
+    if (!groups.has(key)) {
+      groups.set(key, []);
     }
+    groups.get(key)!.push(slot);
   }
 
-  return Array.from(seen.values());
+  // Track how many slots each member has been assigned
+  const memberCount = new Map<string, number>();
+
+  const result: TimeSlot[] = [];
+  for (const [, candidates] of groups) {
+    // Pick the candidate whose member has the fewest assignments so far
+    let best = candidates[0];
+    let bestCount = memberCount.get(best.teamMemberId) ?? 0;
+
+    for (let i = 1; i < candidates.length; i++) {
+      const count = memberCount.get(candidates[i].teamMemberId) ?? 0;
+      if (count < bestCount) {
+        best = candidates[i];
+        bestCount = count;
+      }
+    }
+
+    result.push(best);
+    memberCount.set(best.teamMemberId, bestCount + 1);
+  }
+
+  return result;
 }
 
 /**
