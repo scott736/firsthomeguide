@@ -47,11 +47,29 @@ interface PathData {
   labelY: number;
 }
 
-/* Render order: west → east, provinces first, then territories */
+/* ──────────── Per-province color palette ──────────── */
+
+const PROVINCE_COLORS: Record<string, string> = {
+  'british-columbia': '#34d399',
+  'alberta': '#fbbf24',
+  'saskatchewan': '#fb923c',
+  'manitoba': '#f87171',
+  'ontario': '#818cf8',
+  'quebec': '#a78bfa',
+  'new-brunswick': '#f472b6',
+  'nova-scotia': '#fb7185',
+  'pei': '#e879f9',
+  'newfoundland': '#c084fc',
+  'yukon': '#22d3ee',
+  'northwest-territories': '#2dd4bf',
+  'nunavut': '#67e8f9',
+};
+
+/* Render order: back-to-front (territories behind, then west → east) */
 const RENDER_ORDER = [
-  'yukon',
-  'northwest-territories',
   'nunavut',
+  'northwest-territories',
+  'yukon',
   'british-columbia',
   'alberta',
   'saskatchewan',
@@ -375,26 +393,24 @@ const REGIONS: RegionData[] = [
 const RegionShape = ({
   slug,
   path,
-  isTerritory,
   isSelected,
   isHovered,
   index,
+  color,
   onSelect,
   onHover,
   onLeave,
 }: {
   slug: string;
   path: PathData;
-  isTerritory: boolean;
   isSelected: boolean;
   isHovered: boolean;
   index: number;
+  color: string;
   onSelect: () => void;
   onHover: () => void;
   onLeave: () => void;
 }) => {
-  const baseColor = isTerritory ? 'var(--chart-4)' : 'var(--chart-1)';
-
   return (
     <g
       role="button"
@@ -411,48 +427,73 @@ const RegionShape = ({
       }}
       className="cursor-pointer outline-none focus-visible:outline-2"
     >
-      {/* Glow layer (only visible when selected) */}
+      {/* Outer glow layer (selected) */}
       {isSelected && (
         <motion.path
           d={path.d}
-          fill={baseColor}
-          fillOpacity={0.2}
+          fill={color}
+          fillOpacity={0.25}
           stroke="none"
           filter="url(#region-glow)"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
         />
       )}
 
-      {/* Orbiting border particles (only visible when selected) */}
+      {/* Hover glow layer */}
+      {isHovered && !isSelected && (
+        <motion.path
+          d={path.d}
+          fill={color}
+          fillOpacity={0.12}
+          stroke="none"
+          filter="url(#hover-glow)"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        />
+      )}
+
+      {/* Orbiting border particles (selected) */}
       {isSelected && (
         <g className="pointer-events-none">
-          {/* Use first sub-path for particle motion */}
           <path
             id={`path-${slug}`}
-            d={path.d.split(/\s*M\s/).filter(Boolean).map((s, i) => (i === 0 ? `M ${s}` : '')).join('')
-              || path.d}
+            d={
+              path.d
+                .split(/\s*M\s/)
+                .filter(Boolean)
+                .map((s, i) => (i === 0 ? `M ${s}` : ''))
+                .join('') || path.d
+            }
             fill="none"
             stroke="none"
           />
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <g key={i} filter="url(#particle-glow)">
-              <circle r={2.5 - i * 0.15} fill="var(--chart-2)" opacity={0.9 - i * 0.1}>
+              <circle
+                r={2.5 - i * 0.15}
+                fill={color}
+                opacity={0.95 - i * 0.12}
+              >
                 <animateMotion
-                  dur={`${8 + i * 2}s`}
-                  begin={`${i * 1.3}s`}
+                  dur={`${7 + i * 1.8}s`}
+                  begin={`${i * 1.1}s`}
                   repeatCount="indefinite"
                   rotate="auto"
                 >
                   <mpath href={`#path-${slug}`} />
                 </animateMotion>
               </circle>
-              {/* Trailing glow */}
-              <circle r={4.5 - i * 0.2} fill="var(--chart-1)" opacity={0.25 - i * 0.03}>
+              <circle
+                r={5 - i * 0.25}
+                fill={color}
+                opacity={0.2 - i * 0.025}
+              >
                 <animateMotion
-                  dur={`${8 + i * 2}s`}
-                  begin={`${i * 1.3}s`}
+                  dur={`${7 + i * 1.8}s`}
+                  begin={`${i * 1.1}s`}
                   repeatCount="indefinite"
                   rotate="auto"
                 >
@@ -467,18 +508,18 @@ const RegionShape = ({
       {/* Main shape */}
       <motion.path
         d={path.d}
-        fill={baseColor}
-        stroke={baseColor}
+        fill={color}
+        stroke={color}
         strokeLinejoin="round"
         initial={{ fillOpacity: 0, strokeOpacity: 0 }}
         animate={{
-          fillOpacity: isSelected ? 0.55 : isHovered ? 0.35 : isTerritory ? 0.1 : 0.15,
-          strokeOpacity: isSelected ? 0.9 : isHovered ? 0.6 : 0.3,
-          strokeWidth: isSelected ? 2.5 : isHovered ? 2 : 1.2,
+          fillOpacity: isSelected ? 0.6 : isHovered ? 0.45 : 0.22,
+          strokeOpacity: isSelected ? 1 : isHovered ? 0.7 : 0.35,
+          strokeWidth: isSelected ? 2.5 : isHovered ? 2 : 1,
         }}
         transition={{
-          duration: 0.25,
-          delay: isSelected || isHovered ? 0 : index * 0.03,
+          duration: 0.3,
+          delay: isSelected || isHovered ? 0 : index * 0.04,
         }}
       />
 
@@ -488,15 +529,19 @@ const RegionShape = ({
         y={path.labelY}
         textAnchor="middle"
         dominantBaseline="central"
-        className="pointer-events-none select-none fill-foreground"
+        className="pointer-events-none select-none"
+        fill="white"
         style={{
-          fontSize: ['pei', 'new-brunswick', 'nova-scotia'].includes(slug) ? 6 : 8,
-          fontWeight: isSelected ? 700 : 500,
-          letterSpacing: '0.02em',
+          fontSize: ['pei', 'new-brunswick', 'nova-scotia'].includes(slug)
+            ? 6
+            : 8,
+          fontWeight: isSelected ? 700 : 600,
+          letterSpacing: '0.04em',
+          textShadow: `0 1px 3px rgba(0,0,0,0.6)`,
         }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: isSelected ? 1 : isHovered ? 0.9 : 0.6 }}
-        transition={{ duration: 0.25, delay: index * 0.03 + 0.15 }}
+        animate={{ opacity: isSelected ? 1 : isHovered ? 0.95 : 0.75 }}
+        transition={{ duration: 0.3, delay: index * 0.04 + 0.15 }}
       >
         {REGIONS.find((r) => r.slug === slug)?.abbr}
       </motion.text>
@@ -508,42 +553,58 @@ const RegionShape = ({
 const MapTooltip = ({
   region,
   path,
+  color,
 }: {
   region: RegionData;
   path: PathData;
+  color: string;
 }) => (
   <motion.g
-    initial={{ opacity: 0, y: 5 }}
+    initial={{ opacity: 0, y: 6 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 5 }}
+    exit={{ opacity: 0, y: 6 }}
     transition={{ duration: 0.15 }}
+    className="pointer-events-none"
   >
+    {/* Tooltip background with colored accent */}
     <rect
-      x={path.labelX - 44}
-      y={path.labelY - 34}
-      width={88}
-      height={22}
-      rx={5}
-      className="fill-foreground"
-      fillOpacity={0.9}
+      x={path.labelX - 52}
+      y={path.labelY - 38}
+      width={104}
+      height={28}
+      rx={6}
+      fill="rgba(10,10,20,0.92)"
+      stroke={color}
+      strokeWidth={1}
+      strokeOpacity={0.5}
+    />
+    {/* Colored accent bar */}
+    <rect
+      x={path.labelX - 52}
+      y={path.labelY - 38}
+      width={3}
+      height={28}
+      rx={6}
+      fill={color}
+      fillOpacity={0.8}
     />
     <text
       x={path.labelX}
-      y={path.labelY - 26}
+      y={path.labelY - 29}
       textAnchor="middle"
       dominantBaseline="central"
-      className="fill-background pointer-events-none select-none"
+      fill="white"
       style={{ fontSize: 7, fontWeight: 600 }}
     >
       {region.name}
     </text>
     <text
       x={path.labelX}
-      y={path.labelY - 18}
+      y={path.labelY - 19}
       textAnchor="middle"
       dominantBaseline="central"
-      className="fill-background pointer-events-none select-none"
-      style={{ fontSize: 5.5, opacity: 0.8 }}
+      fill={color}
+      style={{ fontSize: 5.5, fontWeight: 500 }}
     >
       {region.combinedSavings} in savings
     </text>
@@ -551,7 +612,13 @@ const MapTooltip = ({
 );
 
 /** Detail panel showing selected province programs */
-const DetailPanel = ({ region }: { region: RegionData }) => (
+const DetailPanel = ({
+  region,
+  color,
+}: {
+  region: RegionData;
+  color: string;
+}) => (
   <motion.div
     key={region.slug}
     initial={{ opacity: 0, y: 20 }}
@@ -564,6 +631,10 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
     <Card className="dark:via-muted/20 dark:to-muted/50 to-background via-card from-card overflow-hidden bg-gradient-to-br dark:from-transparent">
       <CardHeader className="pb-4">
         <div className="flex flex-wrap items-center gap-3">
+          <div
+            className="size-3 rounded-full"
+            style={{ backgroundColor: color }}
+          />
           <CardTitle className="text-2xl font-bold">{region.name}</CardTitle>
           <Badge variant="secondary" className="text-xs">
             {region.programs.length}{' '}
@@ -575,7 +646,9 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
             </Badge>
           )}
         </div>
-        <CardDescription className="text-sm">{region.highlight}</CardDescription>
+        <CardDescription className="text-sm">
+          {region.highlight}
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-3 pb-4">
@@ -585,25 +658,35 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 + idx * 0.08, duration: 0.25 }}
-            className="border-border flex flex-col gap-2 rounded-lg border p-4 sm:flex-row sm:items-start sm:justify-between"
+            className="rounded-lg border p-4"
+            style={{
+              borderColor: `${color}15`,
+            }}
           >
-            <div className="min-w-0 flex-1 space-y-1">
-              <h4 className="text-accent-foreground text-sm font-semibold">
-                {program.name}
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                {program.description}
-              </p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0 flex-1 space-y-1">
+                <h4 className="text-accent-foreground text-sm font-semibold">
+                  {program.name}
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  {program.description}
+                </p>
+              </div>
+              {program.amount && (
+                <Badge
+                  variant="outline"
+                  className="mt-1 shrink-0 self-start text-xs sm:mt-0"
+                  style={{
+                    borderColor: `${color}30`,
+                    backgroundColor: `${color}10`,
+                    color: color,
+                  }}
+                >
+                  <DollarSign className="size-3" />
+                  {program.amount}
+                </Badge>
+              )}
             </div>
-            {program.amount && (
-              <Badge
-                variant="outline"
-                className="border-chart-1/30 bg-chart-1/10 text-chart-1 mt-1 shrink-0 self-start text-xs sm:mt-0"
-              >
-                <DollarSign className="size-3" />
-                {program.amount}
-              </Badge>
-            )}
           </motion.div>
         ))}
       </CardContent>
@@ -611,7 +694,8 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
       <CardFooter>
         <a
           href={region.docsUrl}
-          className="text-chart-1 hover:text-chart-2 inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-80"
+          style={{ color }}
         >
           View full details in the guide
           <ArrowRight className="size-4" />
@@ -620,10 +704,16 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
     </Card>
 
     {/* Combined savings card */}
-    <Card className="from-chart-1/10 via-chart-2/5 to-card border-chart-1/20 bg-gradient-to-br">
+    <Card
+      className="overflow-hidden border bg-gradient-to-br"
+      style={{
+        borderColor: `${color}20`,
+        background: `linear-gradient(135deg, ${color}08, transparent 40%, ${color}05)`,
+      }}
+    >
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg">
-          <Sparkles className="text-chart-2 size-5" />
+          <Sparkles className="size-5" style={{ color }} />
           Combined Savings
         </CardTitle>
         <CardDescription className="text-xs">
@@ -638,7 +728,8 @@ const DetailPanel = ({ region }: { region: RegionData }) => (
               Maximum potential savings
             </p>
             <motion.p
-              className="text-gradient text-3xl font-bold"
+              className="text-3xl font-bold"
+              style={{ color }}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
@@ -699,12 +790,9 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
   const region = REGIONS.find((r) => r.slug === selected) ?? null;
   const hoveredRegion = REGIONS.find((r) => r.slug === hovered) ?? null;
 
-  const handleSelect = useCallback(
-    (slug: string) => {
-      setSelected((prev) => (prev === slug ? null : slug));
-    },
-    [],
-  );
+  const handleSelect = useCallback((slug: string) => {
+    setSelected((prev) => (prev === slug ? null : slug));
+  }, []);
 
   return (
     <section className={cn('section-padding', className)}>
@@ -727,10 +815,18 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
           {/* Map column */}
           <div className="lg:col-span-3">
             {/* SVG Map */}
-            <div className="border-border/50 bg-card/50 relative overflow-hidden rounded-2xl border p-4 backdrop-blur-sm md:p-6">
+            <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a14] p-4 shadow-2xl md:p-6">
+              {/* Ambient background glow */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-40"
+                style={{
+                  background:
+                    'radial-gradient(ellipse 60% 50% at 30% 60%, rgba(99,102,241,0.12), transparent), radial-gradient(ellipse 50% 40% at 70% 40%, rgba(34,211,238,0.08), transparent), radial-gradient(ellipse 40% 30% at 50% 80%, rgba(244,114,182,0.06), transparent)',
+                }}
+              />
               <svg
                 viewBox="0 0 629 609"
-                className="h-auto w-full"
+                className="relative h-auto w-full"
                 role="img"
                 aria-label="Interactive map of Canada showing provinces and territories"
               >
@@ -738,12 +834,28 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                   {/* Glow filter for selected province */}
                   <filter
                     id="region-glow"
+                    x="-40%"
+                    y="-40%"
+                    width="180%"
+                    height="180%"
+                  >
+                    <feGaussianBlur stdDeviation="12" result="blur" />
+                    <feComposite
+                      in="SourceGraphic"
+                      in2="blur"
+                      operator="over"
+                    />
+                  </filter>
+
+                  {/* Lighter glow for hover */}
+                  <filter
+                    id="hover-glow"
                     x="-30%"
                     y="-30%"
                     width="160%"
                     height="160%"
                   >
-                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feGaussianBlur stdDeviation="6" result="blur" />
                     <feComposite
                       in="SourceGraphic"
                       in2="blur"
@@ -766,47 +878,37 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                       operator="over"
                     />
                   </filter>
-
-                  {/* Subtle background gradient */}
-                  <linearGradient
-                    id="map-bg"
-                    x1="0"
-                    y1="0"
-                    x2="1"
-                    y2="1"
-                  >
-                    <stop
-                      offset="0%"
-                      stopColor="var(--chart-1)"
-                      stopOpacity="0.03"
-                    />
-                    <stop
-                      offset="50%"
-                      stopColor="var(--chart-2)"
-                      stopOpacity="0.02"
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor="var(--chart-3)"
-                      stopOpacity="0.03"
-                    />
-                  </linearGradient>
                 </defs>
 
-                {/* Background */}
+                {/* Subtle grid pattern */}
+                <defs>
+                  <pattern
+                    id="grid"
+                    width="20"
+                    height="20"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 20 0 L 0 0 0 20"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.02)"
+                      strokeWidth="0.5"
+                    />
+                  </pattern>
+                </defs>
                 <rect
                   x="0"
                   y="0"
                   width="629"
                   height="609"
-                  fill="url(#map-bg)"
-                  rx="8"
+                  fill="url(#grid)"
                 />
 
                 {/* Province/Territory shapes */}
                 {RENDER_ORDER.map((slug, index) => {
                   const path = REGION_PATHS[slug];
                   const regionData = REGIONS.find((r) => r.slug === slug);
+                  const color = PROVINCE_COLORS[slug] ?? '#818cf8';
                   if (!path || !regionData) return null;
 
                   return (
@@ -814,10 +916,10 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                       key={slug}
                       slug={slug}
                       path={path}
-                      isTerritory={regionData.isTerritory ?? false}
                       isSelected={selected === slug}
                       isHovered={hovered === slug}
                       index={index}
+                      color={color}
                       onSelect={() => handleSelect(slug)}
                       onHover={() => setHovered(slug)}
                       onLeave={() => setHovered(null)}
@@ -835,6 +937,7 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                         key={`tooltip-${hovered}`}
                         region={hoveredRegion}
                         path={REGION_PATHS[hovered]}
+                        color={PROVINCE_COLORS[hovered] ?? '#818cf8'}
                       />
                     )}
                 </AnimatePresence>
@@ -843,20 +946,50 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
 
             {/* Province pills for easier mobile selection */}
             <div className="mt-4 flex flex-wrap gap-1.5">
-              {REGIONS.map((r) => (
-                <button
-                  key={r.slug}
-                  onClick={() => handleSelect(r.slug)}
-                  className={cn(
-                    'rounded-full border px-3 py-1 text-xs font-medium transition-all',
-                    selected === r.slug
-                      ? 'border-chart-1/50 bg-chart-1/15 text-chart-1'
-                      : 'border-border text-muted-foreground hover:border-chart-1/30 hover:text-foreground',
-                  )}
-                >
-                  {r.abbr}
-                </button>
-              ))}
+              {REGIONS.map((r) => {
+                const pillColor = PROVINCE_COLORS[r.slug] ?? '#818cf8';
+                const isActive = selected === r.slug;
+                return (
+                  <button
+                    key={r.slug}
+                    onClick={() => handleSelect(r.slug)}
+                    className={cn(
+                      'rounded-full border px-3 py-1 text-xs font-medium transition-all duration-200',
+                      isActive
+                        ? 'border-transparent text-white'
+                        : 'border-white/10 text-muted-foreground hover:text-white',
+                    )}
+                    style={
+                      isActive
+                        ? {
+                            backgroundColor: `${pillColor}25`,
+                            borderColor: `${pillColor}50`,
+                            color: pillColor,
+                          }
+                        : undefined
+                    }
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        (
+                          e.currentTarget as HTMLButtonElement
+                        ).style.borderColor = `${pillColor}40`;
+                        (e.currentTarget as HTMLButtonElement).style.color =
+                          pillColor;
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        (
+                          e.currentTarget as HTMLButtonElement
+                        ).style.borderColor = '';
+                        (e.currentTarget as HTMLButtonElement).style.color = '';
+                      }
+                    }}
+                  >
+                    {r.abbr}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -872,7 +1005,10 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                   >
                     <X className="size-4" />
                   </button>
-                  <DetailPanel region={region} />
+                  <DetailPanel
+                    region={region}
+                    color={PROVINCE_COLORS[region.slug] ?? '#818cf8'}
+                  />
                 </div>
               ) : (
                 <motion.div
