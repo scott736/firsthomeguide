@@ -224,6 +224,11 @@
   font-weight: var(--text-weight);
 }
 
+/* Remove tool component's top padding on standalone sub-pages */
+.tool-subpage > * > .section-padding {
+  padding-top: 0;
+}
+
 @utility container {
   margin-inline: auto;
   padding-inline: 1.5rem;
