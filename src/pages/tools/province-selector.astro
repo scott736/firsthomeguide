@@ -8,18 +8,20 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   title="Programs by Province — FirstHomeGuide.ca"
   description="Find every federal and provincial first-time home buyer program you qualify for. Province-specific incentives, rebates, and savings for Canadian buyers."
 >
-  <section class="section-padding pb-0">
+  <section class="pt-8 md:pt-12 lg:pt-16 pb-0">
     <div class="container max-w-screen-xl">
       <a
         href="/tools"
-        class="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1 text-sm transition-colors"
+        class="text-muted-foreground hover:text-foreground mb-2 inline-flex items-center gap-1 text-sm transition-colors"
       >
         &larr; All Tools
       </a>
     </div>
   </section>
 
-  <ProvinceSelector client:load />
+  <div class="tool-subpage">
+    <ProvinceSelector client:load />
+  </div>
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">
