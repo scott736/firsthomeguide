@@ -191,8 +191,8 @@ export function AvailabilityPicker({
   }
 
   return (
-    <div className={cn('rounded-2xl border bg-card overflow-hidden shadow-sm max-w-5xl mx-auto', className)}>
-      <div className="flex flex-col lg:flex-row lg:divide-x divide-y lg:divide-y-0">
+    <div className={cn('rounded-2xl border dark:border-white/15 bg-card overflow-hidden shadow-sm max-w-5xl mx-auto', className)}>
+      <div className="flex flex-col lg:flex-row lg:divide-x dark:divide-white/15 divide-y lg:divide-y-0 dark:lg:divide-white/15">
         {/* Left Panel - Meeting Info */}
         <div className="p-5 lg:p-8 space-y-4 lg:space-y-8 lg:w-[320px] lg:shrink-0 bg-gradient-to-b from-muted/30 to-transparent">
           {teamMember && (
@@ -311,10 +311,10 @@ export function AvailabilityPicker({
                     isLoading && availabilityMap.size === 0 && isCurrentMonth && !isPast && 'text-foreground',
                     // After loaded, apply availability styling
                     !isLoading && isCurrentMonth && !hasAvailability && 'text-muted-foreground/40',
-                    !isLoading && hasAvailability && !isSelected && 'text-foreground hover:bg-primary/10 hover:text-primary',
-                    isSelected && 'bg-primary text-black shadow-md scale-105',
+                    !isLoading && hasAvailability && !isSelected && 'text-foreground hover:bg-secondary/15 hover:text-secondary',
+                    isSelected && 'bg-secondary text-white shadow-md scale-105',
                     !hasAvailability && 'cursor-default',
-                    isToday && !isSelected && 'ring-2 ring-primary/30 font-bold'
+                    isToday && !isSelected && 'ring-2 ring-secondary/30 font-bold'
                   )}
                 >
                   {day.getDate()}
@@ -328,7 +328,7 @@ export function AvailabilityPicker({
         <div className="p-5 lg:p-8 lg:w-[280px] lg:shrink-0">
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-2">
-              <CalendarDays className="h-5 w-5 text-primary" />
+              <CalendarDays className="h-5 w-5 text-secondary" />
               <h4 className="text-lg font-bold">
                 {selectedDate ? formatShortDate(selectedDate) : 'Available Times'}
               </h4>
@@ -384,8 +384,8 @@ export function AvailabilityPicker({
                     className={cn(
                       'w-full px-4 py-3.5 rounded-md border-2 text-sm font-semibold  ',
                       isSelected
-                        ? 'border-primary bg-primary text-black shadow-md hover:bg-primary/90'
-                        : 'border-border bg-background hover:border-primary hover:bg-primary/5'
+                        ? 'border-secondary bg-secondary text-white shadow-md hover:bg-secondary/90'
+                        : 'border-border dark:border-white/15 bg-background hover:border-secondary hover:bg-secondary/10'
                     )}
                   >
                     {formatTime(slot.startTime)}
@@ -399,11 +399,11 @@ export function AvailabilityPicker({
 
       {/* Selected Time Footer */}
       {selectedSlot && (
-        <div className="border-t bg-gradient-to-r from-primary/5 to-muted/30 px-5 py-4 lg:px-8 lg:py-6">
+        <div className="border-t dark:border-white/15 bg-gradient-to-r from-secondary/5 to-muted/30 px-5 py-4 lg:px-8 lg:py-6">
           <div className="flex items-center justify-between max-w-5xl mx-auto">
             <div className="flex items-center gap-3 lg:gap-5">
-              <div className="flex h-10 w-10 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-primary/15 ring-4 ring-primary/10 shrink-0">
-                <Clock className="h-5 w-5 lg:h-6 lg:w-6 text-primary" />
+              <div className="flex h-10 w-10 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-secondary/15 ring-4 ring-secondary/10 shrink-0">
+                <Clock className="h-5 w-5 lg:h-6 lg:w-6 text-secondary" />
               </div>
               <div className="min-w-0">
                 <p className="font-bold text-base lg:text-lg truncate">
