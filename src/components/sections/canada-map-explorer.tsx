@@ -20,6 +20,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { REGION_PATHS } from './canada-province-svg-paths';
 
 /* ─────────────────────── Types ─────────────────────── */
 
@@ -45,76 +46,6 @@ interface PathData {
   labelX: number;
   labelY: number;
 }
-
-/* ──────────────── SVG path data ──────────────── */
-
-const REGION_PATHS: Record<string, PathData> = {
-  'british-columbia': {
-    d: 'M 30,195 L 95,250 L 150,200 L 150,530 L 30,530 L 35,505 L 55,485 L 30,460 L 55,435 L 30,405 L 55,375 L 30,340 L 50,310 L 30,275 L 45,240 Z',
-    labelX: 88,
-    labelY: 400,
-  },
-  alberta: {
-    d: 'M 150,200 L 250,200 L 250,530 L 150,530 Z',
-    labelX: 200,
-    labelY: 380,
-  },
-  saskatchewan: {
-    d: 'M 250,200 L 350,200 L 350,530 L 250,530 Z',
-    labelX: 300,
-    labelY: 380,
-  },
-  manitoba: {
-    d: 'M 350,200 L 430,200 L 470,255 L 470,340 L 430,385 L 430,530 L 350,530 Z',
-    labelX: 398,
-    labelY: 400,
-  },
-  ontario: {
-    d: 'M 470,255 L 500,250 L 540,255 L 580,270 L 610,300 L 625,350 L 610,395 L 620,430 L 605,470 L 590,500 L 600,530 L 590,570 L 560,595 L 520,590 L 480,560 L 430,530 L 430,385 L 470,340 Z',
-    labelX: 522,
-    labelY: 430,
-  },
-  quebec: {
-    d: 'M 590,500 L 610,520 L 650,530 L 700,520 L 740,490 L 770,460 L 780,430 L 775,400 L 790,370 L 820,330 L 830,280 L 815,235 L 790,200 L 755,175 L 720,160 L 680,155 L 645,165 L 620,190 L 610,225 L 610,300 L 625,350 L 610,395 L 620,430 L 605,470 Z',
-    labelX: 712,
-    labelY: 340,
-  },
-  'new-brunswick': {
-    d: 'M 770,460 L 800,445 L 830,460 L 830,500 L 810,510 L 785,500 Z',
-    labelX: 803,
-    labelY: 478,
-  },
-  'nova-scotia': {
-    d: 'M 830,485 L 855,472 L 890,480 L 910,500 L 900,522 L 870,528 L 843,518 L 830,500 Z',
-    labelX: 870,
-    labelY: 500,
-  },
-  pei: {
-    d: 'M 843,438 L 870,432 L 887,443 L 872,458 L 847,455 Z',
-    labelX: 865,
-    labelY: 447,
-  },
-  newfoundland: {
-    d: 'M 755,175 L 775,155 L 810,162 L 815,235 L 790,200 Z M 845,215 L 878,218 L 915,210 L 945,232 L 950,270 L 935,312 L 905,338 L 872,348 L 845,338 L 835,302 L 830,280 Z',
-    labelX: 892,
-    labelY: 278,
-  },
-  yukon: {
-    d: 'M 30,195 L 30,50 L 60,35 L 120,35 L 145,55 L 150,200 L 95,250 Z',
-    labelX: 87,
-    labelY: 135,
-  },
-  'northwest-territories': {
-    d: 'M 145,55 L 150,200 L 250,200 L 350,200 L 430,200 L 430,55 L 395,38 L 350,30 L 300,28 L 245,30 L 185,38 Z',
-    labelX: 290,
-    labelY: 125,
-  },
-  nunavut: {
-    d: 'M 430,55 L 480,33 L 530,28 L 580,30 L 630,38 L 670,52 L 710,72 L 740,98 L 760,128 L 775,155 L 755,175 L 720,160 L 680,155 L 645,165 L 620,190 L 610,225 L 610,300 L 580,270 L 540,255 L 500,250 L 470,255 L 430,200 Z M 730,15 L 765,8 L 800,18 L 818,45 L 808,78 L 778,88 L 750,75 L 732,48 Z M 660,5 L 695,2 L 728,12 L 730,15 L 715,32 L 685,28 L 662,18 Z',
-    labelX: 598,
-    labelY: 115,
-  },
-};
 
 /* Render order: west → east, provinces first, then territories */
 const RENDER_ORDER = [
@@ -520,7 +451,7 @@ const RegionShape = ({
         dominantBaseline="central"
         className="pointer-events-none select-none fill-foreground"
         style={{
-          fontSize: ['pei', 'new-brunswick', 'nova-scotia'].includes(slug) ? 10 : 13,
+          fontSize: ['pei', 'new-brunswick', 'nova-scotia'].includes(slug) ? 6 : 8,
           fontWeight: isSelected ? 700 : 500,
           letterSpacing: '0.02em',
         }}
@@ -549,31 +480,31 @@ const MapTooltip = ({
     transition={{ duration: 0.15 }}
   >
     <rect
-      x={path.labelX - 70}
-      y={path.labelY - 52}
-      width={140}
-      height={34}
-      rx={8}
+      x={path.labelX - 44}
+      y={path.labelY - 34}
+      width={88}
+      height={22}
+      rx={5}
       className="fill-foreground"
       fillOpacity={0.9}
     />
     <text
       x={path.labelX}
-      y={path.labelY - 40}
+      y={path.labelY - 26}
       textAnchor="middle"
       dominantBaseline="central"
       className="fill-background pointer-events-none select-none"
-      style={{ fontSize: 11, fontWeight: 600 }}
+      style={{ fontSize: 7, fontWeight: 600 }}
     >
       {region.name}
     </text>
     <text
       x={path.labelX}
-      y={path.labelY - 27}
+      y={path.labelY - 18}
       textAnchor="middle"
       dominantBaseline="central"
       className="fill-background pointer-events-none select-none"
-      style={{ fontSize: 9, opacity: 0.8 }}
+      style={{ fontSize: 5.5, opacity: 0.8 }}
     >
       {region.combinedSavings} in savings
     </text>
@@ -759,7 +690,7 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
             {/* SVG Map */}
             <div className="border-border/50 bg-card/50 relative overflow-hidden rounded-2xl border p-4 backdrop-blur-sm md:p-6">
               <svg
-                viewBox="0 0 1000 660"
+                viewBox="0 0 629 609"
                 className="h-auto w-full"
                 role="img"
                 aria-label="Interactive map of Canada showing provinces and territories"
@@ -811,10 +742,10 @@ const CanadaMapExplorer = ({ className }: { className?: string }) => {
                 <rect
                   x="0"
                   y="0"
-                  width="1000"
-                  height="660"
+                  width="629"
+                  height="609"
                   fill="url(#map-bg)"
-                  rx="12"
+                  rx="8"
                 />
 
                 {/* Province/Territory shapes */}
