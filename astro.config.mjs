@@ -5,11 +5,20 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
+import rehypeExternalLinks from 'rehype-external-links';
 import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://firsthomeguide.ca',
   adapter: vercel(),
+  markdown: {
+    rehypePlugins: [
+      [rehypeExternalLinks, {
+        target: '_blank',
+        rel: ['nofollow', 'noopener', 'noreferrer'],
+      }],
+    ],
+  },
   integrations: [
     starlight({
       title: 'FirstHomeGuide.ca',

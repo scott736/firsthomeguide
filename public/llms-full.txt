@@ -128,33 +128,45 @@ URL: https://firsthomeguide.ca/guide/faq/
 
 ## Interactive Tools
 
-URL: https://firsthomeguide.ca/tools/
-
 ### Mortgage Payment Calculator
+URL: https://firsthomeguide.ca/tools/mortgage-calculator/
 Calculates monthly mortgage payments based on purchase price, down payment, interest rate, and amortization. Automatically computes CMHC insurance premiums when down payment is below 20%. Shows stress test qualifying rate.
 
 ### Affordability Calculator
+URL: https://firsthomeguide.ca/tools/affordability-calculator/
 Estimates maximum affordable home price based on household income, monthly debts, down payment saved, and current interest rates. Uses GDS/TDS ratios to determine borrowing power.
 
 ### Closing Cost Calculator
+URL: https://firsthomeguide.ca/tools/closing-cost-calculator/
 Estimates total closing costs by province, including land transfer tax, legal fees, title insurance, home inspection, appraisal fees, and property tax/utility adjustments. Factors in first-time buyer rebates where applicable.
 
-### Rent vs. Buy Comparison
-Compares the long-term financial outcomes of renting versus buying over a user-specified time horizon. Accounts for home appreciation, mortgage interest, opportunity cost of the down payment, maintenance, property taxes, and rent increases.
+### Comparison Tools (Rent vs. Buy, FHSA vs. HBP, Fixed vs. Variable)
+URL: https://firsthomeguide.ca/tools/comparison-tools/
+Side-by-side comparisons: Rent vs. Buy (long-term financial outcomes), FHSA vs. RRSP/HBP (tax benefit modelling), and Fixed vs. Variable rate (interest rate scenario modelling with break-even points).
 
-### FHSA vs. RRSP/HBP Comparison
-Side-by-side comparison of the First Home Savings Account and the RRSP Home Buyers' Plan. Models the tax benefit of each savings vehicle based on marginal tax rate, contribution amounts, and withdrawal timeline.
-
-### Fixed vs. Variable Rate Comparison
-Models different interest rate scenarios to help buyers choose between fixed and variable mortgage rates. Shows total interest paid, monthly payment differences, and break-even points under rising, stable, and falling rate environments.
+### Cost of Waiting Calculator
+URL: https://firsthomeguide.ca/tools/cost-of-waiting/
+Shows how delaying a home purchase affects total cost as prices and mortgage rates change over time.
 
 ### Province-Specific Program Finder
+URL: https://firsthomeguide.ca/tools/province-selector/
 Interactive tool to discover all federal and provincial/territorial first-time buyer programs available based on your location. Displays eligibility criteria, benefit amounts, and application steps for each program.
 
-## Interactive Features
+### Readiness Assessment
+URL: https://firsthomeguide.ca/tools/readiness-assessment/
+Evaluate your financial readiness to purchase your first home in Canada with this interactive assessment tool.
 
-- Interactive checklists throughout each module to track your home-buying progress
-- Guide progress tracking to bookmark where you left off across all 8 modules
+### Timeline Planner
+URL: https://firsthomeguide.ca/tools/timeline-planner/
+Plan your home purchase timeline from saving to closing with realistic milestones for Canadian first-time buyers.
+
+### Document Checklist
+URL: https://firsthomeguide.ca/tools/document-checklist/
+Interactive checklist of all documents needed for your Canadian mortgage application — employment, income, identity, and property docs.
+
+### City Comparison
+URL: https://firsthomeguide.ca/tools/city-comparison/
+Compare housing costs, affordability, and market data across Canadian cities to find the best fit.
 
 ## Frequently Asked Questions
 

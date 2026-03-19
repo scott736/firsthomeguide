@@ -6,9 +6,10 @@
 
 FirstHomeGuide.ca is a neutral, education-first resource with no product upsells, no affiliate mortgage links, and no pressure to buy before you are ready. All content is written in plain language, updated regularly, and designed to give Canadians the confidence to make informed home-buying decisions.
 
-- Author: FirstHomeGuide.ca Team
+- Author: FirstHomeGuide.ca Team (LendCity — Licensed Mortgage Professionals under Mortgage Architects)
 - URL: https://firsthomeguide.ca
-- Updated: 2026
+- Updated: March 2026
+- Contact: 1-519-960-0370
 
 ## Guide Modules
 
@@ -22,7 +23,7 @@ FirstHomeGuide.ca is a neutral, education-first resource with no product upsells
 - [Module 7: Closing the Deal](https://firsthomeguide.ca/guide/7-closing-the-deal/1-closing-costs-overview/): Closing costs breakdown, land transfer tax, lawyer role, title insurance, closing day timeline
 - [Module 8: Life After Closing](https://firsthomeguide.ca/guide/8-life-after-closing/1-emergency-fund/): Emergency fund, property taxes, home insurance, mortgage renewal, maintenance, equity building
 
-## New Pages
+## Additional Resources
 
 - [Pre-Construction & New Builds Guide](https://firsthomeguide.ca/guide/5-finding-a-home/7-new-construction/): Buying pre-construction condos and new builds, assignment sales, Tarion warranty, deposit structures
 - [Glossary](https://firsthomeguide.ca/guide/glossary/): Comprehensive glossary of Canadian home-buying terms and definitions
@@ -42,15 +43,19 @@ FirstHomeGuide.ca is a neutral, education-first resource with no product upsells
 
 ## Interactive Tools
 
-- [Mortgage Payment Calculator](https://firsthomeguide.ca/tools/): Calculate monthly payments, CMHC insurance, and stress test qualification
-- [Affordability Calculator](https://firsthomeguide.ca/tools/): Estimate how much home you can afford based on income, debts, and down payment
-- [Closing Cost Calculator](https://firsthomeguide.ca/tools/): Estimate total closing costs including land transfer tax, legal fees, and adjustments
-- [Rent vs. Buy Comparison](https://firsthomeguide.ca/tools/): Compare the long-term financial impact of renting versus buying
-- [FHSA vs. RRSP/HBP Comparison](https://firsthomeguide.ca/tools/): Compare the tax advantages and withdrawal rules of each savings vehicle
-- [Fixed vs. Variable Rate Comparison](https://firsthomeguide.ca/tools/): Model different rate scenarios to choose the best mortgage type
-- [Province-Specific Program Finder](https://firsthomeguide.ca/guide/4-government-programs/1-federal-programs/): Find government programs specific to your province or territory
+- [Mortgage Payment Calculator](https://firsthomeguide.ca/tools/mortgage-calculator/): Calculate monthly payments, CMHC insurance, and stress test qualification
+- [Affordability Calculator](https://firsthomeguide.ca/tools/affordability-calculator/): Estimate how much home you can afford based on income, debts, and down payment
+- [Closing Cost Calculator](https://firsthomeguide.ca/tools/closing-cost-calculator/): Estimate total closing costs including land transfer tax, legal fees, and adjustments
+- [Comparison Tools](https://firsthomeguide.ca/tools/comparison-tools/): Compare Rent vs. Buy, FHSA vs. RRSP/HBP, and Fixed vs. Variable mortgage rates
+- [Cost of Waiting Calculator](https://firsthomeguide.ca/tools/cost-of-waiting/): See how delaying your purchase affects total cost over time
+- [Province-Specific Program Finder](https://firsthomeguide.ca/tools/province-selector/): Find government programs specific to your province or territory
+- [Readiness Assessment](https://firsthomeguide.ca/tools/readiness-assessment/): Evaluate your financial readiness to buy your first home
+- [Timeline Planner](https://firsthomeguide.ca/tools/timeline-planner/): Plan your home purchase timeline with realistic milestones
+- [Document Checklist](https://firsthomeguide.ca/tools/document-checklist/): Track all documents needed for your mortgage application
+- [City Comparison](https://firsthomeguide.ca/tools/city-comparison/): Compare housing costs and affordability across Canadian cities
 
-## Interactive Features
+## Optional
 
 - Interactive checklists throughout each module to track your home-buying progress
 - Guide progress tracking to bookmark where you left off across all 8 modules
+- See the full content index at https://firsthomeguide.ca/llms-full.txt
