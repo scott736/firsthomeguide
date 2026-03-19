@@ -64,6 +64,9 @@ const breadcrumbListItems = breadcrumbItems.map((crumb, index) => {
   return item;
 });
 
+// --- Detect special page types ---
+const isFaqPage = Astro.url.pathname.replace(/\/$/, '') === '/guide/faq';
+
 // --- Build @graph array ---
 const graph: Record<string, unknown>[] = [];
 
@@ -97,7 +100,7 @@ graph.push({
   sameAs: ['https://twitter.com/FirstHomeGuideCA'],
 });
 
-// Article
+// Article with speakable markup for AI voice extraction
 graph.push({
   '@type': 'Article',
   '@id': canonicalURL,
@@ -116,7 +119,181 @@ graph.push({
   },
   inLanguage: 'en-CA',
   image: ogImage,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '[role="note"]', '.sl-markdown-content > p:first-of-type'],
+  },
 });
+
+// FAQPage schema for the FAQ page
+if (isFaqPage) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalURL}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How much do I need for a down payment in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The minimum down payment in Canada is 5% on the first $500,000 of the purchase price, 10% on the portion between $500,000 and $1,499,999, and 20% on homes priced at $1,500,000 or more. If your down payment is less than 20%, you will also pay CMHC mortgage insurance (2.8% to 4.0% of the mortgage amount).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the First Home Savings Account (FHSA)?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The FHSA is a registered account with a double tax advantage: contributions are tax-deductible (like an RRSP) and qualifying withdrawals for a home purchase are completely tax-free (like a TFSA). You can contribute up to $8,000 per year with a lifetime maximum of $40,000. If you do not buy, you can roll the balance into your RRSP penalty-free.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the difference between the FHSA and the RRSP Home Buyers\' Plan?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The FHSA provides tax-deductible contributions and tax-free withdrawals with no repayment required. The RRSP Home Buyers\' Plan (HBP) lets you withdraw up to $60,000 tax-free but you must repay the full amount over 15 years. You can use both together for up to $100,000 per person ($200,000 as a couple).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What credit score do I need to buy a home in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Most Canadian lenders require a minimum credit score of 680 for the best rates. Some lenders approve mortgages with scores as low as 600 but at higher rates. A score of 760 or above qualifies you for the most competitive rates available.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the mortgage stress test in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The stress test requires all federally regulated lenders to qualify borrowers at the higher of their contract rate plus 2% or the Bank of Canada\'s benchmark qualifying rate (currently 5.25%). It reduces the maximum mortgage you qualify for by roughly 20% compared to qualifying at your actual rate.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How much are closing costs in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Budget 3% to 5% of the purchase price for closing costs. On a $500,000 home, that means $15,000 to $25,000. Major costs include land transfer tax (varies by province), legal fees ($1,500 to $2,500), title insurance ($250 to $500), home appraisal ($300 to $500), and property tax adjustments.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is CMHC insurance and do I need it?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'CMHC insurance (mortgage default insurance) is required when your down payment is less than 20%. The premium is 2.8% to 4.0% of the mortgage amount and is typically added to your mortgage balance. On a $500,000 home with 5% down, the premium is approximately $19,000.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Should I get a fixed or variable rate mortgage?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Fixed-rate mortgages give payment certainty for the entire term (typically 5 years). Variable-rate mortgages are historically cheaper but fluctuate with the Bank of Canada\'s policy rate. Most first-time buyers choose a 5-year fixed term for predictability.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What government programs are available for first-time home buyers in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Federal programs include the FHSA (up to $40,000 tax-advantaged savings), RRSP Home Buyers\' Plan (up to $60,000 tax-free withdrawal), and Home Buyers\' Tax Credit ($1,500). Each province has additional programs — Ontario offers land transfer tax rebates up to $4,000, BC offers full property transfer tax exemption on homes up to $500,000, and Alberta has no land transfer tax.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need a real estate lawyer to buy a home in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. In most Canadian provinces, a real estate lawyer is required to complete a property purchase. They review the Agreement of Purchase and Sale, conduct title searches, register the mortgage and title transfer, and handle the transfer of funds on closing day. Legal fees typically run $1,500 to $2,500.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is land transfer tax in Canada?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Land transfer tax is a provincial tax paid when you purchase a property, calculated as a percentage of the purchase price. It is usually the single largest closing cost. Rates vary: Alberta and Saskatchewan charge only modest registration fees, while Ontario charges a tiered tax. Most provinces offer first-time buyer rebates.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I know if I am ready to buy a home?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You are likely ready if you have: a stable income that supports mortgage payments plus carrying costs, a credit score of at least 680, enough savings for a down payment and 3-5% closing costs, an emergency fund of 3-6 months of expenses, and manageable existing debt.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is a home inspection and do I need one?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A home inspection is a professional examination of a property\'s structure, systems, and components. It costs $400 to $600 and takes two to four hours. A single major finding can cost $10,000 to $50,000+ to fix, making the inspection one of the most important steps in the buying process.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I buy a home in Canada if I am self-employed?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, but you typically need at least 2 years of self-employment history with tax returns, Notices of Assessment, and financial statements. Some lenders offer stated income programs for self-employed borrowers with strong credit. A mortgage broker is especially valuable for finding flexible lenders.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What happens on closing day when buying a home?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'On closing day, your lawyer transfers purchase funds to the seller\'s lawyer. The seller\'s lawyer confirms receipt, releases the keys, and registers the title transfer. You will have signed all documents a few days before. Once confirmed, your agent or lawyer lets you know the keys are available for pickup.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How much should I budget for home maintenance?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Budget 1% of your home\'s value per year for maintenance. On a $500,000 home, that is $5,000 per year. For older homes, budget 1.5% to 2%. For condos, condo fees cover common element maintenance but you are responsible for everything inside your unit.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is title insurance?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Title insurance is a one-time policy ($250 to $500) that protects against problems with your property\'s legal title — including fraud, forgery, unknown liens, and survey errors. Lender\'s title insurance is required by most lenders; owner\'s title insurance is optional but strongly recommended.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the difference between a condo and a freehold?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A freehold means you own the building and the land. You handle all maintenance but have full control. A condominium means you own your unit, while common elements are shared. Monthly condo fees ($300 to $800+) cover shared maintenance. Condos are often more affordable as an entry point.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Should I use a mortgage broker or go to my bank?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A mortgage broker has access to dozens of lenders and can often find rates 0.1% to 0.5% lower than your bank. Brokers are typically paid by the lender. The best approach is to get quotes from both your bank and a broker, then compare. Even a 0.2% difference can save $5,000 to $10,000 over a five-year term.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'When should I start saving for a home?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'As soon as you think homeownership might be in your future. Open an FHSA immediately (even a $100 contribution starts your room clock), set up automatic contributions, and aim to save at least 10-15% of your income. Starting $500/month five years early yields approximately $33,000 to $38,000.',
+        },
+      },
+    ],
+  });
+}
 
 // BreadcrumbList
 graph.push({
@@ -136,6 +313,10 @@ const ogTitle = `${title} \u2014 FirstHomeGuide.ca`;
 
 <!-- Render Starlight's default Head first (handles base meta, fonts, etc.) -->
 <Default {...Astro.props}><slot /></Default>
+
+<!-- LLMs discovery links -->
+<link rel="alternate" type="text/plain" title="LLMs" href="/llms.txt" />
+<link rel="alternate" type="text/plain" title="LLMs Full" href="/llms-full.txt" />
 
 <!-- Structured Data (@graph pattern) -->
 <script type="application/ld+json" set:html={JSON.stringify(schemaOutput)} />
