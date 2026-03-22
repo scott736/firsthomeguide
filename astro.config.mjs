@@ -101,7 +101,44 @@ export default defineConfig({
       },
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/404') &&
+        !page.includes('/offline') &&
+        !page.includes('/api/') &&
+        !page.includes('/print-guide'),
+      serialize: (item) => {
+        const url = item.url;
+
+        // Homepage — highest priority
+        if (url === 'https://firsthomeguide.ca/' || url === 'https://firsthomeguide.ca') {
+          return { ...item, changefreq: 'weekly', priority: 1.0 };
+        }
+
+        // Guide welcome & module landing pages
+        if (url.includes('/guide/welcome')) {
+          return { ...item, changefreq: 'weekly', priority: 0.9 };
+        }
+
+        // Guide content pages
+        if (url.includes('/guide/')) {
+          return { ...item, changefreq: 'weekly', priority: 0.8 };
+        }
+
+        // Tools
+        if (url.includes('/tools/')) {
+          return { ...item, changefreq: 'monthly', priority: 0.7 };
+        }
+
+        // About, book-a-call
+        if (url.includes('/about') || url.includes('/book-a-call')) {
+          return { ...item, changefreq: 'monthly', priority: 0.6 };
+        }
+
+        // Everything else
+        return { ...item, changefreq: 'monthly', priority: 0.5 };
+      },
+    }),
     react(),
   ],
 
