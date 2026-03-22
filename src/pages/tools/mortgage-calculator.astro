@@ -1,6 +1,7 @@
 ---
 import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import MortgageCalculatorContent from '@/components/sections/tool-content/mortgage-calculator-content';
 import ShareResults from '@/components/sections/share-results';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -35,36 +36,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     </div>
   </section>
 
-  <section class="section-padding pt-8 pb-0">
-    <div class="container max-w-screen-xl">
-      <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <h2>How Canadian Mortgage Payments Are Calculated</h2>
-        <p>A mortgage payment is made up of two components: principal and interest. Each month, a portion of your payment goes toward reducing the loan balance (principal) while the rest covers the lender's interest charge. Early in your mortgage, most of your payment is interest. Over time, the balance shifts so that more of each payment chips away at the principal. This process is governed by an amortization schedule — a detailed table your lender generates that maps out every payment for the life of the loan.</p>
-        <p>In Canada, most fixed-rate mortgages compound interest semi-annually, not monthly. This is a legal requirement under the <a href="https://www.canada.ca/en/financial-consumer-agency/services/mortgages.html" target="_blank" rel="nofollow noopener noreferrer">Interest Act</a> and means the effective rate you pay is slightly different from the posted annual rate. Variable-rate mortgages typically compound monthly. The calculator above accounts for this distinction automatically.</p>
-
-        <h3>How CMHC Mortgage Insurance Works</h3>
-        <p>If your down payment is less than 20% of the purchase price, you are required to purchase mortgage default insurance, commonly called CMHC insurance (though Sagen and Canada Guaranty also offer it). The premium is a percentage of your mortgage amount, and it varies by how much you put down:</p>
-        <ul>
-          <li><strong>5% to 9.99% down payment:</strong> 4.00% premium</li>
-          <li><strong>10% to 14.99% down payment:</strong> 3.10% premium</li>
-          <li><strong>15% to 19.99% down payment:</strong> 2.40% premium</li>
-        </ul>
-        <p>The premium is added directly to your mortgage balance. For example, on a $500,000 home with 5% down ($25,000), your mortgage would be $475,000. The CMHC premium at 4.00% is $19,000, bringing your total insured mortgage to $494,000. You can review the full schedule on the <a href="https://www.cmhc-schl.gc.ca/consumers/home-buying/mortgage-loan-insurance/mortgage-loan-insurance-premiums" target="_blank" rel="nofollow noopener noreferrer">CMHC mortgage insurance premiums</a> page.</p>
-
-        <h3>Understanding the Stress Test</h3>
-        <p>Before approving your mortgage, every federally regulated lender in Canada must confirm you can afford payments at a qualifying rate that is higher than your actual contract rate. Under <a href="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/residential-mortgage-underwriting-practices-procedures" target="_blank" rel="nofollow noopener noreferrer">OSFI's B-20 guideline</a>, you must qualify at the greater of your contract rate plus 2% or a minimum floor rate of 5.25%. For instance, if your lender offers you a rate of 4.5%, you would need to prove you can handle payments at 6.5%. This stress test applies to purchases, renewals with a new lender, and refinances.</p>
-
-        <h3>How Amortization Affects Your Payment</h3>
-        <p>The amortization period is the total length of time it takes to pay off your mortgage in full. In Canada, insured mortgages (less than 20% down) allow amortization up to 25 years. If you put 20% or more down, you can choose up to 30 years. A shorter amortization means higher monthly payments, but you pay significantly less interest over the life of the loan. Extending from 25 to 30 years lowers your monthly payment but can add tens of thousands of dollars in total interest cost. Choose the shortest amortization your budget can comfortably handle.</p>
-
-        <h3>How much is the mortgage on a $500,000 home?</h3>
-        <p>With 5% down ($25,000), a 4.5% interest rate, and a 25-year amortization, your monthly payment would be approximately $2,900. This includes the CMHC insurance premium of $19,000 rolled into the mortgage. Your actual payment will depend on the specific rate you lock in and your province's requirements. Use the calculator above for a personalized estimate, and visit the <a href="https://www.canada.ca/en/financial-consumer-agency/services/mortgages.html" target="_blank" rel="nofollow noopener noreferrer">FCAC mortgage page</a> for additional guidance on mortgage costs in Canada.</p>
-
-        <h3>What is the current stress test rate?</h3>
-        <p>You must qualify at the higher of your contract rate plus 2% or the minimum qualifying rate of 5.25%, as set by <a href="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/residential-mortgage-underwriting-practices-procedures" target="_blank" rel="nofollow noopener noreferrer">OSFI</a>. This means even if rates drop to 3.5%, you would still need to qualify at 5.5%. The stress test is designed to ensure borrowers can handle potential rate increases during their mortgage term.</p>
-      </div>
-    </div>
-  </section>
+  <MortgageCalculatorContent client:visible />
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">

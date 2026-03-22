@@ -1,6 +1,7 @@
 ---
 import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import TimelinePlanner from '@/components/sections/timeline-planner';
+import TimelinePlannerContent from '@/components/sections/tool-content/timeline-planner-content';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -23,36 +24,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
     <TimelinePlanner client:load />
   </div>
 
-  <section class="section-padding pt-8 pb-0">
-    <div class="container max-w-screen-xl">
-      <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <h2>The Canadian Home Buying Timeline</h2>
-        <p>From your first savings contribution to getting your keys, the typical Canadian home buying process spans anywhere from 6 months to 5 years, depending on your starting point. Understanding each phase helps you set realistic expectations, avoid rushing important decisions, and make the most of every program and strategy available to you.</p>
-
-        <h3>Phase 1: Preparation (6 Months to 5 Years Before)</h3>
-        <p>The preparation phase is where most of the financial groundwork happens. Open a <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/first-home-savings-account.html" target="_blank" rel="nofollow noopener noreferrer">First Home Savings Account (FHSA)</a> as early as possible — even a small initial deposit of $100 starts building your contribution room and gets the clock ticking on your tax-deductible savings. Check your credit score and begin working to improve it if needed by paying down debts, keeping credit card utilization low, and making all payments on time.</p>
-        <p>During this phase, focus on reducing existing debts to improve your debt-to-income ratios, building your down payment through consistent saving, and educating yourself about the home buying process. Most first-time buyers spend one to three years in the preparation phase, though those starting with strong finances and existing savings may move through it much faster.</p>
-
-        <h3>Phase 2: Pre-Approval (2-3 Months Before)</h3>
-        <p>Once your savings, credit, and debt levels are in good shape, it is time to get mortgage pre-approval. A pre-approval letter tells you exactly how much a lender is willing to offer, locks in an interest rate for 90 to 120 days, and signals to sellers that you are a serious buyer. The <a href="https://www.canada.ca/en/financial-consumer-agency/services/mortgages.html" target="_blank" rel="nofollow noopener noreferrer">FCAC mortgage guide</a> explains what lenders evaluate and how the stress test affects your qualifying amount.</p>
-        <p>This is also the time to assemble your home buying team. Find a real estate agent who understands the market you are targeting, select a real estate lawyer to handle closing, and identify a reputable home inspector. Having your team in place before you start viewing properties means you can move quickly when you find the right home.</p>
-
-        <h3>Phase 3: The Search (1-3 Months)</h3>
-        <p>With pre-approval in hand and your team assembled, active property searching begins. Attend open houses, book private viewings, and spend time evaluating neighbourhoods at different times of day and week. The average Canadian buyer views 10 to 15 homes before making an offer, so do not feel pressured to commit too quickly.</p>
-        <p>In competitive markets like Toronto and Vancouver, the search phase may take longer due to bidding wars and limited inventory. In more balanced markets, you may find the right home within a few weeks. Use this time to refine your priorities and understand the difference between needs and wants — most first-time buyers make some compromises, and knowing your non-negotiables in advance helps you make confident decisions under pressure.</p>
-
-        <h3>Phase 4: Offer to Closing (30-90 Days)</h3>
-        <p>Once you find a home, you submit an offer through your real estate agent. If accepted, you enter the conditional period — typically 5 to 10 business days — during which you finalize your mortgage financing, complete a home inspection, and satisfy any other conditions in your offer. Your lawyer then conducts a title search, prepares closing documents, and coordinates the transfer of funds.</p>
-        <p>The standard closing period in Canada is 30 to 60 days from the time your offer is accepted, though this is negotiable between buyer and seller. On closing day, your lawyer transfers the funds, registers the title in your name, and hands over the keys. Budget for closing costs of 3% to 5% of the purchase price, which cover legal fees, land transfer tax, title insurance, and other disbursements.</p>
-
-        <h3>How long does it take to get a mortgage pre-approval?</h3>
-        <p>A basic rate-hold pre-approval, where the lender reviews your stated income and credit score, can often be completed in one to three business days. A full pre-approval with complete document verification — where the lender reviews your pay stubs, tax returns, and bank statements — typically takes 5 to 10 business days. The full pre-approval carries more weight with sellers and gives you greater certainty about your borrowing power.</p>
-
-        <h3>How long does the average home search take in Canada?</h3>
-        <p>Most first-time buyers spend one to three months actively searching for a home. In competitive markets like Toronto and Vancouver, it may take longer due to bidding competition, limited inventory, and the emotional toll of losing out on multiple offers. In more balanced markets across the Prairies and Atlantic Canada, buyers often find a suitable home within a few weeks of beginning their search. Patience during this phase pays off — rushing into a purchase you are not fully comfortable with is one of the most common regrets among first-time buyers.</p>
-      </div>
-    </div>
-  </section>
+  <TimelinePlannerContent client:visible />
 
   <section class="section-padding pt-0">
     <div class="container max-w-screen-xl">
