@@ -240,7 +240,7 @@ const Features2 = () => {
                   Built by Mortgage Professionals
                 </h3>
                 <p className="text-muted-foreground leading-snug lg:text-lg">
-                  Created by licensed mortgage advisors at {LENDCITY.name} who
+                  Created by licensed mortgage advisors at <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a> who
                   believe every first-time buyer deserves free, expert
                   education — and personal guidance when you're ready.
                 </p>
@@ -391,12 +391,12 @@ const Features2 = () => {
   );
 };
 
-const featureCards = [
+const featureCards: { icon: typeof Shield; title: string; description: React.ReactNode }[] = [
   {
     icon: Shield,
     title: 'Expert-Backed Education',
     description:
-      'Built by licensed mortgage professionals at LendCity. The education is free and unbiased — when you\'re ready for personalized help, we\'re here.',
+      <>Built by licensed mortgage professionals at <a href="https://lendcity.ca" title="LendCity Mortgages – Licensed Mortgage Professionals in Canada" target="_blank" rel="noopener">LendCity</a>. The education is free and unbiased — when you're ready for personalized help, we're here.</>,
   },
   {
     icon: MapPin,

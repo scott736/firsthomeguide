@@ -1,6 +1,6 @@
 import { LENDCITY } from '@/lib/lendcity';
 
-const stats = [
+const stats: { stat: string; description: React.ReactNode; source: string; cta?: boolean }[] = [
   {
     stat: '85%',
     description:
@@ -16,8 +16,7 @@ const stats = [
   },
   {
     stat: '$0',
-    description:
-      'is what it costs to learn how to buy a home. Every module, calculator, and provincial program lookup is free — built and maintained by LendCity\'s mortgage team.',
+    description: <>is what it costs to learn how to buy a home. Every module, calculator, and provincial program lookup is free — built and maintained by <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a>'s mortgage team.</>,
     source: 'FirstHomeGuide.ca',
   },
 ];
@@ -40,7 +39,7 @@ export default function AboutNews() {
               <p className="text-muted-foreground text-sm">{item.source}</p>
               {item.cta && (
                 <p className="text-sm font-medium">
-                  That&apos;s exactly what LendCity provides.{' '}
+                  That&apos;s exactly what <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a> provides.{' '}
                   <a
                     href={LENDCITY.bookingUrl}
                     className="text-chart-1 hover:text-chart-2 underline underline-offset-2 transition-colors"

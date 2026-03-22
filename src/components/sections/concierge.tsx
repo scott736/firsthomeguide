@@ -52,7 +52,7 @@ const Concierge = () => {
             <span className="text-gradient">We're With You Every Step</span>
           </h2>
           <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-snug">
-            FirstHomeGuide.ca is built by {LENDCITY.name}, licensed mortgage
+            FirstHomeGuide.ca is built by <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a>, licensed mortgage
             professionals who provide free education and personalized concierge
             service for first-time home buyers across Canada.
           </p>

@@ -114,7 +114,7 @@ export default function AboutTeam() {
           <div>
             <h3 className="text-lg font-semibold">Verified & up to date</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-snug">
-              Content reviewed by {LENDCITY.name}&apos;s licensed mortgage
+              Content reviewed by <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a>&apos;s licensed mortgage
               professionals and verified against official government sources.
               Updated regularly. Last comprehensive review: March 2026.
             </p>
@@ -160,7 +160,7 @@ export default function AboutTeam() {
             </div>
             <p className="text-muted-foreground mt-3 text-sm leading-snug max-w-xl">
               When you&apos;re ready to move from learning to buying,{' '}
-              {LENDCITY.name}&apos;s concierge team is here. We walk you through
+              <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a>&apos;s concierge team is here. We walk you through
               every stage — pre-approval, house hunting, offer strategy, and
               closing — with licensed professionals by your side the entire way.
             </p>

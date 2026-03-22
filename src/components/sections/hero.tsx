@@ -11,7 +11,7 @@ export default function Hero() {
           <div className="flex max-w-3xl flex-1 flex-col items-start gap-5">
             <div className="flex items-center rounded-full border p-1 text-xs">
               <span className="bg-muted rounded-full px-3 py-1">
-                Powered by {LENDCITY.name}
+                Powered by <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a>
               </span>
               <span className="px-3">Updated for 2026 mortgage rules &amp; FHSA limits</span>
             </div>

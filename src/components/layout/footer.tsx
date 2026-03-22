@@ -47,10 +47,11 @@ const Footer = ({ currentPage }: FooterProps) => {
         <p className="mt-3 text-sm text-muted-foreground">
           Backed by{' '}
           <a
-            href={LENDCITY.bookingUrl}
+            href={LENDCITY.website}
+            title={LENDCITY.title}
             className="font-medium text-foreground/80 hover:text-foreground transition-colors"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
             {LENDCITY.name}
           </a>{' '}
@@ -63,10 +64,11 @@ const Footer = ({ currentPage }: FooterProps) => {
           <p>
             &copy; {new Date().getFullYear()} FirstHomeGuide.ca &mdash; A{' '}
             <a
-              href={LENDCITY.bookingUrl}
+              href={LENDCITY.website}
+              title={LENDCITY.title}
               className="hover:text-foreground transition-colors"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
               {LENDCITY.name}
             </a>{' '}

@@ -16,7 +16,7 @@ export default function AboutHero() {
       </h1>
 
       <p className="text-muted-foreground leading-snug md:text-lg lg:text-xl">
-        {LENDCITY.name} is a team of licensed mortgage professionals under{' '}
+        <a href={LENDCITY.website} title={LENDCITY.title} target="_blank" rel="noopener">{LENDCITY.name}</a> is a team of licensed mortgage professionals under{' '}
         {LENDCITY.brokerage} who saw first-hand how unprepared first-time buyers
         felt walking into the biggest purchase of their lives. So we built
         FirstHomeGuide.ca — a completely free, comprehensive education platform.

@@ -1,6 +1,8 @@
 // LendCity configuration — update these values as needed
 export const LENDCITY = {
   name: 'LendCity',
+  website: 'https://lendcity.ca',
+  title: 'LendCity Mortgages – Licensed Mortgage Professionals in Canada',
   brokerage: 'Mortgage Architects',
   license: 'FSRA Brokerage Licence #12728',
   bookingUrl: '/book-a-call',
