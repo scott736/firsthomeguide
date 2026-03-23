@@ -110,9 +110,13 @@ export default defineConfig({
       serialize: (item) => {
         const url = item.url;
 
+        // Government programs pages — updated March 2026
+        const govProgramsUpdated = '2026-03-23';
+        const isGovProgram = url.includes('/4-government-programs/');
+
         // Homepage — highest priority
         if (url === 'https://firsthomeguide.ca/' || url === 'https://firsthomeguide.ca') {
-          return { ...item, changefreq: 'weekly', priority: 1.0 };
+          return { ...item, lastmod: govProgramsUpdated, changefreq: 'weekly', priority: 1.0 };
         }
 
         // Guide welcome & module landing pages
@@ -122,7 +126,12 @@ export default defineConfig({
 
         // Guide content pages
         if (url.includes('/guide/')) {
-          return { ...item, changefreq: 'weekly', priority: 0.8 };
+          return {
+            ...item,
+            lastmod: isGovProgram ? govProgramsUpdated : undefined,
+            changefreq: 'weekly',
+            priority: 0.8,
+          };
         }
 
         // Tools
