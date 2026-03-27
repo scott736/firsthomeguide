@@ -28,39 +28,6 @@ const DEFAULT_TZ = { timezone: 'America/Toronto', rules: DEFAULT_AVAILABILITY };
 // ============================================================================
 
 export const teamMembers: TeamMember[] = [
-  // ---------- Management ----------
-  {
-    id: 'scott',
-    name: 'Scott Dillingham',
-    email: 'scott@lendcity.ca',
-    slug: 'scott-dillingham',
-    title: 'Founder & CEO',
-    photo: '/images/team/scott-dillingham.webp',
-    bio: 'Award-winning mortgage agent in Canada with 15+ years of active real estate investing.',
-    services: ['strategy-call'],
-    nylasGrants: [
-      { grantId: 'df7ba1f7-5c51-4781-96dd-dab387d63261', provider: 'microsoft', email: 'scott@lendcity.ca', isPrimary: true },
-    ],
-    calendars: { primary: 'primary' },
-    availability: DEFAULT_TZ,
-  },
-  {
-    id: 'aya',
-    name: 'Aya Chukr',
-    email: 'aya@lendcity.ca',
-    slug: 'aya-chukr',
-    title: 'Chief Operating Officer',
-    photo: '/images/team/aya-chukr.webp',
-    bio: 'Led LendCity\'s expansion into Mexico and transformed operations with her analytical, evidence-based approach.',
-    services: ['strategy-call', 'mexico-strategy-call'],
-    nylasGrants: [
-      { grantId: 'd1adb692-bc1c-4c93-8243-04d37846154d', provider: 'microsoft', email: 'aya@lendcity.ca', isPrimary: true },
-    ],
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-
-  // ---------- Canadian Team ----------
   {
     id: 'christine',
     name: 'Christine Traynor',
@@ -70,7 +37,9 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/christine-traynor.webp',
     bio: '20+ years as a real estate appraiser and now actively developing multi-family projects using CMHC financing.',
     services: ['strategy-call', 'cmhc-mli', 'development', 'owner-occupied', 'portfolio-review'],
-    // No Nylas grant yet — Christine has not connected her calendar
+    nylasGrants: [
+      { grantId: '9a198c88-3442-4748-8070-1dc6875377c9', provider: 'microsoft', email: 'christine@lendcity.ca', isPrimary: true },
+    ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
   },
@@ -145,76 +114,6 @@ export const teamMembers: TeamMember[] = [
     services: ['strategy-call', 'owner-occupied'],
     nylasGrants: [
       { grantId: 'e2a98cec-ec41-4131-90bb-139ff3cf8b78', provider: 'microsoft', email: 'kirann@lendcity.ca', isPrimary: true },
-    ],
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-  {
-    id: 'matt',
-    name: 'Matt Buschman',
-    email: 'matt@lendcity.ca',
-    slug: 'matt-buschman',
-    title: 'Realtor & Mortgage Agent',
-    photo: '/images/team/matt-buschman.webp',
-    bio: 'Co-founder of Synergy Real Estate Group. Multi-million dollar producer since 2007 with extensive development experience.',
-    services: ['strategy-call', 'development'],
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-  {
-    id: 'nour',
-    name: 'Nour Chukr',
-    email: 'nour@lendcity.ca',
-    slug: 'nour-chukr',
-    title: 'Lead Coordinator',
-    photo: '/images/team/nour-chukr.webp',
-    bio: 'Contributed to the successful funding of over 80 deals in 2024. Ensures every client file moves efficiently from application to funding.',
-    services: ['strategy-call'],
-    personalOnly: true,
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-
-  // ---------- US Team ----------
-  {
-    id: 'chris',
-    name: 'Chris Micucci',
-    email: 'chris@lendcity.ca',
-    slug: 'chris-micucci',
-    title: 'U.S. Loan Officer',
-    photo: '/images/team/chris-micucci.webp',
-    bio: 'College professor who brings an educator\'s approach to mortgage financing, ensuring clients understand every step.',
-    services: ['usa-strategy-call'],
-    nylasGrants: [
-      { grantId: '9a198c88-3442-4748-8070-1dc6875377c9', provider: 'microsoft', email: 'chris@lendcity.ca', isPrimary: true },
-    ],
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-  {
-    id: 'jimmy',
-    name: 'Jimmy Rivera',
-    email: 'jimmy@lendcity.ca',
-    slug: 'jimmy-rivera',
-    title: 'U.S. Loan Officer',
-    photo: '/images/team/jimmy-rivera.webp',
-    bio: '20+ years of real estate investing experience since purchasing his first property at 19.',
-    services: ['strategy-call'],
-    personalOnly: true,
-    calendars: DEFAULT_CALENDAR,
-    availability: DEFAULT_TZ,
-  },
-  {
-    id: 'josh',
-    name: 'Josh Bauerle',
-    email: 'josh@lendcity.ca',
-    slug: 'josh-bauerle',
-    title: 'U.S. Loan Officer',
-    photo: '/images/team/josh-bauerle.webp',
-    bio: 'Licensed CPA and best-selling author with a growing rental portfolio across the U.S.',
-    services: ['usa-strategy-call'],
-    nylasGrants: [
-      { grantId: '5013303a-2769-4a83-8fca-6e7354a208a9', provider: 'microsoft', email: 'josh@lendcity.ca', isPrimary: true },
     ],
     calendars: DEFAULT_CALENDAR,
     availability: DEFAULT_TZ,
