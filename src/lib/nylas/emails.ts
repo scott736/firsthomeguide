@@ -248,6 +248,7 @@ FirstHomeGuide.ca — Powered by LendCity
     subject,
     html,
     text,
+    replyTo: 'scott@lendcity.ca',
   });
 }
 
@@ -498,6 +499,7 @@ FirstHomeGuide.ca — Powered by LendCity
     subject,
     html,
     text,
+    replyTo: 'scott@lendcity.ca',
   });
 }
 
