@@ -331,31 +331,26 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
   // Use requested duration if provided, otherwise fall back to service config
   const durationMinutes = request.duration ?? service.duration;
 
-  const allSlots: TimeSlot[] = [];
   const startDate = new Date(request.startDate);
   const endDate = new Date(request.endDate);
 
-  // Get availability for each team member (checking ALL their calendars)
-  for (const member of teamMembersToCheck) {
-    try {
-      const grantIds = getTeamMemberGrantIds(member);
-      const primaryGrantId = grantIds[0];
+  // Nylas requires timestamps to be multiples of 5 minutes
+  const roundUp5Min = (ts: number) => Math.ceil(ts / 300) * 300;
+  const apiUri = NYLAS_API_URI || 'https://api.us.nylas.com';
+  const startTimestamp = roundUp5Min(Math.floor(startDate.getTime() / 1000));
+  const endTimestamp = roundUp5Min(Math.floor(endDate.getTime() / 1000));
 
-      // Nylas v3 Availability API requires participants (emails)
-      // Build open hours from member's availability rules
+  // Fetch availability for ALL team members in parallel
+  const slotResults = await Promise.allSettled(
+    teamMembersToCheck.map(async (member): Promise<TimeSlot[]> => {
       const openHours = member.availability?.rules.map((rule) => ({
         days: [rule.dayOfWeek],
         timezone: member.availability?.timezone || schedulingConfig.defaultTimezone,
         start: rule.startTime,
         end: rule.endTime,
-        exdates: [] as string[], // Required by Nylas SDK types
+        exdates: [] as string[],
       }));
 
-      // Nylas requires timestamps to be multiples of 5 minutes
-      const roundUp5Min = (ts: number) => Math.ceil(ts / 300) * 300;
-
-      // Use Nylas REST API directly (SDK's getAvailability constructs wrong URL)
-      const apiUri = NYLAS_API_URI || 'https://api.us.nylas.com';
       const availRes = await fetch(`${apiUri}/v3/calendars/availability`, {
         method: 'POST',
         headers: {
@@ -363,8 +358,8 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          start_time: roundUp5Min(Math.floor(startDate.getTime() / 1000)),
-          end_time: roundUp5Min(Math.floor(endDate.getTime() / 1000)),
+          start_time: startTimestamp,
+          end_time: endTimestamp,
           duration_minutes: durationMinutes,
           interval_minutes: schedulingConfig.slotInterval,
           participants: [
@@ -385,11 +380,11 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
       });
 
       const availData = await availRes.json();
+      const slots: TimeSlot[] = [];
 
-      // Convert Nylas availability to our TimeSlot format
       if (availData.data?.time_slots) {
         for (const slot of availData.data.time_slots) {
-          allSlots.push({
+          slots.push({
             startTime: new Date(slot.start_time * 1000).toISOString(),
             endTime: new Date(slot.end_time * 1000).toISOString(),
             teamMemberId: member.id,
@@ -397,9 +392,19 @@ export async function getAvailability(request: AvailabilityRequest): Promise<Tim
           });
         }
       }
-    } catch (error) {
-      console.error(`Error getting availability for ${member.name}:`, error);
-      // Continue with other team members
+
+      return slots;
+    })
+  );
+
+  // Collect all successful results, log failures
+  const allSlots: TimeSlot[] = [];
+  for (let i = 0; i < slotResults.length; i++) {
+    const result = slotResults[i];
+    if (result.status === 'fulfilled') {
+      allSlots.push(...result.value);
+    } else {
+      console.error(`Error getting availability for ${teamMembersToCheck[i].name}:`, result.reason);
     }
   }
 
