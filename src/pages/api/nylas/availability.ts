@@ -139,13 +139,13 @@ export const POST: APIRoute = async ({ request }) => {
       ? getPendingBookingsForTimeRange(teamMemberId, start.toISOString(), end.toISOString())
       : null;
 
-    // Build cache key for profile page requests (specific team member)
+    // Build cache key — works for both specific team member and round-robin requests
     const adjustedStart = start.toISOString().split('T')[0];
     const adjustedEnd = end.toISOString().split('T')[0];
     const effectiveDuration = duration ?? service.duration;
     const cacheKey = teamMemberId
       ? `avail:v1:${teamMemberId}:${serviceId}:${effectiveDuration}:${adjustedStart}:${adjustedEnd}`
-      : null;
+      : `avail:v1:rr:${serviceId}:${effectiveDuration}:${adjustedStart}:${adjustedEnd}`;
 
     // Try server-side cache first (~50ms vs ~5-10s Nylas API call)
     const cachedSlots = cacheKey ? await getCachedSlots(cacheKey) : null;
