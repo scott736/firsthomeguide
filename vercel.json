@@ -1,4 +1,24 @@
 {
+  "redirects": [
+    { "source": "/guide", "destination": "/guide/welcome/", "statusCode": 301 },
+    { "source": "/guide/", "destination": "/guide/welcome/", "statusCode": 301 },
+    { "source": "/guide/1-are-you-ready", "destination": "/guide/1-are-you-ready/1-first-time-buyer/", "statusCode": 301 },
+    { "source": "/guide/1-are-you-ready/", "destination": "/guide/1-are-you-ready/1-first-time-buyer/", "statusCode": 301 },
+    { "source": "/guide/2-saving-smart", "destination": "/guide/2-saving-smart/1-fhsa/", "statusCode": 301 },
+    { "source": "/guide/2-saving-smart/", "destination": "/guide/2-saving-smart/1-fhsa/", "statusCode": 301 },
+    { "source": "/guide/3-down-payments-mortgages", "destination": "/guide/3-down-payments-mortgages/1-down-payment-rules/", "statusCode": 301 },
+    { "source": "/guide/3-down-payments-mortgages/", "destination": "/guide/3-down-payments-mortgages/1-down-payment-rules/", "statusCode": 301 },
+    { "source": "/guide/4-government-programs", "destination": "/guide/4-government-programs/1-federal-programs/", "statusCode": 301 },
+    { "source": "/guide/4-government-programs/", "destination": "/guide/4-government-programs/1-federal-programs/", "statusCode": 301 },
+    { "source": "/guide/5-finding-a-home", "destination": "/guide/5-finding-a-home/0-your-team/", "statusCode": 301 },
+    { "source": "/guide/5-finding-a-home/", "destination": "/guide/5-finding-a-home/0-your-team/", "statusCode": 301 },
+    { "source": "/guide/6-making-an-offer", "destination": "/guide/6-making-an-offer/1-purchase-agreement/", "statusCode": 301 },
+    { "source": "/guide/6-making-an-offer/", "destination": "/guide/6-making-an-offer/1-purchase-agreement/", "statusCode": 301 },
+    { "source": "/guide/7-closing-the-deal", "destination": "/guide/7-closing-the-deal/1-closing-costs-overview/", "statusCode": 301 },
+    { "source": "/guide/7-closing-the-deal/", "destination": "/guide/7-closing-the-deal/1-closing-costs-overview/", "statusCode": 301 },
+    { "source": "/guide/8-life-after-closing", "destination": "/guide/8-life-after-closing/1-emergency-fund/", "statusCode": 301 },
+    { "source": "/guide/8-life-after-closing/", "destination": "/guide/8-life-after-closing/1-emergency-fund/", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/llms.txt",

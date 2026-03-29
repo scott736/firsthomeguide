@@ -102,11 +102,17 @@ export default defineConfig({
     }),
     mdx(),
     sitemap({
+      customPages: [
+        'https://firsthomeguide.ca/book-a-call/',
+        'https://firsthomeguide.ca/tools/cost-of-waiting/',
+        'https://firsthomeguide.ca/tools/readiness-assessment/',
+      ],
       filter: (page) =>
         !page.includes('/404') &&
         !page.includes('/offline') &&
         !page.includes('/api/') &&
-        !page.includes('/print-guide'),
+        !page.includes('/print-guide') &&
+        !page.includes('/my-guide'),
       serialize: (item) => {
         const url = item.url;
 

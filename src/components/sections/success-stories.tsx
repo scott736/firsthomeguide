@@ -26,7 +26,7 @@ const STORIES: SuccessStory[] = [
       'I had no idea the FHSA and RRSP Home Buyers\' Plan could be combined until I read the savings module. The guide\'s combined strategy page literally changed my timeline from 5 years to 3.',
     purchased: 'First condo in Toronto',
     savings: 'Saved $14,000 with FHSA + RRSP HBP',
-    avatar: 'https://avatar.vercel.sh/priya',
+    avatar: 'https://ui-avatars.com/api/?name=Priya+M&background=e0f2fe&color=0369a1&bold=true&size=80',
   },
   {
     name: 'Marcus L.',
@@ -35,7 +35,7 @@ const STORIES: SuccessStory[] = [
       'The closing costs calculator showed me exactly what to budget beyond my down payment. I would have been $11,000 short on closing day without it. The land transfer tax breakdown by province was a lifesaver.',
     purchased: 'Townhouse in Calgary',
     savings: 'Saved $8,500 with Alberta programs',
-    avatar: 'https://avatar.vercel.sh/marcus',
+    avatar: 'https://ui-avatars.com/api/?name=Marcus+L&background=fce7f3&color=9d174d&bold=true&size=80',
   },
   {
     name: 'Sophie T.',
@@ -44,7 +44,7 @@ const STORIES: SuccessStory[] = [
       'As a self-employed freelancer, I thought buying was impossible. The self-employed mortgage page and the Quebec programs section helped me understand exactly what documentation I needed and which provincial grants I qualified for.',
     purchased: 'Duplex in Verdun',
     savings: 'Saved $9,200 with Quebec tax credit + FHSA',
-    avatar: 'https://avatar.vercel.sh/sophie',
+    avatar: 'https://ui-avatars.com/api/?name=Sophie+T&background=dcfce7&color=166534&bold=true&size=80',
   },
   {
     name: 'James & Rina K.',
@@ -53,7 +53,7 @@ const STORIES: SuccessStory[] = [
       'We used the affordability calculator and the BC programs page side by side. Finding out about the BC first-time buyer property transfer tax exemption and layering it with federal programs made all the difference.',
     purchased: 'Apartment in Burnaby',
     savings: 'Saved $16,000 with BC exemption + FHSA',
-    avatar: 'https://avatar.vercel.sh/james-rina',
+    avatar: 'https://ui-avatars.com/api/?name=J+R&background=fef3c7&color=92400e&bold=true&size=80',
   },
   {
     name: 'David R.',
@@ -62,7 +62,7 @@ const STORIES: SuccessStory[] = [
       'I went through every module over two weekends. The stress test explainer finally made sense of why the bank offered less than I expected, and the bidding wars page gave me the confidence to negotiate my first offer.',
     purchased: 'Semi-detached in Halifax',
     savings: 'Saved $6,800 with Atlantic Canada programs',
-    avatar: 'https://avatar.vercel.sh/david',
+    avatar: 'https://ui-avatars.com/api/?name=David+R&background=ede9fe&color=5b21b6&bold=true&size=80',
   },
 ];
 
