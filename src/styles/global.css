@@ -349,6 +349,66 @@ html.theme-transition::view-transition-new(root) {
   }
 }
 
+/* AEO Answer Box — optimized for AI answer extraction */
+.aeo-answer-box {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--chart-1) 30%, transparent);
+  background: color-mix(in srgb, var(--chart-1) 5%, var(--card));
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.aeo-answer-box__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--chart-1);
+}
+
+.aeo-answer-box__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.aeo-answer-box__question {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.aeo-answer-box__answer {
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.aeo-answer-box__bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.aeo-answer-box__bullets li {
+  margin-bottom: 0.25rem;
+  color: var(--foreground);
+}
+
+.aeo-answer-box__source {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+
+.aeo-answer-box__source a {
+  color: var(--chart-1);
+  text-decoration: underline;
+}
+
 /* Handle reduced motion preference globally */
 @media (prefers-reduced-motion: reduce) {
   *,

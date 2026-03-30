@@ -6,6 +6,20 @@ sidebar:
 ---
 
 import GlossaryTooltip from '../../../../components/sections/glossary-tooltip.tsx';
+import AEOAnswerBox from '../../../../components/sections/aeo-answer-box.tsx';
+
+<AEOAnswerBox
+  question="What is the mortgage stress test in Canada?"
+  answer="The mortgage stress test requires all federally regulated Canadian lenders to qualify borrowers at a rate higher than their actual contract rate — the greater of contract rate + 2% or the Bank of Canada's benchmark qualifying rate (currently 5.25%). This reduces maximum borrowing power by roughly 20%."
+  bullets={[
+    "Qualifying rate = higher of contract rate + 2% or 5.25% benchmark",
+    "Applies to all insured and uninsured mortgages at federal lenders",
+    "Reduces your maximum mortgage by approximately 20%",
+    "Required since 2018 for all federally regulated lenders",
+  ]}
+  source="OSFI"
+  sourceUrl="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/residential-mortgage-underwriting-practices-procedures"
+/>
 
 The mortgage <GlossaryTooltip client:load term="stress test" definition="A federal requirement that you must qualify at a rate higher than your contract rate — the greater of contract rate + 2% or the Bank of Canada benchmark rate." /> is one of the most important concepts for Canadian home buyers to understand. It directly determines how much you can borrow, and it almost certainly means you will qualify for less than you might expect. Knowing how it works -- and planning around it -- is essential to setting a realistic home-buying budget.
 

@@ -2,7 +2,7 @@
 /**
  * Custom Starlight Head component override.
  * Adds structured data (JSON-LD) using @graph pattern, OG/Twitter meta tags,
- * and breadcrumb schema for guide pages, improving SEO and social sharing.
+ * breadcrumb schema, entity linking, and AEO/GEO signals for guide pages.
  */
 import Default from '@astrojs/starlight/components/Head.astro';
 
@@ -66,11 +66,71 @@ const breadcrumbListItems = breadcrumbItems.map((crumb, index) => {
 
 // --- Detect special page types ---
 const isFaqPage = Astro.url.pathname.replace(/\/$/, '') === '/guide/faq';
+const isGlossaryPage = Astro.url.pathname.replace(/\/$/, '') === '/guide/glossary';
+
+// Determine module slug from path for entity/citation mapping
+const moduleSlug = pathSegments.length >= 2 ? pathSegments[1] : '';
+
+// --- Entity mapping: article topics → Wikipedia/Wikidata about links ---
+// Helps AI systems understand what concepts each article covers
+const topicEntities: Record<string, Array<{ '@type': string; name: string; sameAs: string }>> = {
+  '1-are-you-ready': [
+    { '@type': 'Thing', name: 'First-time home buying', sameAs: 'https://en.wikipedia.org/wiki/First-time_home_buyer' },
+    { '@type': 'Thing', name: 'Mortgage loan', sameAs: 'https://en.wikipedia.org/wiki/Mortgage_loan' },
+  ],
+  '2-saving-smart': [
+    { '@type': 'Thing', name: 'First Home Savings Account', sameAs: 'https://en.wikipedia.org/wiki/First_Home_Savings_Account' },
+    { '@type': 'Thing', name: 'Registered Retirement Savings Plan', sameAs: 'https://en.wikipedia.org/wiki/Registered_retirement_savings_plan' },
+    { '@type': 'Thing', name: 'Tax-free savings account', sameAs: 'https://en.wikipedia.org/wiki/Tax-free_savings_account_(Canada)' },
+  ],
+  '3-down-payments-mortgages': [
+    { '@type': 'Thing', name: 'Down payment', sameAs: 'https://en.wikipedia.org/wiki/Down_payment' },
+    { '@type': 'Thing', name: 'Canada Mortgage and Housing Corporation', sameAs: 'https://en.wikipedia.org/wiki/Canada_Mortgage_and_Housing_Corporation' },
+    { '@type': 'Thing', name: 'Mortgage insurance', sameAs: 'https://en.wikipedia.org/wiki/Mortgage_insurance' },
+  ],
+  '4-government-programs': [
+    { '@type': 'GovernmentOrganization', name: 'Government of Canada', sameAs: 'https://en.wikipedia.org/wiki/Government_of_Canada' },
+    { '@type': 'Thing', name: 'Land transfer tax', sameAs: 'https://en.wikipedia.org/wiki/Land_transfer_tax' },
+  ],
+  '5-finding-a-home': [
+    { '@type': 'Thing', name: 'Real estate agent', sameAs: 'https://en.wikipedia.org/wiki/Real_estate_agent' },
+    { '@type': 'Thing', name: 'Multiple listing service', sameAs: 'https://en.wikipedia.org/wiki/Multiple_listing_service' },
+  ],
+  '6-making-an-offer': [
+    { '@type': 'Thing', name: 'Purchase agreement', sameAs: 'https://en.wikipedia.org/wiki/Purchase_agreement' },
+    { '@type': 'Thing', name: 'Home inspection', sameAs: 'https://en.wikipedia.org/wiki/Home_inspection' },
+  ],
+  '7-closing-the-deal': [
+    { '@type': 'Thing', name: 'Title insurance', sameAs: 'https://en.wikipedia.org/wiki/Title_insurance' },
+    { '@type': 'Thing', name: 'Closing costs', sameAs: 'https://en.wikipedia.org/wiki/Closing_costs' },
+  ],
+  '8-life-after-closing': [
+    { '@type': 'Thing', name: 'Property tax', sameAs: 'https://en.wikipedia.org/wiki/Property_tax' },
+    { '@type': 'Thing', name: 'Home insurance', sameAs: 'https://en.wikipedia.org/wiki/Home_insurance' },
+  ],
+};
+
+// --- Citation sources for authoritative government references ---
+// Helps AI systems verify facts and increases citation likelihood
+const citationSources: Record<string, Array<{ '@type': string; name: string; url: string }>> = {
+  '2-saving-smart': [
+    { '@type': 'WebPage', name: 'CRA \u2014 First Home Savings Account', url: 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/first-home-savings-account.html' },
+    { '@type': 'WebPage', name: 'CRA \u2014 Home Buyers\' Plan', url: 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/what-home-buyers-plan.html' },
+  ],
+  '3-down-payments-mortgages': [
+    { '@type': 'WebPage', name: 'CMHC \u2014 Mortgage Loan Insurance', url: 'https://www.cmhc-schl.gc.ca/consumers/home-buying/mortgage-loan-insurance-for-consumers' },
+    { '@type': 'WebPage', name: 'OSFI \u2014 Residential Mortgage Underwriting', url: 'https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/residential-mortgage-underwriting-practices-procedures' },
+  ],
+  '4-government-programs': [
+    { '@type': 'WebPage', name: 'CRA \u2014 Home Buyers\' Tax Credit', url: 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/line-31270-home-buyers-amount.html' },
+    { '@type': 'WebPage', name: 'CRA \u2014 GST/HST New Housing Rebate', url: 'https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4028.html' },
+  ],
+};
 
 // --- Build @graph array ---
 const graph: Record<string, unknown>[] = [];
 
-// Organization
+// Organization — enhanced with knowsAbout, parentOrganization, and expanded sameAs
 graph.push({
   '@type': 'Organization',
   '@id': `${siteUrl}/#organization`,
@@ -90,6 +150,17 @@ graph.push({
     name: 'Canada',
     sameAs: 'https://en.wikipedia.org/wiki/Canada',
   },
+  knowsAbout: [
+    'First-time home buying in Canada',
+    'First Home Savings Account (FHSA)',
+    'RRSP Home Buyers\' Plan',
+    'CMHC mortgage insurance',
+    'Canadian mortgage rates',
+    'Provincial home buyer programs',
+    'Closing costs in Canada',
+    'Land transfer tax',
+    'Mortgage stress test',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+1-519-960-0370',
@@ -97,11 +168,20 @@ graph.push({
     areaServed: 'CA',
     availableLanguage: 'English',
   },
-  sameAs: ['https://twitter.com/FirstHomeGuideCA'],
+  sameAs: [
+    'https://twitter.com/FirstHomeGuideCA',
+    'https://www.lendcity.ca',
+  ],
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'LendCity',
+    url: 'https://www.lendcity.ca',
+    description: 'Licensed Mortgage Professionals under Mortgage Architects',
+  },
 });
 
-// Article with speakable markup for AI voice extraction
-graph.push({
+// Article — enhanced with entity linking, citations, educational metadata, and AEO signals
+const articleSchema: Record<string, unknown> = {
   '@type': 'Article',
   '@id': canonicalURL,
   headline: title,
@@ -119,11 +199,35 @@ graph.push({
   },
   inLanguage: 'en-CA',
   image: ogImage,
+  isAccessibleForFree: true,
+  educationalLevel: 'Beginner',
+  learningResourceType: 'guide',
+  audience: {
+    '@type': 'EducationalAudience',
+    educationalRole: 'student',
+    audienceType: 'First-time home buyers in Canada',
+  },
   speakable: {
     '@type': 'SpeakableSpecification',
-    cssSelector: ['h1', 'h2', '[role="note"]', '.sl-markdown-content > p:first-of-type'],
+    cssSelector: ['h1', 'h2', '[role="note"]', '.sl-markdown-content > p:first-of-type', '[data-aeo-answer]'],
   },
-});
+  potentialAction: {
+    '@type': 'ReadAction',
+    target: canonicalURL,
+  },
+};
+
+// Attach entity about links when the module has mapped topics
+if (topicEntities[moduleSlug]) {
+  articleSchema.about = topicEntities[moduleSlug];
+}
+
+// Attach citation links to authoritative government sources
+if (citationSources[moduleSlug]) {
+  articleSchema.citation = citationSources[moduleSlug];
+}
+
+graph.push(articleSchema);
 
 // FAQPage schema for the FAQ page
 if (isFaqPage) {
@@ -200,7 +304,7 @@ if (isFaqPage) {
         name: 'What government programs are available for first-time home buyers in Canada?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Federal programs include the FHSA (up to $40,000 tax-advantaged savings), RRSP Home Buyers\' Plan (up to $60,000 tax-free withdrawal), and Home Buyers\' Tax Credit ($1,500). Each province has additional programs — Ontario offers land transfer tax rebates up to $4,000, BC offers full property transfer tax exemption on homes up to $500,000, and Alberta has no land transfer tax.',
+          text: 'Federal programs include the FHSA (up to $40,000 tax-advantaged savings), RRSP Home Buyers\' Plan (up to $60,000 tax-free withdrawal), and Home Buyers\' Tax Credit ($1,500). Each province has additional programs \u2014 Ontario offers land transfer tax rebates up to $4,000, BC offers full property transfer tax exemption on homes up to $500,000, and Alberta has no land transfer tax.',
         },
       },
       {
@@ -264,7 +368,7 @@ if (isFaqPage) {
         name: 'What is title insurance?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Title insurance is a one-time policy ($250 to $500) that protects against problems with your property\'s legal title — including fraud, forgery, unknown liens, and survey errors. Lender\'s title insurance is required by most lenders; owner\'s title insurance is optional but strongly recommended.',
+          text: 'Title insurance is a one-time policy ($250 to $500) that protects against problems with your property\'s legal title \u2014 including fraud, forgery, unknown liens, and survey errors. Lender\'s title insurance is required by most lenders; owner\'s title insurance is optional but strongly recommended.',
         },
       },
       {
@@ -292,6 +396,24 @@ if (isFaqPage) {
         },
       },
     ],
+  });
+}
+
+// DefinedTermSet schema for the glossary page
+if (isGlossaryPage) {
+  graph.push({
+    '@type': 'DefinedTermSet',
+    '@id': `${canonicalURL}#glossary`,
+    name: 'Canadian Home Buying Glossary',
+    description: 'Definitions of key terms used in Canadian real estate and the first-time home buying process.',
+    url: canonicalURL,
+    inLanguage: 'en-CA',
+    provider: { '@id': `${siteUrl}/#organization` },
+    about: {
+      '@type': 'Thing',
+      name: 'Real estate terminology in Canada',
+      sameAs: 'https://en.wikipedia.org/wiki/Real_estate',
+    },
   });
 }
 
@@ -336,7 +458,7 @@ const ogTitle = `${title} \u2014 FirstHomeGuide.ca`;
 <meta property="article:published_time" content="2025-01-15T00:00:00Z" />
 <meta property="article:modified_time" content={`${dateModified}T00:00:00Z`} />
 
-<!-- Twitter Card meta tags (JPEG fallback for compatibility) -->
+<!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={ogTitle} />
 <meta name="twitter:description" content={description} />
