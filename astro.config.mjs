@@ -115,34 +115,35 @@ export default defineConfig({
         !page.includes('/my-guide'),
       serialize: (item) => {
         const url = item.url;
+        const lastmod = new Date().toISOString().split('T')[0];
 
         // Homepage — highest priority
         if (url === 'https://firsthomeguide.ca/' || url === 'https://firsthomeguide.ca') {
-          return { ...item, changefreq: 'weekly', priority: 1.0 };
+          return { ...item, changefreq: 'weekly', priority: 1.0, lastmod };
         }
 
         // Guide welcome & module landing pages
         if (url.includes('/guide/welcome')) {
-          return { ...item, changefreq: 'weekly', priority: 0.9 };
+          return { ...item, changefreq: 'weekly', priority: 0.9, lastmod };
         }
 
         // Guide content pages
         if (url.includes('/guide/')) {
-          return { ...item, changefreq: 'weekly', priority: 0.8 };
+          return { ...item, changefreq: 'weekly', priority: 0.8, lastmod };
         }
 
         // Tools
         if (url.includes('/tools/')) {
-          return { ...item, changefreq: 'monthly', priority: 0.7 };
+          return { ...item, changefreq: 'monthly', priority: 0.7, lastmod };
         }
 
         // About, book-a-call
         if (url.includes('/about') || url.includes('/book-a-call')) {
-          return { ...item, changefreq: 'monthly', priority: 0.6 };
+          return { ...item, changefreq: 'monthly', priority: 0.6, lastmod };
         }
 
         // Everything else
-        return { ...item, changefreq: 'monthly', priority: 0.5 };
+        return { ...item, changefreq: 'monthly', priority: 0.5, lastmod };
       },
     }),
     react(),
