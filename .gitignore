@@ -24,3 +24,9 @@ pnpm-debug.log*
 .idea/
 .qodo
 .vercel
+
+# Front Matter CMS local cache
+.frontmatter/
+
+# Playwright test output
+test-results/
