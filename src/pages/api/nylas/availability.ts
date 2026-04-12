@@ -1,11 +1,12 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+
 import { getAvailability, isNylasConfigured } from '@/lib/nylas/client';
 import { getServiceById, getTeamMemberById, schedulingConfig } from '@/lib/nylas/config';
 import { getPendingBookingsForTimeRange } from '@/lib/nylas/pending-bookings';
-import { isSupabaseConfigured } from '@/lib/supabase';
 import type { AvailabilityRequest, DayAvailability, TimeSlot } from '@/lib/nylas/types';
+import { isSupabaseConfigured } from '@/lib/supabase';
 
 // ---------------------------------------------------------------------------
 // Server-side availability cache (Upstash Redis)

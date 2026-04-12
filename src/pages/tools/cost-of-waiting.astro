@@ -1,6 +1,6 @@
 ---
-import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import CostOfWaiting from '@/components/sections/cost-of-waiting';
+import LendCityCtaBanner from '@/components/sections/lendcity-cta-banner';
 import CostOfWaitingContent from '@/components/sections/tool-content/cost-of-waiting-content';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
@@ -21,7 +21,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <div class="tool-subpage">
-    <CostOfWaiting client:load />
+    <CostOfWaiting client:only="react" />
   </div>
 
   <CostOfWaitingContent client:visible />

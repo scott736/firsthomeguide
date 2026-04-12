@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+
 import { Clock, Globe, CheckCircle2, Lock } from 'lucide-react';
-import { cn } from '@/lib/utils';
+
 import type { Service, TeamMember, ServiceRegion } from '@/lib/nylas/types';
+import { cn } from '@/lib/utils';
 
 interface ServiceSelectorProps {
   services: Service[];

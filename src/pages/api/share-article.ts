@@ -2,6 +2,7 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
+
 import { sendShareArticleEmail } from '@/lib/share-email';
 
 // Simple in-memory rate limiter: max 5 shares per IP per hour

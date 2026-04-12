@@ -3,11 +3,14 @@
  * Handles booking confirmations via email before creating calendar events
  */
 
-import { getServerSupabase } from '@/lib/supabase';
+import crypto from 'node:crypto';
+
 import { createBooking, getAvailability } from './client';
 import { getServiceById } from './config';
 import type { BookingRequest, BookingConfirmation } from './types';
-import crypto from 'node:crypto';
+
+import { getServerSupabase } from '@/lib/supabase';
+
 
 // ============================================================================
 // Types

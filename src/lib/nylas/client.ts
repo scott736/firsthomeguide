@@ -4,6 +4,14 @@
  */
 
 import Nylas from 'nylas';
+
+import {
+  getServiceById,
+  getTeamMemberById,
+  getTeamMembersByService,
+  schedulingConfig,
+} from './config';
+import { enrichTeamMember, enrichTeamMembers } from './grants';
 import type {
   TimeSlot,
   AvailabilityRequest,
@@ -13,13 +21,7 @@ import type {
   TeamMember,
   Service,
 } from './types';
-import {
-  getServiceById,
-  getTeamMemberById,
-  getTeamMembersByService,
-  schedulingConfig,
-} from './config';
-import { enrichTeamMember, enrichTeamMembers } from './grants';
+
 import { timingSafeCompare } from '@/lib/crypto-utils';
 import { escapeHtml } from '@/lib/email';
 

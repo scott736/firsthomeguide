@@ -4,8 +4,9 @@
  * Config.ts grants serve as fallback if Supabase is unreachable.
  */
 
-import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase';
 import type { TeamMember, NylasGrantConfig } from './types';
+
+import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase';
 
 // ============================================================================
 // Types

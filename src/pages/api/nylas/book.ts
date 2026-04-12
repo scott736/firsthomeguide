@@ -1,12 +1,13 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { z } from 'zod';
+
 import { isNylasConfigured } from '@/lib/nylas/client';
 import { getServiceById, getTeamMemberById, schedulingConfig } from '@/lib/nylas/config';
+import { sendBookingConfirmationEmail } from '@/lib/nylas/emails';
 import { createPendingBooking, hasReachedPendingLimit, cancelPendingBooking } from '@/lib/nylas/pending-bookings';
 import type { BookingRequest } from '@/lib/nylas/types';
-import { sendBookingConfirmationEmail } from '@/lib/nylas/emails';
-import { z } from 'zod';
 
 // Validation schema
 const bookingSchema = z.object({

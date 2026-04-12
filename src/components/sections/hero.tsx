@@ -55,7 +55,7 @@ export default function Hero() {
         <img
           src="/images/home/hero.webp"
           alt="Futuristic fintech dashboard showing Canadian housing market analytics and mortgage data"
-          fetchpriority="high"
+          fetchPriority="high"
           loading="eager"
           className="ring-foreground/5 mt-10 w-full rounded-xs shadow-2xl ring-6 md:mt-20 md:rounded-sm md:px-[1px] md:ring-16 lg:mt-30"
           width={1472}

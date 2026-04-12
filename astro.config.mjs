@@ -23,6 +23,7 @@ export default defineConfig({
     starlight({
       title: 'FirstHomeGuide.ca',
       description: 'Your complete guide to buying your first home in Canada',
+      disable404Route: true,
       head: [
         {
           tag: 'link',
@@ -116,34 +117,36 @@ export default defineConfig({
       serialize: (item) => {
         const url = item.url;
         const lastmod = new Date().toISOString().split('T')[0];
+        const weekly = /** @type {import('sitemap').EnumChangefreq} */ ('weekly');
+        const monthly = /** @type {import('sitemap').EnumChangefreq} */ ('monthly');
 
         // Homepage — highest priority
         if (url === 'https://firsthomeguide.ca/' || url === 'https://firsthomeguide.ca') {
-          return { ...item, changefreq: 'weekly', priority: 1.0, lastmod };
+          return { ...item, changefreq: weekly, priority: 1.0, lastmod };
         }
 
         // Guide welcome & module landing pages
         if (url.includes('/guide/welcome')) {
-          return { ...item, changefreq: 'weekly', priority: 0.9, lastmod };
+          return { ...item, changefreq: weekly, priority: 0.9, lastmod };
         }
 
         // Guide content pages
         if (url.includes('/guide/')) {
-          return { ...item, changefreq: 'weekly', priority: 0.8, lastmod };
+          return { ...item, changefreq: weekly, priority: 0.8, lastmod };
         }
 
         // Tools
         if (url.includes('/tools/')) {
-          return { ...item, changefreq: 'monthly', priority: 0.7, lastmod };
+          return { ...item, changefreq: monthly, priority: 0.7, lastmod };
         }
 
         // About, book-a-call
         if (url.includes('/about') || url.includes('/book-a-call')) {
-          return { ...item, changefreq: 'monthly', priority: 0.6, lastmod };
+          return { ...item, changefreq: monthly, priority: 0.6, lastmod };
         }
 
         // Everything else
-        return { ...item, changefreq: 'monthly', priority: 0.5, lastmod };
+        return { ...item, changefreq: monthly, priority: 0.5, lastmod };
       },
     }),
     react(),

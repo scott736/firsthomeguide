@@ -21,7 +21,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <div class="tool-subpage">
-    <CityComparison client:load />
+    <CityComparison client:only="react" />
   </div>
 
   <CityComparisonContent client:visible />

@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
+
 import { ChevronLeft, ChevronRight, Clock, Globe, CalendarDays } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import type { TimeSlot, DayAvailability, Service, TeamMember } from '@/lib/nylas/types';
+import { cn } from '@/lib/utils';
 
 interface AvailabilityPickerProps {
   service: Service;

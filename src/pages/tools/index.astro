@@ -6,9 +6,9 @@ import ComparisonTools from '@/components/sections/comparison-tools';
 import CostOfWaiting from '@/components/sections/cost-of-waiting';
 import DocumentChecklist from '@/components/sections/document-checklist';
 import MortgageCalculator from '@/components/sections/mortgage-calculator';
+import ProvinceSelector from '@/components/sections/province-selector';
 import ReadinessAssessment from '@/components/sections/readiness-assessment';
 import TimelinePlanner from '@/components/sections/timeline-planner';
-import ProvinceSelector from '@/components/sections/province-selector';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 ---
 
@@ -48,7 +48,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
   {/* 4. Comparison Tools (Rent vs Buy, FHSA vs RRSP, Fixed vs Variable) */}
-  <ComparisonTools client:visible />
+  <ComparisonTools client:only="react" />
 
   {/* Section divider */}
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
@@ -60,7 +60,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
   {/* 6. City Comparison */}
-  <CityComparison client:visible />
+  <CityComparison client:only="react" />
 
   {/* Section divider */}
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
@@ -84,7 +84,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   <div class="container max-w-screen-xl"><hr class="border-border" /></div>
 
   {/* 10. Cost of Waiting Calculator */}
-  <CostOfWaiting client:visible />
+  <CostOfWaiting client:only="react" />
 
   {/* 6. Continue Learning */}
   <section class="section-padding border-t">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+
 import {
   ArrowRight,
   DollarSign,
@@ -9,6 +9,9 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+import { REGION_PATHS } from './canada-province-svg-paths';
 
 import { Badge } from '@/components/ui/badge';
 import {
@@ -20,7 +23,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { REGION_PATHS } from './canada-province-svg-paths';
 
 /* ─────────────────────── Types ─────────────────────── */
 

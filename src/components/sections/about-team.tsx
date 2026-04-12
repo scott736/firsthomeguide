@@ -1,4 +1,5 @@
 import { ArrowRight, BookCheck, Globe, Handshake, Scale, Shield } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import { LENDCITY } from '@/lib/lendcity';
 

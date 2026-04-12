@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 import {
   ArrowLeftRight,
   BookOpen,
@@ -15,7 +17,6 @@ import {
   Menu,
   Search,
 } from 'lucide-react';
-import React from 'react';
 
 import { ThemeToggle } from '@/components/elements/theme-toggle';
 import Logo from '@/components/layout/logo';

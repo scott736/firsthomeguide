@@ -1,14 +1,16 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ServiceSelector } from './ServiceSelector';
+
 import { AvailabilityPicker } from './AvailabilityPicker';
-import { BookingForm } from './BookingForm';
 import { BookingConfirmation } from './BookingConfirmation';
+import { BookingForm } from './BookingForm';
 import { PendingConfirmation } from './PendingConfirmation';
-import { cn } from '@/lib/utils';
+import { ServiceSelector } from './ServiceSelector';
+
+import { Button } from '@/components/ui/button';
 import type {
   Service,
   TeamMember,
@@ -18,6 +20,7 @@ import type {
   BookingConfirmation as BookingConfirmationType,
   MeetingType,
 } from '@/lib/nylas/types';
+import { cn } from '@/lib/utils';
 
 interface PendingBookingInfo {
   email: string;

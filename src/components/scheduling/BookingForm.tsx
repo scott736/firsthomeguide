@@ -1,16 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { ArrowLeft, Calendar, Clock, Loader2, Phone, User, Video } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
 import type { GuestInfo, Service, TeamMember, TimeSlot, MeetingType } from '@/lib/nylas/types';
+import { cn } from '@/lib/utils';
 
 const MEETING_TYPE_OPTIONS: { type: MeetingType; label: string; description: string }[] = [
   { type: 'phone', label: 'Phone Call', description: "We'll call you at the scheduled time." },

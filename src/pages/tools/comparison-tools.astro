@@ -21,7 +21,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
   </section>
 
   <div class="tool-subpage">
-    <ComparisonTools client:load />
+    <ComparisonTools client:only="react" />
   </div>
 
   <ComparisonToolsContent client:visible />
