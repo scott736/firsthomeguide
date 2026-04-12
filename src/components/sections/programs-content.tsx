@@ -67,10 +67,10 @@ const PROVINCIAL_HIGHLIGHTS = [
   },
   {
     province: 'British Columbia',
-    savings: 'Full exemption',
+    savings: 'Up to $14,700',
     bullets: [
-      'Full property transfer tax exemption on homes valued at $500,000 or less',
-      'Partial exemption on homes up to $835,000',
+      'Full property transfer tax exemption on homes valued up to $835,000 (saves up to $14,700)',
+      'Partial exemption for homes between $835,000 and $860,000',
     ],
   },
   {
