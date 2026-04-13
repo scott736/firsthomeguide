@@ -1,7 +1,7 @@
 // FirstHomeGuide.ca Service Worker
 // Cache-first for static assets, network-first for HTML pages
 
-const CACHE_VERSION = 'fhg-v1';
+const CACHE_VERSION = 'fhg-v2';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 
@@ -12,7 +12,7 @@ const MAX_ASSET_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days
 const PRE_CACHE_URLS = [
   '/',
   '/guide/welcome/',
-  '/tools',
+  '/tools/',
   '/offline/',
 ];
 

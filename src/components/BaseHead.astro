@@ -128,6 +128,3 @@ const twitterImageURL = new URL('/images/og-image.webp', Astro.url);
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
 <meta property="twitter:site" content={SITE_METADATA.twitter.creator} />
 
-{Astro.url.pathname === '/' && (
-  <link rel="preload" as="image" type="image/webp" href="/images/home/hero.webp" />
-)}

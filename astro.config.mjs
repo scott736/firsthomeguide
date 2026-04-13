@@ -10,7 +10,12 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://firsthomeguide.ca',
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+    isr: {
+      expiration: 60 * 60 * 24,
+    },
+  }),
   markdown: {
     rehypePlugins: [
       [rehypeExternalLinks, {

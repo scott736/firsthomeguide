@@ -49,7 +49,7 @@ jobs:
           fi
 
           # Check hero badge year
-          HERO_FILE="src/components/sections/hero.tsx"
+          HERO_FILE="src/components/sections/hero.astro"
           if [ -f "$HERO_FILE" ]; then
             if grep -q "$PREVIOUS_YEAR Updated" "$HERO_FILE"; then
               REPORT="$REPORT\n### ⚠️ Hero badge references $PREVIOUS_YEAR — needs update to $CURRENT_YEAR\n"

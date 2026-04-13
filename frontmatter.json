@@ -77,41 +77,21 @@
     {
       "title": "Guide Modules",
       "path": "[[workspace]]/src/content/docs",
-      "contentTypes": ["guide-module"]
+      "contentTypes": [
+        "guide-module"
+      ]
     },
     {
       "title": "Changelog",
       "path": "[[workspace]]/src/content/changelog",
-      "contentTypes": ["blog-post"]
+      "contentTypes": [
+        "blog-post"
+      ]
     }
   ],
   "frontMatter.content.publicFolder": "[[workspace]]/public",
   "frontMatter.framework.id": "astro",
   "frontMatter.preview.host": "http://localhost:4321",
-  "frontMatter.taxonomy.tags": [
-    "FHSA",
-    "RRSP",
-    "mortgage",
-    "down-payment",
-    "closing-costs",
-    "government-programs",
-    "first-time-buyer",
-    "ontario",
-    "british-columbia",
-    "alberta",
-    "quebec",
-    "nova-scotia",
-    "home-inspection",
-    "real-estate",
-    "credit-score",
-    "pre-approval"
-  ],
-  "frontMatter.taxonomy.categories": [
-    "Guide",
-    "News",
-    "Calculator",
-    "Provincial Programs"
-  ],
   "frontMatter.content.autoUpdateDate": true,
   "frontMatter.dashboard.openOnStart": false
 }
