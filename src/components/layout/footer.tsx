@@ -11,6 +11,15 @@ interface FooterProps {
   currentPage: string;
 }
 
+const LEGAL_LINKS = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Disclaimer', href: '/disclaimer' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Sitemap', href: '/sitemap-index.xml' },
+];
+
 const Footer = ({ currentPage }: FooterProps) => {
   const hideFooter = ['/guide'].some((route) => currentPage.includes(route));
   if (hideFooter) return null;
@@ -59,43 +68,123 @@ const Footer = ({ currentPage }: FooterProps) => {
         </p>
       </div>
 
-      <div className="container mt-20 flex flex-col-reverse justify-between gap-8 text-xs lg:mt-30 lg:flex-row">
-        <div className="flex flex-col items-center gap-1 sm:flex-row sm:justify-between sm:gap-2">
-          <p>
-            &copy; {new Date().getFullYear()} FirstHomeGuide.ca &mdash; A{' '}
-            <a
-              href={LENDCITY.website}
-              title={LENDCITY.title}
-              className="hover:text-foreground transition-colors"
-              target="_blank"
-              rel="noopener"
-            >
-              {LENDCITY.name}
-            </a>{' '}
-            Resource
-          </p>
-          <a
-            href={`tel:${LENDCITY.phone}`}
-            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
-          >
-            <Phone className="size-3" />
-            {LENDCITY.phone}
-          </a>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-4 lg:justify-center lg:gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="transition-opacity hover:opacity-80"
-            >
-              {link.label}
-            </a>
-          ))}
+      <div className="container mt-16 grid gap-10 border-t pt-10 text-sm sm:grid-cols-2 md:grid-cols-3 lg:mt-20">
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Learn
+          </h3>
+          <ul className="mt-3 space-y-2">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-foreground/80 hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href="/my-guide"
+                className="text-foreground/80 hover:text-foreground transition-colors"
+              >
+                Build Your Guide
+              </a>
+            </li>
+          </ul>
         </div>
 
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Company
+          </h3>
+          <ul className="mt-3 space-y-2">
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-foreground/80 hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Talk to us
+          </h3>
+          <ul className="mt-3 space-y-2">
+            <li>
+              <a
+                href={LENDCITY.bookingUrl}
+                className="text-foreground/80 hover:text-foreground transition-colors"
+              >
+                Book a free call
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:${LENDCITY.phone}`}
+                className="text-foreground/80 hover:text-foreground inline-flex items-center gap-1 transition-colors"
+              >
+                <Phone className="size-3" />
+                {LENDCITY.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={LENDCITY.website}
+                title={LENDCITY.title}
+                target="_blank"
+                rel="noopener"
+                className="text-foreground/80 hover:text-foreground transition-colors"
+              >
+                LendCity.ca
+              </a>
+            </li>
+            <li>
+              <address className="text-foreground/80 not-italic leading-relaxed">
+                {LENDCITY.streetAddress}
+                <br />
+                {LENDCITY.city}, {LENDCITY.provinceCode} {LENDCITY.postalCode}
+              </address>
+            </li>
+          </ul>
+        </div>
       </div>
 
+      <div className="container mt-10 border-t pt-6">
+        <p className="text-muted-foreground mx-auto max-w-3xl text-center text-xs leading-relaxed">
+          <strong className="text-foreground/80">General information only.</strong>{' '}
+          FirstHomeGuide.ca provides educational content about home buying in Canada and is
+          not financial, legal, tax, or mortgage advice. Programs, rates, and rules change —
+          confirm details with a licensed professional before acting. See our{' '}
+          <a href="/disclaimer" className="underline underline-offset-4 hover:text-foreground">
+            full disclaimer
+          </a>
+          .
+        </p>
+      </div>
+
+      <div className="container mt-8 flex flex-col-reverse items-center justify-between gap-4 text-xs lg:flex-row">
+        <p>
+          &copy; {new Date().getFullYear()} FirstHomeGuide.ca &mdash; A{' '}
+          <a
+            href={LENDCITY.website}
+            title={LENDCITY.title}
+            className="hover:text-foreground transition-colors"
+            target="_blank"
+            rel="noopener"
+          >
+            {LENDCITY.name}
+          </a>{' '}
+          Resource &middot; {LENDCITY.license}
+        </p>
+      </div>
     </footer>
   );
 };

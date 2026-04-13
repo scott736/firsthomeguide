@@ -17,7 +17,22 @@ const changelog = defineCollection({
   }),
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default('FirstHomeGuide.ca Team'),
+    tags: z.array(z.string()).default([]),
+    heroImage: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   docs,
   changelog,
+  blog,
 };

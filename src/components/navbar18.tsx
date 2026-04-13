@@ -11,6 +11,7 @@ import {
   ClipboardCheck,
   ClipboardList,
   DollarSign,
+  FileText,
   Home,
   Hourglass,
   MapPin,
@@ -55,6 +56,13 @@ export const NAV_LINKS = [
         description:
           'All 8 modules from "Am I ready?" to "Life after closing"',
         icon: BookOpen,
+      },
+      {
+        label: 'Build Your Custom Guide',
+        href: '/my-guide',
+        description:
+          'Pick the sections you want and export a personalized PDF',
+        icon: FileText,
       },
       {
         label: 'Programs by Province',

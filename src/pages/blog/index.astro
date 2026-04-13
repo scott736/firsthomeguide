@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const dateFormatter = new Intl.DateTimeFormat('en-CA', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<DefaultLayout
+  title="Blog — FirstHomeGuide.ca"
+  description="Market updates, rule changes, and practical takes on home buying in Canada — from the FirstHomeGuide.ca team."
+>
+  <section class="section-padding container max-w-4xl">
+    <div class="flex items-center gap-3">
+      <a href="/rss.xml" class="text-muted-foreground hover:text-foreground text-xs underline underline-offset-4">
+        RSS
+      </a>
+    </div>
+    <h1 class="mt-2 text-4xxl leading-tight tracking-tight md:text-5xl">
+      The <span class="text-gradient">Blog</span>
+    </h1>
+    <p class="text-muted-foreground mt-4 max-w-2xl text-lg leading-snug">
+      Shorter, time-sensitive posts to complement the{' '}
+      <a href="/guide/welcome/" class="text-foreground underline underline-offset-4">main guide</a>.
+      Market updates, rule changes, and answers to common questions.
+    </p>
+
+    {posts.length === 0 ? (
+      <p class="text-muted-foreground mt-12">No posts yet — check back soon.</p>
+    ) : (
+      <ul class="mt-12 divide-y border-t">
+        {posts.map((post) => (
+          <li class="group py-6">
+            <a
+              href={`/blog/${post.id.replace(/\.(md|mdx)$/, '')}/`}
+              class="block"
+            >
+              <div class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {dateFormatter.format(post.data.pubDate)}
+                </time>
+                {post.data.tags.length > 0 && (
+                  <>
+                    <span>&middot;</span>
+                    <span>{post.data.tags.join(', ')}</span>
+                  </>
+                )}
+              </div>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight group-hover:text-chart-1">
+                {post.data.title}
+              </h2>
+              <p class="text-muted-foreground mt-2 leading-relaxed">
+                {post.data.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</DefaultLayout>

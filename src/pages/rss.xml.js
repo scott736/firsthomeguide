@@ -4,16 +4,20 @@ import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
 
 export async function GET(context) {
-  const docs = await getCollection('docs');
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const sorted = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
-    items: docs.map((doc) => ({
-      title: doc.data.title,
-      description: doc.data.description || '',
-      link: `/${doc.id}/`,
-      pubDate: new Date('2025-01-15'),
+    items: sorted.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate,
+      link: `/blog/${post.id.replace(/\.(md|mdx)$/, '')}/`,
     })),
   });
 }

@@ -1,0 +1,76 @@
+---
+import ContactForm from '@/components/sections/contact-form';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { LENDCITY } from '@/lib/lendcity';
+---
+
+<DefaultLayout
+  title="Contact — FirstHomeGuide.ca"
+  description="Get in touch with the FirstHomeGuide.ca team. Send a message, report a content issue, or ask a question about buying your first home in Canada."
+>
+  <section class="section-padding container max-w-3xl">
+    <h1 class="text-4xxl leading-tight tracking-tight md:text-5xl">
+      Get in <span class="text-gradient">touch</span>
+    </h1>
+    <p class="text-muted-foreground mt-4 max-w-2xl text-lg leading-snug">
+      Questions about the guide, spotted an error, or want to work with us? Send us a note
+      below. For mortgage questions specifically, booking a free call with a licensed
+      professional is usually faster.
+    </p>
+
+    <div class="mt-10 grid gap-10 md:grid-cols-[2fr_1fr]">
+      <div>
+        <ContactForm client:load />
+      </div>
+
+      <aside class="space-y-6 text-sm leading-relaxed">
+        <div>
+          <h2 class="font-semibold">Want a mortgage answer today?</h2>
+          <p class="text-muted-foreground mt-2">
+            Our licensed mortgage team at {LENDCITY.name} ({LENDCITY.license}) can answer
+            pre-approval, rate, and qualification questions directly.
+          </p>
+          <a
+            href={LENDCITY.bookingUrl}
+            class="mt-3 inline-flex text-foreground underline underline-offset-4"
+          >
+            Book a free call &rarr;
+          </a>
+        </div>
+
+        <div>
+          <h2 class="font-semibold">Prefer phone?</h2>
+          <p class="text-muted-foreground mt-2">
+            <a href={`tel:${LENDCITY.phone}`} class="underline underline-offset-4">
+              {LENDCITY.phone}
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-semibold">Visit our office</h2>
+          <address class="text-muted-foreground mt-2 not-italic">
+            {LENDCITY.streetAddress}<br />
+            {LENDCITY.city}, {LENDCITY.province}, {LENDCITY.postalCode}
+          </address>
+        </div>
+
+        <div>
+          <h2 class="font-semibold">Press &amp; partnerships</h2>
+          <p class="text-muted-foreground mt-2">
+            Use the form with topic &ldquo;Partnership or media enquiry&rdquo; and we&rsquo;ll route it appropriately.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-semibold">Privacy requests</h2>
+          <p class="text-muted-foreground mt-2">
+            Access, correction, or deletion requests under PIPEDA — select the &ldquo;Privacy&rdquo;
+            topic. See our{' '}
+            <a href="/privacy" class="underline underline-offset-4">privacy policy</a>.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</DefaultLayout>

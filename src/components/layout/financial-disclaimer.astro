@@ -1,0 +1,68 @@
+---
+/**
+ * Financial / educational-content disclaimer.
+ * Rendered in the footer and on legal pages.
+ *
+ * Props:
+ *   variant="compact"  -> one-line footer version
+ *   variant="full"     -> multi-paragraph legal-page version
+ */
+
+interface Props {
+  variant?: 'compact' | 'full';
+}
+
+const { variant = 'compact' } = Astro.props;
+---
+
+{variant === 'compact' && (
+  <p class="text-muted-foreground mx-auto max-w-3xl text-center text-xs leading-relaxed">
+    <strong class="text-foreground/80">General information only.</strong>{' '}
+    FirstHomeGuide.ca provides educational content about home buying in Canada and is not
+    financial, legal, tax, or mortgage advice. Programs, rates, and rules change — confirm
+    details with a licensed professional before acting. See our{' '}
+    <a
+      href="/disclaimer"
+      class="underline underline-offset-4 hover:text-foreground"
+      >full disclaimer</a
+    >.
+  </p>
+)}
+
+{variant === 'full' && (
+  <div class="space-y-4 rounded-lg border bg-muted/30 p-6 text-sm leading-relaxed">
+    <p>
+      <strong>General information only.</strong> The content on FirstHomeGuide.ca — including
+      articles, tools, calculators, and guide modules — is provided for educational and
+      informational purposes. It is not financial advice, legal advice, tax advice, mortgage
+      advice, real estate advice, or a solicitation to buy or sell any financial product.
+    </p>
+    <p>
+      <strong>Not a mortgage broker.</strong> FirstHomeGuide.ca is an independent education
+      resource. Licensed mortgage services referenced on this site are provided by{' '}
+      <a
+        href="https://lendcity.ca"
+        class="underline underline-offset-4"
+        target="_blank"
+        rel="noopener"
+        >LendCity</a
+      >{' '}
+      (FSRA Brokerage Licence #12728) under Mortgage Architects. FirstHomeGuide.ca does not
+      originate, fund, approve, or guarantee any mortgage.
+    </p>
+    <p>
+      <strong>Rates, rules, and programs change.</strong> Federal and provincial home-buyer
+      programs, tax rules, CMHC premiums, mortgage rates, land transfer taxes, and closing
+      costs are subject to change without notice. Calculators on this site use published
+      formulas and assumptions that may not reflect your specific situation or the most recent
+      rules.
+    </p>
+    <p>
+      <strong>Always verify before acting.</strong> Before making any home-buying, financial,
+      legal, or tax decision, consult a licensed mortgage professional, real estate lawyer,
+      accountant, or other qualified advisor who can review your personal circumstances.
+      FirstHomeGuide.ca, LendCity, and their contributors accept no liability for decisions
+      made based on the content of this site.
+    </p>
+  </div>
+)}

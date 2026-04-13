@@ -1,0 +1,64 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="Something went wrong — FirstHomeGuide.ca"
+  description="An unexpected error occurred. Head back to our free home buying guide, tools, and resources."
+  noindex
+>
+  <section class="section-padding relative flex items-center justify-center">
+    <div class="container relative flex max-w-3xl flex-col items-center text-center">
+      <p class="text-gradient text-8xl font-bold tracking-tighter md:text-9xl">
+        500
+      </p>
+
+      <div class="mt-6 space-y-4 text-balance md:mt-8">
+        <h1 class="text-4xxl leading-tight tracking-tight md:text-5xl">
+          Something went wrong on our end
+        </h1>
+        <p class="text-muted-foreground text-lg leading-relaxed">
+          This is an unexpected error and it&rsquo;s not your fault. Try refreshing the page
+          &mdash; if the problem continues, let us know through the{' '}
+          <a href="/contact" class="text-foreground underline underline-offset-4 hover:no-underline">
+            contact page
+          </a>{' '}
+          and we&rsquo;ll look into it.
+        </p>
+      </div>
+
+      <div class="mt-10 grid w-full gap-3 sm:grid-cols-2">
+        <a
+          href="/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 rounded-lg border p-4 text-left transition-colors"
+        >
+          <p class="text-sm font-semibold">Home</p>
+          <p class="text-muted-foreground text-sm">Back to the homepage</p>
+        </a>
+        <a
+          href="/guide/welcome/"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 rounded-lg border p-4 text-left transition-colors"
+        >
+          <p class="text-sm font-semibold">The Guide</p>
+          <p class="text-muted-foreground text-sm">Start learning about home buying</p>
+        </a>
+        <a
+          href="/tools"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 rounded-lg border p-4 text-left transition-colors"
+        >
+          <p class="text-sm font-semibold">Tools</p>
+          <p class="text-muted-foreground text-sm">
+            Mortgage calculator, checklists &amp; more
+          </p>
+        </a>
+        <a
+          href="/contact"
+          class="hover:border-chart-1/30 hover:bg-chart-1/5 rounded-lg border p-4 text-left transition-colors"
+        >
+          <p class="text-sm font-semibold">Report the issue</p>
+          <p class="text-muted-foreground text-sm">Tell us what happened</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
