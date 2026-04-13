@@ -6,7 +6,10 @@
  */
 import Default from '@astrojs/starlight/components/Head.astro';
 
+import { LENDCITY } from '@/lib/lendcity';
+
 const siteUrl = 'https://firsthomeguide.ca';
+const telephoneE164 = `+${LENDCITY.phone.replace(/\D/g, '')}`;
 
 // Access page data via Astro.locals.starlightRoute (Starlight's current API)
 const route = Astro.locals.starlightRoute;
@@ -161,9 +164,17 @@ graph.push({
     'Land transfer tax',
     'Mortgage stress test',
   ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: LENDCITY.streetAddress,
+    addressLocality: LENDCITY.city,
+    addressRegion: LENDCITY.provinceCode,
+    postalCode: LENDCITY.postalCode,
+    addressCountry: LENDCITY.countryCode,
+  },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-519-960-0370',
+    telephone: telephoneE164,
     contactType: 'customer service',
     areaServed: 'CA',
     availableLanguage: 'English',

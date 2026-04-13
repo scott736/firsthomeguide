@@ -6,6 +6,8 @@
  * SoftwareApplication, WebApplication, AboutPage, and BreadcrumbList schemas.
  */
 
+import { LENDCITY } from '@/lib/lendcity';
+
 interface Props {
   type?: 'home' | 'guide' | 'tools' | 'tool-page' | 'about' | 'page';
   title?: string;
@@ -15,6 +17,8 @@ interface Props {
 
 const { type = 'home', title, description, toolSlug } = Astro.props;
 const siteUrl = 'https://firsthomeguide.ca';
+
+const telephoneE164 = `+${LENDCITY.phone.replace(/\D/g, '')}`;
 
 const graph: Record<string, unknown>[] = [];
 
@@ -47,9 +51,17 @@ graph.push({
     'Provincial home buyer programs',
     'Closing costs in Canada',
   ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: LENDCITY.streetAddress,
+    addressLocality: LENDCITY.city,
+    addressRegion: LENDCITY.provinceCode,
+    postalCode: LENDCITY.postalCode,
+    addressCountry: LENDCITY.countryCode,
+  },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-519-960-0370',
+    telephone: telephoneE164,
     contactType: 'customer service',
     areaServed: 'CA',
     availableLanguage: 'English',

@@ -10,6 +10,7 @@ FirstHomeGuide.ca is a neutral, education-first resource with no product upsells
 - URL: https://firsthomeguide.ca
 - Updated: April 2026
 - Contact: 1-519-960-0370
+- Address: 4769 Wyandotte St E, Windsor, Ontario, N8Y 1H8, Canada
 - Language: en-CA
 - License: All rights reserved
 - Content type: Educational guide (free, no login required)

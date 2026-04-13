@@ -4,6 +4,7 @@
  */
 
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { LENDCITY } from '@/lib/lendcity';
 
 // Brand colors
 const BRAND_COLOR = '#7c3aed'; // FirstHomeGuide purple
@@ -13,6 +14,10 @@ const BRAND_COLOR_LIGHT = '#a78bfa'; // Lighter for backgrounds
 // Logo URL (must be absolute for emails)
 // Note: Using PNG for email compatibility (WebP not widely supported in email clients)
 const LOGO_URL = 'https://firsthomeguide.ca/images/lendcity-logo.webp';
+
+const OFFICE_PHONE = LENDCITY.phone;
+const OFFICE_PHONE_TEL = `tel:${LENDCITY.phone.replace(/\D/g, '')}`;
+const OFFICE_ADDRESS = `${LENDCITY.streetAddress}, ${LENDCITY.city}, ${LENDCITY.province}, ${LENDCITY.postalCode}`;
 
 interface BookingConfirmationEmailParams {
   to: string;
@@ -205,8 +210,14 @@ export async function sendBookingConfirmationEmail(params: BookingConfirmationEm
               <p style="margin: 0 0 8px; font-size: 14px; color: #6b7280;">
                 ${teamMemberName}
               </p>
-              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
                 FirstHomeGuide.ca &mdash; Powered by LendCity
+              </p>
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
+                <a href="${OFFICE_PHONE_TEL}" style="color: #9ca3af; text-decoration: none;">${OFFICE_PHONE}</a>
+              </p>
+              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+                ${OFFICE_ADDRESS}
               </p>
             </td>
           </tr>
@@ -241,6 +252,8 @@ If you didn't request this booking, you can safely ignore this email.
 ---
 ${teamMemberName}
 FirstHomeGuide.ca — Powered by LendCity
+${OFFICE_PHONE}
+${OFFICE_ADDRESS}
   `.trim();
 
   await sendEmail({
@@ -455,8 +468,14 @@ export async function sendBookingConfirmedEmail(params: BookingConfirmedEmailPar
               <p style="margin: 0 0 8px; font-size: 14px; color: #6b7280;">
                 ${teamMemberName}
               </p>
-              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
                 FirstHomeGuide.ca &mdash; Powered by LendCity
+              </p>
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
+                <a href="${OFFICE_PHONE_TEL}" style="color: #9ca3af; text-decoration: none;">${OFFICE_PHONE}</a>
+              </p>
+              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+                ${OFFICE_ADDRESS}
               </p>
             </td>
           </tr>
@@ -492,6 +511,8 @@ ${token ? `NEED TO MAKE CHANGES?
 ---
 ${teamMemberName}
 FirstHomeGuide.ca — Powered by LendCity
+${OFFICE_PHONE}
+${OFFICE_ADDRESS}
   `.trim();
 
   await sendEmail({
@@ -720,8 +741,11 @@ export async function sendBookingNotificationEmail(params: BookingNotificationEm
           <!-- Footer -->
           <tr>
             <td style="background-color: #f9fafb; padding: 24px 40px; text-align: center; border-top: 1px solid #e5e7eb;">
-              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
                 FirstHomeGuide.ca &mdash; Powered by LendCity &middot; Booking Notification
+              </p>
+              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+                ${OFFICE_PHONE} &middot; ${OFFICE_ADDRESS}
               </p>
             </td>
           </tr>
@@ -755,6 +779,7 @@ ${meetingLink ? `- Video Call: ${meetingLink}` : ''}
 
 ---
 FirstHomeGuide.ca — Powered by LendCity - Booking Notification
+${OFFICE_PHONE} — ${OFFICE_ADDRESS}
   `.trim();
 
   await sendEmail({

@@ -4,12 +4,17 @@
  */
 
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { LENDCITY } from '@/lib/lendcity';
 
 // Brand colors (matching booking emails)
 const BRAND_COLOR = '#7c3aed';
 const BRAND_COLOR_DARK = '#6d28d9';
 const LOGO_URL = 'https://firsthomeguide.ca/images/lendcity-logo.webp';
 const SITE_URL = 'https://firsthomeguide.ca';
+
+const OFFICE_PHONE = LENDCITY.phone;
+const OFFICE_PHONE_TEL = `tel:${LENDCITY.phone.replace(/\D/g, '')}`;
+const OFFICE_ADDRESS = `${LENDCITY.streetAddress}, ${LENDCITY.city}, ${LENDCITY.province}, ${LENDCITY.postalCode}`;
 
 interface ShareArticleEmailParams {
   friendEmail: string;
@@ -113,8 +118,8 @@ export async function sendShareArticleEmail(params: ShareArticleEmailParams) {
                           </a>
                         </td>
                         <td>
-                          <a href="tel:1-519-960-0370" style="display: inline-block; color: ${BRAND_COLOR_DARK}; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 0;">
-                            or call 1-519-960-0370
+                          <a href="${OFFICE_PHONE_TEL}" style="display: inline-block; color: ${BRAND_COLOR_DARK}; font-size: 14px; font-weight: 500; text-decoration: none; padding: 10px 0;">
+                            or call ${OFFICE_PHONE}
                           </a>
                         </td>
                       </tr>
@@ -132,8 +137,11 @@ export async function sendShareArticleEmail(params: ShareArticleEmailParams) {
                 This email was sent because ${safeSender} thought you&rsquo;d enjoy this article.
                 You will not receive further emails unless you sign up.
               </p>
-              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+              <p style="margin: 0 0 4px; font-size: 12px; color: #9ca3af;">
                 FirstHomeGuide.ca &mdash; Powered by LendCity &middot; Mortgage Architects &middot; FSRA Brokerage Licence #12728
+              </p>
+              <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+                ${OFFICE_PHONE} &middot; ${OFFICE_ADDRESS}
               </p>
             </td>
           </tr>
@@ -163,12 +171,13 @@ Explore the full guide: ${SITE_URL}/guide/welcome/
 Ready to talk to a mortgage expert?
 LendCity Mortgages offers free, no-obligation consultations.
 Book a free call: ${SITE_URL}/book-a-call
-Or call: 1-519-960-0370
+Or call: ${OFFICE_PHONE}
 
 ---
 This email was sent because ${senderEmail} thought you'd enjoy this article.
 You will not receive further emails unless you sign up.
 FirstHomeGuide.ca — Powered by LendCity · Mortgage Architects · FSRA Brokerage Licence #12728
+${OFFICE_PHONE} · ${OFFICE_ADDRESS}
   `.trim();
 
   await sendEmail({

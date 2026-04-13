@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 
 import { GUIDE_MODULES } from '@/lib/guide-sections';
+import { LENDCITY } from '@/lib/lendcity';
 
 // Fetch all guide docs
 const allDocs = await getCollection('docs', (entry) =>
@@ -420,6 +421,12 @@ for (const section of orderedSections) {
       .print-cta-contact .web {
         font-size: 1rem;
         color: var(--muted);
+        margin-bottom: 0.375rem;
+      }
+
+      .print-cta-contact .address {
+        font-size: 0.875rem;
+        color: var(--muted);
         margin-bottom: 1rem;
       }
 
@@ -582,8 +589,9 @@ for (const section of orderedSections) {
             or navigating first-time buyer programs, we're here to help.
           </p>
           <div class="print-cta-contact">
-            <div class="phone">1-519-960-0370</div>
+            <div class="phone">{LENDCITY.phone}</div>
             <div class="web">firsthomeguide.ca/book-a-call</div>
+            <div class="address">{LENDCITY.streetAddress}, {LENDCITY.city}, {LENDCITY.province}, {LENDCITY.postalCode}</div>
             <p class="license"><a href="https://lendcity.ca" title="LendCity Mortgages – Licensed Mortgage Professionals in Canada" target="_blank" rel="noopener">LendCity</a> &middot; Mortgage Architects &middot; FSRA Brokerage Licence #12728</p>
           </div>
         </div>
